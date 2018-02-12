@@ -36,6 +36,10 @@
   flex: 1 0 auto;
 }
 
+.menu-fill {
+  flex: 0 0 auto;
+}
+
 html,
 body {
   height: 100%;
@@ -81,7 +85,7 @@ body {
 }
 
 .transition-half-s {
-  transition: all 0.5s;
+  transition: all 0.5s ease;
 }
 
 .overflow-hidden {
