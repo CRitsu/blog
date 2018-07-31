@@ -4,6 +4,10 @@
 # for editor
 .vscode
 
+# sass 
+src/**/*.css
+src/*.css
+
 # Logs
 logs
 *.log
