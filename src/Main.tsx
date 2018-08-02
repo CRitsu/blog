@@ -1,5 +1,9 @@
 import * as React from 'react';
+import Square from './components/square';
 import Title from './components/title';
+import * as icon from './constants/iconCodes';
+import './css/Main.css';
+
 
 interface Articles {
   _id: string,
@@ -9,7 +13,8 @@ interface Articles {
   tags: string[],
   timestamp: number,
   title: string,
-  views: number
+  views: number,
+  deleted: boolean
 }
 
 interface Props {
@@ -22,12 +27,18 @@ class Main extends React.Component<Props, object> {
     return (
       <div className="main">
         <Title title={this.props.title} />
+        
         <div className="lists">
           {
             this.props.lists.map(
               item => (
                 <div key={item._id} className="item">
                   <div>{item.title}</div>
+                  <div className="badges">
+                    <div>{new Date(item.timestamp).toLocaleString()}</div>
+                    <Square symbol={icon.views} text={item.views} />
+                    <Square symbol={icon.comment} text={item.reviews} />
+                  </div>
                 </div>
               )
             )

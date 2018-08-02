@@ -87,6 +87,6 @@ export default [
     ],
     "timestamp": 1531128286417.8281,
     "title": "The article title 1",
-    "views": 998
+    "views": 99899912
   }
 ]
