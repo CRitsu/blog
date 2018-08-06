@@ -1,9 +1,19 @@
 .item {
+
+  .item-title {
+    font-size: 2rem;
+  }
+
   .badges {
     display: flex;
     color: gray;
-    font-size: 0.9rem;
+    padding-right: 1rem;
+    .time, .square {
+      padding-right: 1rem;
+    }
   }
+
+  padding: 1rem 0;
 
 }
 

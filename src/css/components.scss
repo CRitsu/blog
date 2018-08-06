@@ -14,8 +14,12 @@
 
 .square {
   display: flex;
+  position: relative;
   .symbol {
     font-family: 'font-awesome';
+    padding-right: .5rem;
+    position: relative;
+    top: .2rem;
   }
 }
 

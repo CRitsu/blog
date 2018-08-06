@@ -24,20 +24,31 @@ interface Props {
 
 class Main extends React.Component<Props, object> {
   public render() {
+
+    const {title, lists} = this.props;
+
     return (
       <div className="main">
-        <Title title={this.props.title} />
+        <Title title={title} />
         
         <div className="lists">
           {
-            this.props.lists.map(
+            lists.map(
               item => (
                 <div key={item._id} className="item">
-                  <div>{item.title}</div>
+                  <div className="item-title">{item.title}</div>
+                  <div className="peek">{item.peek}</div>
                   <div className="badges">
-                    <div>{new Date(item.timestamp).toLocaleString()}</div>
+                    <Square symbol={icon.calendar} text={new Date(item.timestamp).toLocaleString()} />
                     <Square symbol={icon.views} text={item.views} />
                     <Square symbol={icon.comment} text={item.reviews} />
+                    {
+                      item.tags.map(
+                        tag => (
+                          <Square symbol={icon.tag} text={tag} />
+                        )
+                      )
+                    }
                   </div>
                 </div>
               )
