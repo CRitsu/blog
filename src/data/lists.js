@@ -1,3 +1,5 @@
+// dummy data
+
 export default [
   {
     "_id": "5b432a42f04705565525529d",

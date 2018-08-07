@@ -1,21 +1,11 @@
 import * as React from 'react';
+import { Link, Route } from 'react-router-dom';
 import Square from './components/square';
 import Title from './components/title';
-import * as icon from './constants/iconCodes';
+import * as icons from './constants/iconCodes';
 import './css/Main.css';
+import { Articles } from './type/index';
 
-
-interface Articles {
-  _id: string,
-  author: string,
-  peek: string,
-  reviews: number,
-  tags: string[],
-  timestamp: number,
-  title: string,
-  views: number,
-  deleted: boolean
-}
 
 interface Props {
   title: string,
@@ -25,36 +15,41 @@ interface Props {
 class Main extends React.Component<Props, object> {
   public render() {
 
-    const {title, lists} = this.props;
+    const { title, lists } = this.props;
 
     return (
       <div className="main">
-        <Title title={title} />
-        
-        <div className="lists">
-          {
-            lists.map(
-              item => (
-                <div key={item._id} className="item">
-                  <div className="item-title">{item.title}</div>
-                  <div className="peek">{item.peek}</div>
-                  <div className="badges">
-                    <Square symbol={icon.calendar} text={new Date(item.timestamp).toLocaleString()} />
-                    <Square symbol={icon.views} text={item.views} />
-                    <Square symbol={icon.comment} text={item.reviews} />
-                    {
-                      item.tags.map(
-                        tag => (
-                          <Square symbol={icon.tag} text={tag} />
+
+        <Title title={<Link to="/">{title}</Link>} />
+
+        <Route path="/" exact={true}>
+          {(props: { match: boolean }) => props.match &&
+            <div className="lists">
+              {
+                lists.map(
+                  item => (
+                    <div key={item._id} className="item">
+                      <div className="item-title">{item.title}</div>
+                      <div className="peek">{item.peek}</div>
+                      <div className="badges">
+                        <Square symbol={icons.calendar} text={new Date(item.timestamp).toLocaleString()} />
+                        <Square symbol={icons.views} text={item.views} />
+                        <Square symbol={icons.comment} text={item.reviews} />
+                      </div>
+                      <Square symbol={icons.tags} child={
+                        item.tags.map(
+                          tag => (
+                            <div key={tag}>{tag}</div>
+                          )
                         )
-                      )
-                    }
-                  </div>
-                </div>
-              )
-            )
+                      } />
+                    </div>
+                  )
+                )
+              }
+            </div>
           }
-        </div>
+        </Route>
       </div>
     )
   }

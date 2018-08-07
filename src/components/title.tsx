@@ -2,7 +2,7 @@ import * as React from 'react';
 
 
 interface Props {
-  title: string
+  title: string | JSX.Element
 }
 
 function Title(props: Props) {

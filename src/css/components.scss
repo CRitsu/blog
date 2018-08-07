@@ -1,25 +1,30 @@
-
 .title {
   margin: 0;
   padding: 0;
-  font-size: 3rem;
-  line-height: 6rem;
-
+  font-size: 2.5rem;
+  line-height: 5rem;
   @media screen and (max-width: 365px) {
     font-size: 2rem;
     line-height: 4rem;
   }
-
 }
 
 .square {
   display: flex;
   position: relative;
   .symbol {
-    font-family: 'font-awesome';
+    font-family: 'font-awesome', 'font-awesome-solid';
     padding-right: .5rem;
     position: relative;
     top: .2rem;
   }
+  .values {
+    display: flex;
+    div {
+      &:not(:last-child)::after {
+        content: '·';
+        padding: 0 .2rem;
+      }
+    }
+  }
 }
-
