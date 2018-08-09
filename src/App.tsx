@@ -1,15 +1,20 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './css/App.css';
 import './css/components.css';
-import lists from './data/lists';
 import Main from './Main';
+import { Articles, State } from './type';
 
-class App extends React.Component {
+interface Props {
+  lists: Articles[]
+}
+
+class App extends React.Component<Props, object> {
   public render() {
 
     const bindMain = () => (
-      <Main title="Richard's Blog" lists={lists} />
+      <Main title="Richard's Blog" lists={this.props.lists} />
     )
 
     return (
@@ -22,4 +27,14 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const mapStateTpProps = (state: State) => {
+  return {
+    lists: state.lists
+  }
+}
+
+const appContainer = connect(
+  mapStateTpProps, {}
+)(App)
+
+export default appContainer;

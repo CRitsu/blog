@@ -4,7 +4,7 @@ import Square from './components/square';
 import Title from './components/title';
 import * as icons from './constants/iconCodes';
 import './css/Main.css';
-import { Articles } from './type/index';
+import { Articles } from './type';
 
 
 interface Props {

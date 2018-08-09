@@ -11,3 +11,7 @@ export interface Articles {
   views: number,
   deleted: boolean
 }
+
+export interface State {
+  lists: Articles[]
+}
