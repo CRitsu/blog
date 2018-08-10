@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { Link, Route } from 'react-router-dom';
-import Square from './components/square';
-import Title from './components/title';
-import * as icons from './constants/iconCodes';
+import { Square, Title} from './components';
+import { icons } from './constants';
 import './css/Main.css';
 import { Articles } from './type';
 

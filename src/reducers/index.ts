@@ -1,17 +1,5 @@
-import data from '../data/lists';
-import { State } from '../type';
+import rootReducer from './rootReducer'
 
-
-
-
-const initialState: State = {
-  lists: data
+export {
+  rootReducer
 }
-
-
-function initial(state = initialState) {
-  return state;
-}
-
-
-export default initial;

@@ -1,9 +1,11 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
+import { connect, Provider } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { createStore } from 'redux';
 import './css/App.css';
 import './css/components.css';
 import Main from './Main';
+import { rootReducer as reducers} from './reducers';
 import { Articles, State } from './type';
 
 interface Props {
@@ -33,8 +35,14 @@ const mapStateTpProps = (state: State) => {
   }
 }
 
-const appContainer = connect(
+const AppContainer = connect(
   mapStateTpProps, {}
 )(App)
 
-export default appContainer;
+const store = createStore(reducers);
+
+export default () => (
+  <Provider store={store}>
+    <AppContainer />
+  </Provider>
+)
