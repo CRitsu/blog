@@ -5,7 +5,7 @@ import { createStore } from 'redux';
 import './css/App.css';
 import './css/components.css';
 import Main from './Main';
-import { rootReducer as reducers} from './reducers';
+import { rootReducer as reducers } from './reducers';
 import { Articles, State } from './type';
 
 interface Props {
@@ -33,16 +33,18 @@ const mapStateTpProps = (state: State) => {
   return {
     lists: state.lists
   }
-}
+};
 
 const AppContainer = connect(
   mapStateTpProps, {}
-)(App)
+)(App);
 
 const store = createStore(reducers);
 
-export default () => (
+const AppProvider = () => (
   <Provider store={store}>
     <AppContainer />
   </Provider>
 )
+
+export default AppProvider;
