@@ -1,11 +1,9 @@
 import * as React from 'react';
-import { addLocaleData, IntlProvider } from 'react-intl';
 import { connect, Provider } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { createStore } from 'redux';
 import './css/App.css';
 import './css/components.css';
-import { en, zh } from './languages';
 import Main from './Main';
 import { rootReducer as reducers } from './reducers';
 import { Articles, State } from './type';
@@ -52,13 +50,4 @@ const AppProvider = () => (
   </Provider>
 )
 
-// add i18n support
-addLocaleData([en, zh])
-// wrap i18n provider
-const I18nAppProvider = () => (
-  <IntlProvider locale="zh">
-    <AppProvider />
-  </IntlProvider>
-)
-
-export default I18nAppProvider;
+export default AppProvider;
