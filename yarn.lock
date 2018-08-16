@@ -20,6 +20,10 @@
   version "4.7.0"
   resolved "http://registry.npm.taobao.org/@types/history/download/@types/history-4.7.0.tgz#2fac51050c68f7d6f96c5aafc631132522f4aa3f"
 
+"@types/i18next@*":
+  version "8.4.4"
+  resolved "http://registry.npm.taobao.org/@types/i18next/download/@types/i18next-8.4.4.tgz#76591ab5974b65910e44b8860202d4f544f39b9d"
+
 "@types/jest@^23.3.1":
   version "23.3.1"
   resolved "http://registry.npm.taobao.org/@types/jest/download/@types/jest-23.3.1.tgz#a4319aedb071d478e6f407d1c4578ec8156829cf"
@@ -43,6 +47,13 @@
   resolved "http://registry.npm.taobao.org/@types/react-dom/download/@types/react-dom-16.0.7.tgz#54d0f867a76b90597e8432030d297982f25c20ba"
   dependencies:
     "@types/node" "*"
+    "@types/react" "*"
+
+"@types/react-i18next@^7.8.2":
+  version "7.8.2"
+  resolved "http://registry.npm.taobao.org/@types/react-i18next/download/@types/react-i18next-7.8.2.tgz#a388e3a2b97da361761000cdcd23b9a621f81472"
+  dependencies:
+    "@types/i18next" "*"
     "@types/react" "*"
 
 "@types/react-redux@^6.0.6":
@@ -3229,7 +3240,7 @@ hoek@5.x.x, hoek@^5.0.3:
   version "5.0.3"
   resolved "http://registry.npm.taobao.org/hoek/download/hoek-5.0.3.tgz#b71d40d943d0a95da01956b547f83c4a5b4a34ac"
 
-hoist-non-react-statics@^2.5.0:
+hoist-non-react-statics@^2.3.1, hoist-non-react-statics@^2.5.0:
   version "2.5.5"
   resolved "http://registry.npm.taobao.org/hoist-non-react-statics/download/hoist-non-react-statics-2.5.5.tgz#c5903cf409c0dfd908f388e619d86b9c1174cb47"
 
@@ -3284,6 +3295,12 @@ html-minifier@^3.2.3:
     param-case "2.1.x"
     relateurl "0.2.x"
     uglify-js "3.4.x"
+
+html-parse-stringify2@2.0.1:
+  version "2.0.1"
+  resolved "http://registry.npm.taobao.org/html-parse-stringify2/download/html-parse-stringify2-2.0.1.tgz#dc5670b7292ca158b7bc916c9a6735ac8872834a"
+  dependencies:
+    void-elements "^2.0.1"
 
 html-webpack-plugin@2.29.0:
   version "2.29.0"
@@ -5936,6 +5953,14 @@ react-error-overlay@^4.0.0:
   version "4.0.0"
   resolved "http://registry.npm.taobao.org/react-error-overlay/download/react-error-overlay-4.0.0.tgz#d198408a85b4070937a98667f500c832f86bd5d4"
 
+react-i18next@^7.10.1:
+  version "7.10.1"
+  resolved "http://registry.npm.taobao.org/react-i18next/download/react-i18next-7.10.1.tgz#9e119c15970eb401b9ef178336a2e09dd120bb15"
+  dependencies:
+    hoist-non-react-statics "^2.3.1"
+    html-parse-stringify2 "2.0.1"
+    prop-types "^15.6.0"
+
 react-redux@^5.0.7:
   version "5.0.7"
   resolved "http://registry.npm.taobao.org/react-redux/download/react-redux-5.0.7.tgz#0dc1076d9afb4670f993ffaef44b8f8c1155a4c8"
@@ -7540,6 +7565,10 @@ vm-browserify@0.0.4:
   resolved "http://registry.npm.taobao.org/vm-browserify/download/vm-browserify-0.0.4.tgz#5d7ea45bbef9e4a6ff65f95438e0a87c357d5a73"
   dependencies:
     indexof "0.0.1"
+
+void-elements@^2.0.1:
+  version "2.0.1"
+  resolved "http://registry.npm.taobao.org/void-elements/download/void-elements-2.0.1.tgz#c066afb582bb1cb4128d60ea92392e94d5e9dbec"
 
 w3c-hr-time@^1.0.1:
   version "1.0.1"
