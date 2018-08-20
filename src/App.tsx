@@ -18,7 +18,7 @@ class App extends React.Component<Props, object> {
   public render() {
 
     const bindMain = () => (
-      <Main title="Richard's Blog" lists={this.props.lists} />
+      <Main lists={this.props.lists} />
     )
 
     return (

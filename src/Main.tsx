@@ -1,25 +1,35 @@
 import * as React from 'react';
+import { I18n } from 'react-i18next';
 import { Link, Route } from 'react-router-dom';
-import { Square, Title} from './components';
+import { Square, Title } from './components';
 import { icons } from './constants';
 import './css/Main.css';
 import { Articles } from './type';
 
 
 interface Props {
-  title: string,
   lists: Articles[]
 }
 
 class Main extends React.Component<Props, object> {
   public render() {
 
-    const { title, lists } = this.props;
+    const { lists } = this.props;
 
     return (
       <div className="main">
 
-        <Title title={<Link to="/">{title}</Link>} />
+        <Title>
+          <Link to="/">
+            <I18n>
+              {
+                t => (
+                  t('title')
+                )
+              }
+            </I18n>
+          </Link>
+        </Title>
 
         <Route path="/" exact={true}>
           {(props: { match: boolean }) => props.match &&
