@@ -10,10 +10,10 @@ const instance = i18n
   // .use(reactI18nextModule) // if not using I18nextProvider
   .init({
     backend: {
-      loadPath: '/i18n'
+      loadPath: '/locales/{{lng}}.json'
     },
     debug: true,
-    fallbackLng: 'en',
+    fallbackLng: 'zh',
 
     // interpolation: {
     //   escapeValue: false, // not needed for react!!
