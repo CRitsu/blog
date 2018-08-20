@@ -13,6 +13,10 @@ const instance = i18n
       loadPath: '/locales/{{lng}}.json'
     },
     debug: true,
+    detection: {
+      lookupCookie: 'lng',
+      lookupLocalStorage: 'lng',
+    },
     fallbackLng: 'zh',
 
     // interpolation: {
