@@ -11,7 +11,37 @@ Language files are putting in the `\public\locales` folder.
 
 There was no way to put locale files in src folder because no option can handle that copy .json file as static assets to build folder(project created by Create-React-App). But I think it's OK, the `public` folder in react is just for do this.
 
-There is another question, the `i18next-browser-languagedetector` module is use to detect user language, but how do it work? Would it return 'zh' when user language is Chinese?
+There is another question, the `i18next-browser-languagedetector` module is use to detect user language, but how does it work? Would it return 'zh' when user language is Chinese?
+
+**The Answer**
+
+Just looks like it has done some magical jobs.
+
+We can know how it detect user language from it's documentation.
+
+```
+  // order and from where user language should be detected
+  order: ['querystring', 'cookie', 'localStorage', 'navigator', 'htmlTag', 'path', 'subdomain'],
+```
+
+Query string is not a good choice for me, and cookie or localStorage are for store user language for next time visit our site.
+
+So the primary way we can get user language is use navigator object of browser.
+
+~~But different browser could return different values even it maybe represent the same language.~~
+
+~~For example, I get the values below when I am try to get language with chrome.~~
+
+```
+navigator.language
+"zh-CN"
+```
+
+(Just as I tried, it seems return same values...)
+
+Okay, I have a locale file names `zh` for Chinese, and I have got user language `zh-CN` as above, finally it work correctly.
+
+Nothing to worry about.
 
 ## Web Font memo
 
