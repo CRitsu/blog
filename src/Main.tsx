@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { I18n } from 'react-i18next';
-import { Link, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { Square, Title } from './components';
 import { icons } from './constants';
 import './css/Main.css';
@@ -19,17 +18,7 @@ class Main extends React.Component<Props, object> {
     return (
       <div className="main">
 
-        <Title>
-          <Link to="/">
-            <I18n>
-              {
-                t => (
-                  t('title')
-                )
-              }
-            </I18n>
-          </Link>
-        </Title>
+        <Title link="/">Richard's Blog</Title>
 
         <Route path="/" exact={true}>
           {(props: { match: boolean }) => props.match &&
