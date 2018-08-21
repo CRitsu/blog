@@ -17,7 +17,7 @@ const instance = i18n
       lookupCookie: 'lng',
       lookupLocalStorage: 'lng',
     },
-    fallbackLng: 'zh',
+    fallbackLng: 'en',
 
     // interpolation: {
     //   escapeValue: false, // not needed for react!!
