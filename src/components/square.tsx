@@ -1,5 +1,5 @@
 import * as React from 'react';
-
+import { formatNumberShorter } from '../utils'
 
 interface Props {
   symbol: string,
@@ -19,11 +19,7 @@ function Square(props: Props) {
   if (text !== undefined) {
     // apply format if text is a number
     if ('number' === typeof text) {
-      if (text >= 1000000) {
-        text = `${Math.floor(text / 1000000)}m`;
-      } else if (text >= 1000) {
-        text = `${Math.floor(text / 1000)}k`;
-      }
+      text = formatNumberShorter(text);
     }
     // assign to holder
     holder = text;
