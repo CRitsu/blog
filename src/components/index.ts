@@ -1,7 +1,7 @@
 import Square from './square';
-import Title from './title';
+import { TitleWithLink, TitleWithoutLink } from './title';
 
 export {
     Square,
-    Title
+    TitleWithLink, TitleWithoutLink,
 }

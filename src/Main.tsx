@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Route } from 'react-router-dom';
-import { Square, Title } from './components';
+import { Square, TitleWithLink as Title } from './components';
 import { icons } from './constants';
 import './css/Main.css';
 import { Articles } from './type';
