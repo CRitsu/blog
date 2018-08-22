@@ -12,7 +12,10 @@ interface WithLinkProps extends WithoutLinkProps {
   link: string,
 }
 
-
+/**
+ * Title with a router, i18n supported
+ * @param props props
+ */
 function TitleWithLinkComponent(props: WithLinkProps) {
 
   const { link, children, t } = props;
@@ -30,6 +33,10 @@ function TitleWithLinkComponent(props: WithLinkProps) {
 }
 
 
+/**
+ * Title with i18n supported
+ * @param props props
+ */
 function TitleWithoutLinkComponent(props: WithoutLinkProps) {
 
   const { children, t } = props;
