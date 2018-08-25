@@ -15,6 +15,8 @@ class Main extends React.Component<Props, object> {
 
     const { lists } = this.props;
 
+    const time = (t: number) => new Date(t).toLocaleString();
+
     return (
       <div className="main">
 
@@ -30,17 +32,19 @@ class Main extends React.Component<Props, object> {
                       <div className="item-title">{item.title}</div>
                       <div className="peek">{item.peek}</div>
                       <div className="badges">
-                        <Square symbol={icons.calendar} text={new Date(item.timestamp).toLocaleString()} />
-                        <Square symbol={icons.views} text={item.views} />
-                        <Square symbol={icons.comment} text={item.reviews} />
+                        <Square symbol={icons.calendar}>{time(item.timestamp)}</Square>
+                        <Square symbol={icons.views}>{item.views}</Square>
+                        <Square symbol={icons.comment}>{item.reviews}</Square>
                       </div>
-                      <Square symbol={icons.tags} child={
-                        item.tags.map(
-                          tag => (
-                            <div key={tag}>{tag}</div>
+                      <Square symbol={icons.tags}>
+                        {
+                          item.tags.map(
+                            tag => (
+                              <div key={tag}>{tag}</div>
+                            )
                           )
-                        )
-                      } />
+                        }
+                      </Square>
                     </div>
                   )
                 )
