@@ -17,13 +17,13 @@ class Main extends React.Component<Props, object> {
     const { lists } = this.props;
 
     return (
-      <div className="main">
+      <Route path="/" exact={true}>
+        {(props: { match: boolean }) =>
+          <div className="main">
 
-        <Title link="/">Richard's Blog</Title>
-
-        <Route path="/" exact={true}>
-          {(props: { match: boolean }) => props.match &&
-            <div className="lists">
+            <Title link="/">Richard's Blog</Title>
+            
+            <div className={'lists ' + props.match ? '' : 'hide'}>
               {
                 lists.map(
                   item => (
@@ -49,9 +49,9 @@ class Main extends React.Component<Props, object> {
                 )
               }
             </div>
-          }
-        </Route>
-      </div>
+          </div>
+        }
+      </Route>
     )
   }
 }

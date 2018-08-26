@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { I18nextProvider } from 'react-i18next';
 import { connect, Provider } from 'react-redux';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { createStore } from 'redux';
 import './css/App.css';
 import './css/components.css';
@@ -17,14 +17,10 @@ interface Props {
 class App extends React.Component<Props, object> {
   public render() {
 
-    const bindMain = () => (
-      <Lists lists={this.props.lists} />
-    )
-
     return (
       <div className="app">
         <Router>
-          <Route path="/" render={bindMain} />
+          <Lists lists={this.props.lists} />
         </Router>
       </div>
     );
