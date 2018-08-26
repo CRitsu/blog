@@ -13,7 +13,7 @@ export default [
       "blue"
     ],
     "timestamp": 1531128386417.8281,
-    "title": "The article title 6",
+    "title": "The article title 6 The article title 6 The article title 6 ",
     "views": 123222
   },
   {
@@ -28,7 +28,7 @@ export default [
       "blue"
     ],
     "timestamp": 1531128385417.8281,
-    "title": "The article title 5",
+    "title": "The article title 5 The article title 5 The article title 5 The article title 5 ",
     "views": 332
   },
   {
