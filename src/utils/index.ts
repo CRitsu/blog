@@ -1,6 +1,6 @@
-import { formatNumberShorter } from './formatNumber';
+import { formatDate } from './date';
+import { formatNumberShorter } from './number';
 
 
-export {
-  formatNumberShorter
-}
+export { formatNumberShorter, formatDate };
+

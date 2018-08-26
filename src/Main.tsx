@@ -4,6 +4,7 @@ import { Square, TitleWithLink as Title } from './components';
 import { icons } from './constants';
 import './css/Main.css';
 import { Articles } from './type';
+import { formatDate } from './utils';
 
 
 interface Props {
@@ -14,8 +15,6 @@ class Main extends React.Component<Props, object> {
   public render() {
 
     const { lists } = this.props;
-
-    const time = (t: number) => new Date(t).toLocaleString();
 
     return (
       <div className="main">
@@ -32,7 +31,7 @@ class Main extends React.Component<Props, object> {
                       <div className="item-title">{item.title}</div>
                       <div className="peek">{item.peek}</div>
                       <div className="badges">
-                        <Square symbol={icons.calendar}>{time(item.timestamp)}</Square>
+                        <Square symbol={icons.calendar}>{formatDate(item.timestamp)}</Square>
                         <Square symbol={icons.views}>{item.views}</Square>
                         <Square symbol={icons.comment}>{item.reviews}</Square>
                       </div>
