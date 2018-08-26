@@ -6,7 +6,7 @@ import { createStore } from 'redux';
 import './css/App.css';
 import './css/components.css';
 import i18n from './i18n';
-import Main from './Main';
+import Lists from './Lists';
 import { rootReducer as reducers } from './reducers';
 import { Articles, State } from './type';
 
@@ -18,7 +18,7 @@ class App extends React.Component<Props, object> {
   public render() {
 
     const bindMain = () => (
-      <Main lists={this.props.lists} />
+      <Lists lists={this.props.lists} />
     )
 
     return (
