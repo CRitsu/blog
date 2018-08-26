@@ -21,7 +21,7 @@ function TitleWithLinkComponent(props: WithLinkProps) {
   const { link, children, t } = props;
 
   return (
-    <h1>
+    <h1 className="title">
       <Link to={link}>
         {
           typeof children === 'string'
@@ -42,7 +42,7 @@ function TitleWithoutLinkComponent(props: WithoutLinkProps) {
   const { children, t } = props;
 
   return (
-    <h1>
+    <h1 className="title">
       {
         typeof children === 'string'
           ? t(children) : children
