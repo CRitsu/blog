@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Route } from 'react-router-dom';
 import { Square, TitleWithLink as Title } from './components';
 import { icons } from './constants';
-import './css/Main.css';
 import { Articles } from './type';
 import { formatDate } from './utils';
 
@@ -11,7 +10,7 @@ interface Props {
   lists: Articles[]
 }
 
-class Main extends React.Component<Props, object> {
+class Lists extends React.Component<Props, object> {
   public render() {
 
     const { lists } = this.props;
@@ -22,7 +21,7 @@ class Main extends React.Component<Props, object> {
           <div className="main">
 
             <Title link="/">Richard's Blog</Title>
-            
+
             <div className={'lists ' + props.match ? '' : 'hide'}>
               {
                 lists.map(
@@ -57,4 +56,4 @@ class Main extends React.Component<Props, object> {
 }
 
 
-export default Main;
+export default Lists;

@@ -3,8 +3,7 @@ import { I18nextProvider } from 'react-i18next';
 import { connect, Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { createStore } from 'redux';
-import './css/App.css';
-import './css/components.css';
+import Contents from './Contents';
 import i18n from './i18n';
 import Lists from './Lists';
 import { rootReducer as reducers } from './reducers';
@@ -18,11 +17,12 @@ class App extends React.Component<Props, object> {
   public render() {
 
     return (
-      <div className="app">
-        <Router>
+      <Router>
+        <div className="app">
           <Lists lists={this.props.lists} />
-        </Router>
-      </div>
+          <Contents />
+        </div>
+      </Router>
     );
   }
 }
