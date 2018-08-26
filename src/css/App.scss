@@ -1,13 +1,14 @@
 .app {
   display: flex;
   justify-content: center;
-  .main {
+  .lists {
     width: 100%;
-    max-width: 1200px;
+    max-width: 600px;
     margin: 0 15px;
   }
 }
 
+// font defined below were not used now
 @font-face {
   font-family: 'font-awesome';
   src: url(../resources/fa-regular-400.woff2);

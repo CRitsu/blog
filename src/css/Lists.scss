@@ -1,15 +1,28 @@
-.item {
-  .item-title {
-    font-size: 1.5rem;
-  }
-  .badges {
-    display: flex;
-    color: #333;
-    padding-right: 1rem;
-    .time,
-    .square {
-      padding-right: 1rem;
+// top container
+.lists {
+  // title
+  .title {
+    text-align: center;
+  } // lists container
+  .list-contents {
+    // item container
+    .item {
+      display: flex;
+      align-items: center;
+      text-transform: uppercase;
+      padding: 1rem 0;
+      .square {
+        font-size: .8rem;
+        white-space: nowrap;
+        &::after {
+          content: '·';
+          padding: 0 1rem;
+          color: #333;
+        }
+      }
+      .item-title {
+        font-size: 1rem;
+      }
     }
   }
-  padding: .5rem 0;
 }

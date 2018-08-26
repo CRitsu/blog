@@ -1,0 +1,9 @@
+{
+  "indent_size": 2,
+  "indent_char": " ",
+  "end_with_newline": true,
+  "newline_between_rules": true,
+  "beautify.language": {
+    "css": ["css", "scss"]
+  }
+}
