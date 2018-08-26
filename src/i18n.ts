@@ -10,14 +10,16 @@ const instance = i18n
   // .use(reactI18nextModule) // if not using I18nextProvider
   .init({
     backend: {
-      loadPath: '/locales/{{lng}}.json'
+      loadPath: '/locales/{{lng}}/{{ns}}.json'
     },
     debug: true,
+    defaultNS: 'ui',
     detection: {
       lookupCookie: 'lng',
       lookupLocalStorage: 'lng',
     },
     fallbackLng: 'en',
+    ns: ['ui'],
 
     // interpolation: {
     //   escapeValue: false, // not needed for react!!
