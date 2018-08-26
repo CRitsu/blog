@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Route } from 'react-router-dom';
 import { Square, TitleWithLink as Title } from './components';
-import { icons } from './constants';
 import { Articles } from './type';
 import { formatDate } from './utils';
 
@@ -18,31 +17,17 @@ class Lists extends React.Component<Props, object> {
     return (
       <Route path="/" exact={true}>
         {(props: { match: boolean }) =>
-          <div className="main">
+          <div className="lists">
 
             <Title link="/">Richard's Blog</Title>
 
-            <div className={'lists ' + props.match ? '' : 'hide'}>
+            <div className={'list-contents ' + (props.match ? '' : 'hide')}>
               {
                 lists.map(
                   item => (
                     <div key={item._id} className="item">
+                      <Square>{formatDate(item.timestamp)}</Square>
                       <div className="item-title">{item.title}</div>
-                      <div className="peek">{item.peek}</div>
-                      <div className="badges">
-                        <Square symbol={icons.calendar}>{formatDate(item.timestamp)}</Square>
-                        <Square symbol={icons.views}>{item.views}</Square>
-                        <Square symbol={icons.comment}>{item.reviews}</Square>
-                      </div>
-                      <Square symbol={icons.tags}>
-                        {
-                          item.tags.map(
-                            tag => (
-                              <div key={tag}>{tag}</div>
-                            )
-                          )
-                        }
-                      </Square>
                     </div>
                   )
                 )

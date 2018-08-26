@@ -2,7 +2,7 @@ import * as React from 'react';
 import { formatNumberShorter } from '../utils'
 
 interface Props {
-  symbol: string,
+  symbol?: string,
   children: string | number | JSX.Element | JSX.Element[]
 }
 
@@ -12,7 +12,11 @@ function Square(props: Props) {
 
   return (
     <div className="square">
-      <div className="symbol">{symbol}</div>
+      {
+        typeof symbol !== 'undefined'
+          ? <div className="symbol">{symbol}</div>
+          : ''
+      }
       <div className="values">
         {
           typeof children === 'number'
