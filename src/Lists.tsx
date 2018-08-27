@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Route } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 import { Square, TitleWithLink as Title } from './components';
 import { Articles } from './type';
 import { formatDate } from './utils';
@@ -33,8 +33,9 @@ class Lists extends React.Component<Props, object> {
     return (
       <Route path="/" exact={true}>
         {(props: { match: boolean }) =>
-          <div className="lists">
+          <div className={'lists' + (props.match ? '' : ' pull')}>
             <Title link="/">Richard's Blog</Title>
+            <Link to="/test">TO</Link>
             <EditedList match={props.match} />
           </div>
         }
