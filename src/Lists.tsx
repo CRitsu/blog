@@ -14,25 +14,28 @@ class Lists extends React.Component<Props, object> {
 
     const { lists } = this.props;
 
+    // edit list
+    const EditedList = (props: {match: boolean}) => (
+      <div className={'list-contents ' + (props.match ? '' : 'hide')}>
+        {
+          lists.map(
+            item => (
+              <div key={item._id} className="item">
+                <Square>{formatDate(item.timestamp)}</Square>
+                <div className="item-title">{item.title}</div>
+              </div>
+            )
+          )
+        }
+      </div>
+    )
+
     return (
       <Route path="/" exact={true}>
         {(props: { match: boolean }) =>
           <div className="lists">
-
             <Title link="/">Richard's Blog</Title>
-
-            <div className={'list-contents ' + (props.match ? '' : 'hide')}>
-              {
-                lists.map(
-                  item => (
-                    <div key={item._id} className="item">
-                      <Square>{formatDate(item.timestamp)}</Square>
-                      <div className="item-title">{item.title}</div>
-                    </div>
-                  )
-                )
-              }
-            </div>
+            <EditedList match={props.match} />
           </div>
         }
       </Route>
