@@ -26,12 +26,12 @@ const instance = i18n
     // },
 
     // react i18next special options (optional)
-    // react: {
-    //   // bindI18n: 'languageChanged loaded',
-    //   // bindStore: 'added removed',
-    //   nsMode: 'default',
-    //   wait: false,
-    // }
+    react: {
+      // bindI18n: 'languageChanged loaded',
+      // bindStore: 'added removed',
+      // nsMode: 'default',
+      wait: true,
+    }
   });
 
 
