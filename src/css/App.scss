@@ -1,6 +1,7 @@
 .app {
-  display: flex;
   position: relative;
+  height: 100%;
+  overflow: hidden;
 }
 
 // font defined below were not used now
@@ -16,5 +17,5 @@
   font-display: swap;
 }
 
-@import url('./Lists.css');
+@import url('./main.css');
 @import url('./components.css');

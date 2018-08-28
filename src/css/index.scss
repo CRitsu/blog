@@ -12,4 +12,8 @@ body {
   }
 }
 
+html, body, #root {
+  height: 100%;
+}
+
 @import url('./App.css');
