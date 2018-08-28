@@ -8,24 +8,28 @@ import { formatDate } from './utils';
 
 interface Props {
   lists: Articles[],
+  width: number,
   t: (p: string) => string
 }
 
 class Lists extends React.Component<Props, object> {
   public render() {
 
-    const { lists, t } = this.props;
+    const { lists, width, t } = this.props;
+
+    const listsWidth = width;
 
     // edit list
     const EditedList = (props: { match: boolean }) => (
-      <div className={'list-contents ' + (props.match ? '' : 'hide')}>
+      <div className={'list-contents ' + (props.match ? '' : 'hide')}
+        style={{width: listsWidth - 30}}>
         {
           lists.map(
             item => (
               <div key={item._id} className="item">
                 <Square>{formatDate(item.timestamp)}</Square>
                 <div className="item-title">
-                  <Link to={item._id}>{item.title}</Link>
+                  <Link to={'/articles/' + item._id}>{item.title}</Link>
                 </div>
               </div>
             )
@@ -37,7 +41,11 @@ class Lists extends React.Component<Props, object> {
     return (
       <Route path="/" exact={true}>
         {(props: { match: boolean }) =>
-          <div className="lists" style={{left: props.match ? 0 : -600}}>
+          <div className="lists" 
+            style={{
+              left: props.match ? 0 : listsWidth * -1,
+              width: listsWidth
+            }}>
             <h4>{t('NEWEST')}</h4>
             <EditedList match={props.match} />
           </div>
