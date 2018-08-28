@@ -1,17 +1,16 @@
 // top container
 .lists {
-  width: 496px;
-  transition: left .75s cubic-bezier(0, 0, 0, 1);
+  background-color: #999;
+  transition: all .75s cubic-bezier(0, 0, 0, 1);
+  position: fixed;
+  height: 100%;
   display: flex;
-  position: relative;
   flex-direction: column;
   align-items: center;
   .title {
     text-align: center;
   }
   .list-contents {
-    transition: width .75s cubic-bezier(0, 0, 0, 1);
-    width: 466px;
     padding: 0 15px;
     .item {
       text-transform: uppercase;
@@ -29,4 +28,12 @@
       }
     }
   }
+}
+
+.contents {
+  background-color: burlywood;
+  transition: all .75s cubic-bezier(0, 0, 0, 1);
+  position: fixed;
+  height: 100%;
+  flex-grow: 1;
 }
