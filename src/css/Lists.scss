@@ -1,39 +1,32 @@
 // top container
 .lists {
-  width: 100%;
-  transition: all .3s ease;
+  width: 496px;
+  transition: left .75s cubic-bezier(0, 0, 0, 1);
   display: flex;
+  position: relative;
   flex-direction: column;
   align-items: center;
-  // title
   .title {
     text-align: center;
-  } // lists container
+  }
   .list-contents {
-    max-width: 600px;
-    margin: 0 15px;
-    // item container
+    transition: width .75s cubic-bezier(0, 0, 0, 1);
+    width: 466px;
+    padding: 0 15px;
     .item {
-      display: flex;
-      align-items: center;
       text-transform: uppercase;
       padding: 1rem 0;
       .square {
         font-size: .8rem;
         white-space: nowrap;
-        &::after {
-          content: '·';
-          padding: 0 1rem;
-          color: #333;
-        }
       }
       .item-title {
         font-size: 1rem;
+        transition: color .3s ease;
+        &:hover {
+          color: #DC143C;
+        }
       }
     }
   }
-}
-
-.pull {
-  width: 600px;
 }

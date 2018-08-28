@@ -1,28 +1,32 @@
 import * as React from 'react';
+import { translate } from 'react-i18next';
 import { Link, Route } from 'react-router-dom';
-import { Square, TitleWithLink as Title } from './components';
+import { Square } from './components';
 import { Articles } from './type';
 import { formatDate } from './utils';
 
 
 interface Props {
-  lists: Articles[]
+  lists: Articles[],
+  t: (p: string) => string
 }
 
 class Lists extends React.Component<Props, object> {
   public render() {
 
-    const { lists } = this.props;
+    const { lists, t } = this.props;
 
     // edit list
-    const EditedList = (props: {match: boolean}) => (
+    const EditedList = (props: { match: boolean }) => (
       <div className={'list-contents ' + (props.match ? '' : 'hide')}>
         {
           lists.map(
             item => (
               <div key={item._id} className="item">
                 <Square>{formatDate(item.timestamp)}</Square>
-                <div className="item-title">{item.title}</div>
+                <div className="item-title">
+                  <Link to={item._id}>{item.title}</Link>
+                </div>
               </div>
             )
           )
@@ -33,9 +37,8 @@ class Lists extends React.Component<Props, object> {
     return (
       <Route path="/" exact={true}>
         {(props: { match: boolean }) =>
-          <div className={'lists' + (props.match ? '' : ' pull')}>
-            <Title link="/">Richard's Blog</Title>
-            <Link to="/test">TO</Link>
+          <div className="lists" style={{left: props.match ? 0 : -600}}>
+            <h4>{t('NEWEST')}</h4>
             <EditedList match={props.match} />
           </div>
         }
@@ -45,4 +48,4 @@ class Lists extends React.Component<Props, object> {
 }
 
 
-export default Lists;
+export default translate()(Lists);
