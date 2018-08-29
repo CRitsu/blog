@@ -1,7 +1,6 @@
 // top container
 .lists {
-  background-color: #999;
-  transition: all .75s cubic-bezier(0, 0, 0, 1);
+  transition: all .5s cubic-bezier(0, 1, 0, 1);
   position: fixed;
   height: 100%;
   display: flex;
@@ -31,8 +30,7 @@
 }
 
 .contents {
-  background-color: burlywood;
-  transition: all .75s cubic-bezier(0, 0, 0, 1);
+  transition: all .5s cubic-bezier(0, 1, 0, 1);
   position: fixed;
   height: 100%;
   flex-grow: 1;
