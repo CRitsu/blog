@@ -19,12 +19,12 @@ class Contents extends React.Component<Props, object> {
     }
 
     return (
-      <Route path="/articles">
+      <Route path="/" exact={true}>
       {(props: {match: boolean}) =>
         <div className="contents" 
           style={{
-            left: props.match ? 0 : offset,
-            width: props.match ? window.innerWidth : contentWidth
+            left: props.match ? offset : 0,
+            width: props.match ? contentWidth : window.innerWidth
           }}>
           <Link to="/">TOP</Link>
         </div>

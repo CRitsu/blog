@@ -46,7 +46,7 @@ class Lists extends React.Component<Props, object> {
               left: props.match ? 0 : listsWidth * -1,
               width: listsWidth
             }}>
-            <h4>{t('NEWEST')}</h4>
+            {t('NEWEST')}
             <EditedList match={props.match} />
           </div>
         }
