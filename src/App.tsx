@@ -17,18 +17,14 @@ interface AppState {
   windowWidth: number
 }
 
-
 class App extends React.Component<Props, AppState> {
 
-  public constructor(props: Props) {
-    super(props);
-    this.state = {
-      windowWidth: window.innerWidth
-    };
+  public state = {
+    windowWidth: window.innerWidth
   }
 
   public handleResize() {
-    this.setState({windowWidth: window.innerWidth})
+    this.setState({ windowWidth: window.innerWidth })
   }
 
   public componentDidMount() {
@@ -41,11 +37,14 @@ class App extends React.Component<Props, AppState> {
 
   public render() {
 
+    // store window width in state and handle resize
+    const { windowWidth } = this.state;
+    
+    // calculate width for lists and contents
     let listsWidth: number;
     let contentWidth: number;
-    const { windowWidth } = this.state;
-
-    if (windowWidth < 1298){
+    // min width for two columns
+    if (windowWidth < 1298) {
       listsWidth = windowWidth;
       contentWidth = windowWidth;
     } else {
@@ -64,6 +63,7 @@ class App extends React.Component<Props, AppState> {
   }
 }
 
+// map attribute from store
 const mapStateTpProps = (state: State) => {
   return {
     lists: state.lists
@@ -75,7 +75,7 @@ const AppContainer = connect(
   mapStateTpProps, {}
 )(App);
 
-// integrate redux
+// integrate with redux
 // create store
 const store = createStore(reducers);
 // wrap redux context
