@@ -2,7 +2,6 @@ import * as React from 'react';
 import { translate } from 'react-i18next';
 import { Link, Route } from 'react-router-dom';
 import { Square } from './components';
-import { icons } from './constants';
 import { Articles } from './type';
 import { formatDate } from './utils';
 
@@ -20,23 +19,31 @@ class Lists extends React.Component<Props, object> {
 
     const listsWidth = width;
 
-    const editedListWidth = width > 600 ? 570 : width -30;
+    const editedListWidth = width > 600 ? 600 : width;
+
+    const styleForEditedList: React.CSSProperties = {
+      width: editedListWidth
+    }
 
     // edit list
     const EditedList = (props: { match: boolean }) => (
       <div className={'list-contents ' + (props.match ? '' : 'hide')}
-        style={{width: editedListWidth}}>
+        style={styleForEditedList}>
         {
           lists.map(
             item => (
               <div key={item._id} className="item">
-                <Square>{formatDate(item.timestamp)}</Square>
+                <Square className="date">{formatDate(item.timestamp)}</Square>
                 <div className="item-title">
                   <Link to={'/articles/' + item._id}>{item.title}</Link>
                 </div>
-                <div className="tags">
-                  <Square symbol={icons.tags}>{item.tags.map(tag => <Link to="" key={tag}>{tag}</Link>)}</Square>
-                </div>
+                <Square className="tags" symbol="▣">
+                  {
+                    item.tags.map(
+                      tag => <div key={tag}><Link className="tag" to="">{tag}</Link></div>
+                    )
+                  }
+                </Square>
               </div>
             )
           )
@@ -46,15 +53,16 @@ class Lists extends React.Component<Props, object> {
 
     return (
       <Route path="/" exact={true}>
-        {(props: { match: boolean }) =>
-          <div className="lists" 
-            style={{
-              left: props.match ? 0 : listsWidth * -1,
-              width: listsWidth
-            }}>
-            <div>{t('NEWEST')}<input /></div>
-            <EditedList match={props.match} />
-          </div>
+        {
+          (props: { match: boolean }) =>
+            <div className="lists"
+              style={{
+                left: props.match ? 0 : listsWidth * -1,
+                width: listsWidth
+              }}>
+              <div>{t('NEWEST')}<input /></div>
+              <EditedList match={props.match} />
+            </div>
         }
       </Route>
     )
