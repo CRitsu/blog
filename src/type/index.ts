@@ -15,3 +15,9 @@ export interface Articles {
 export interface State {
   lists: Articles[]
 }
+
+export interface BaseAction {
+  type: string,
+  payload: object | any[],
+  error?: boolean
+}
