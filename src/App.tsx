@@ -2,7 +2,8 @@ import * as React from 'react';
 import { I18nextProvider } from 'react-i18next';
 import { connect, Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { createStore } from 'redux';
+import { createStore, Dispatch } from 'redux';
+import { fetchLists } from './api';
 import Contents from './Contents';
 import i18n from './i18n';
 import Lists from './Lists';
@@ -10,7 +11,8 @@ import { rootReducer as reducers } from './reducers';
 import { Articles, State } from './type';
 
 interface Props {
-  lists: Articles[]
+  lists: Articles[],
+  dispatch: Dispatch
 }
 
 interface AppState {
@@ -24,11 +26,12 @@ class App extends React.Component<Props, AppState> {
   }
 
   public handleResize() {
-    this.setState({ windowWidth: window.innerWidth })
+    this.setState({ windowWidth: window.innerWidth });
   }
-
+  
   public componentDidMount() {
     window.addEventListener('resize', this.handleResize.bind(this));
+    fetchLists(this.props.dispatch);
   }
 
   public componentWillUnmount() {
@@ -72,7 +75,7 @@ const mapStateTpProps = (state: State) => {
 
 // create container component
 const AppContainer = connect(
-  mapStateTpProps, {}
+  mapStateTpProps
 )(App);
 
 // integrate with redux
