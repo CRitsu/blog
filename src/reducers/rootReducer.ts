@@ -1,13 +1,20 @@
-import data from '../data/lists';
-import { State } from '../type';
+import { actions } from '../actions';
+import { BaseAction } from '../type';
 
 
-const initialState: State = {
-  lists: data
+function getInitialState() {
+  return {
+    lists: []
+  }
 }
 
-function initial(state = initialState) {
-  return state;
+function initial(state = getInitialState(), action: BaseAction) {
+  switch (action.type) {
+    case actions.FETCH_LISTS:
+      return Object.assign({}, state, {lists: action.payload});
+    default:
+      return state;
+  }
 }
 
 export default initial;
