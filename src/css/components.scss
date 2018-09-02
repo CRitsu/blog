@@ -4,6 +4,7 @@
   padding: 0;
   font-size: 2.5rem;
   line-height: 5rem;
+
   @media screen and (max-width: 365px) {
     font-size: 2rem;
     line-height: 4rem;
@@ -14,18 +15,21 @@
 .square {
   display: flex;
   position: relative;
+
   .symbol {
     // font-family: 'font-awesome', 'font-awesome-solid', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     padding-right: .5rem;
     position: relative;
   }
+
   .values {
     display: flex;
+
     div {
       &:not(:last-child)::after {
         content: '·';
-        padding: 0 .2rem;
+        padding: 0 .3rem;
       }
     }
   }
