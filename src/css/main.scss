@@ -1,45 +1,74 @@
 $hover-color: #3E95E0;
 $light-color: #2A689E;
-$background-color: #3E95E0;
+$background-color: #4BB3FD;
+$transition-ease-out: all .5s cubic-bezier(0, 1, 0, 1);
 
 // top container
-.lists {
-  transition: all .5s cubic-bezier(0, 1, 0, 1);
-  position: fixed;
+.lists-container {
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  position: fixed;
   background-color: $background-color;
-  .header {
-    line-height: 3rem;
+  display: flex;
+  justify-content: center;
+  transition: $transition-ease-out;
+
+  @media (max-width: 1298px) {
+    overflow-y: auto;
   }
-  .list-contents {
+
+  .lists {
+    transition: $transition-ease-out;
     display: flex;
     flex-direction: column;
-    flex-shrink: 0;
-    flex-grow: 1;
-    .item {
-      background-color: white;
-      text-transform: uppercase;
-      padding: .5rem 15px;
-      margin: .5rem 0;
-      .date {
-        font-size: .8rem;
-        white-space: nowrap;
-        color: $light-color;
-      }
-      .tags {
-        font-size: .8rem;
-        a:hover {
-          color: $hover-color;
+    background-color: white;
+    padding: 3rem 0;
+    margin: 3rem 0;
+    box-shadow: #2A689E 0 0 55px;
+    overflow-y: scroll;
+
+    @media (max-height: 600px) and (min-width: 1298px) {
+      margin: 0;
+    }
+
+    @media (max-width: 1298px) {
+      overflow-y: auto;
+    }
+
+    .header {
+      line-height: 3rem;
+    }
+
+    .list-contents {
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      flex-grow: 1;
+
+      .item {
+        text-transform: uppercase;
+        padding: 1rem 15px;
+
+        .date {
+          font-size: .8rem;
+          white-space: nowrap;
+          color: $light-color;
         }
-      }
-      .item-title {
-        font-size: 1rem;
-        transition: color .3s ease;
-        a:hover {
-          color: $hover-color;
+
+        .tags {
+          font-size: .8rem;
+
+          a:hover {
+            color: $hover-color;
+          }
+        }
+
+        .item-title {
+          font-size: 1rem;
+          transition: color .3s ease;
+
+          a:hover {
+            color: $hover-color;
+          }
         }
       }
     }
@@ -51,6 +80,7 @@ $background-color: #3E95E0;
   position: fixed;
   height: 100%;
   flex-grow: 1;
+
   .title {
     color: $background-color;
   }

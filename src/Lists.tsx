@@ -17,18 +17,11 @@ class Lists extends React.Component<Props, object> {
 
     const { lists, width, t } = this.props;
 
-    const listsWidth = width;
-
-    const editedListWidth = width > 600 ? 600 : width;
-
-    const styleForEditedList: React.CSSProperties = {
-      width: editedListWidth
-    }
+    const listWidth = width > 600 ? 600 : width;
 
     // edit list
     const EditedList = (props: { match: boolean }) => (
-      <div className={'list-contents ' + (props.match ? '' : 'hide')}
-        style={styleForEditedList}>
+      <div className={'list-contents ' + (props.match ? '' : 'hide')}>
         {
           lists.map(
             item => (
@@ -37,7 +30,7 @@ class Lists extends React.Component<Props, object> {
                 <div className="item-title">
                   <Link to={'/articles/' + item._id}>{item.title}</Link>
                 </div>
-                <Square className="tags" symbol="▣">
+                <Square className="tags" symbol="Tags">
                   {
                     item.tags.map(
                       tag => <div key={tag}><Link className="tag" to="">{tag}</Link></div>
@@ -55,15 +48,17 @@ class Lists extends React.Component<Props, object> {
       <Route path="/" exact={true}>
         {
           (props: { match: boolean }) =>
-            <div className="lists"
-              style={{
-                left: props.match ? 0 : listsWidth * -1,
-                width: listsWidth
-              }}>
-              <div className="header" style={styleForEditedList}>
-                <input className="search" placeholder={t('Search')}/>
+            <div className="lists-container"
+                style={{
+                  left: props.match ? 0 : width * -1,
+                  width
+                }}>
+              <div className="lists" style={{width: listWidth}}>
+                <div className="header">
+                  <input className="search" placeholder={t('Search')} />
+                </div>
+                <EditedList match={props.match} />
               </div>
-              <EditedList match={props.match} />
             </div>
         }
       </Route>
