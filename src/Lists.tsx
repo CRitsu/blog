@@ -53,7 +53,11 @@ class Lists extends React.Component<Props, object> {
                   left: props.match ? 0 : width * -1,
                   width
                 }}>
-              <div className="lists" style={{width: listWidth}}>
+              <div className="lists" 
+                style={{
+                  left: props.match ? 30 : (width * -1) - 200,
+                  width: listWidth
+                }}>
                 <div className="header">
                   <input className="search" placeholder={t('Search')} />
                 </div>

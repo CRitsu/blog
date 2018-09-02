@@ -17,6 +17,7 @@ $transition-ease-out: all .5s cubic-bezier(0, 1, 0, 1);
   }
 
   .lists {
+    position: relative;
     transition: $transition-ease-out;
     display: flex;
     flex-direction: column;
