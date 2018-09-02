@@ -52,6 +52,8 @@ class App extends React.Component<Props, AppState> {
       contentWidth = windowWidth;
     } else {
       listsWidth = windowWidth * 0.3819;
+      // ensure max width 600px
+      listsWidth = listsWidth > 600 ? 600 : listsWidth;
       contentWidth = windowWidth - listsWidth;
     }
 
