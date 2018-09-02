@@ -7,7 +7,7 @@ Clean up.
 
 Implement the features is easy, there are many ways to do that, but design the UI style is a hard work.
 
-I'm in trouble about the UI design. I have to do a lots of search for design ideas. :(
+I'm in trouble about the UI design. I have to do lots of search for design ideas. :(
 
 ## I18n memo
 
