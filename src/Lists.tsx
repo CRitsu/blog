@@ -60,7 +60,9 @@ class Lists extends React.Component<Props, object> {
                 left: props.match ? 0 : listsWidth * -1,
                 width: listsWidth
               }}>
-              <div>{t('NEWEST')}<input /></div>
+              <div className="header" style={styleForEditedList}>
+                <input className="search" placeholder={t('Search')}/>
+              </div>
               <EditedList match={props.match} />
             </div>
         }
