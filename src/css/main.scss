@@ -23,8 +23,8 @@ $transition-ease-out: all .5s cubic-bezier(0, 1, 0, 1);
     flex-direction: column;
     background-color: white;
     padding: 3rem 0;
-    margin: 3rem 0;
-    box-shadow: #2A689E 0 0 55px;
+    margin: 3rem 1rem;
+    box-shadow: none;
     overflow-y: scroll;
 
     @media (max-height: 600px) and (min-width: 1298px) {
@@ -33,6 +33,10 @@ $transition-ease-out: all .5s cubic-bezier(0, 1, 0, 1);
 
     @media (max-width: 1298px) {
       overflow-y: auto;
+    }
+
+    &.matched {
+      box-shadow: #2A689E 0 0 55px;
     }
 
     .header {
