@@ -53,8 +53,9 @@ class Lists extends React.Component<Props, object> {
       )
     };
 
+    // wrapper for hide scroll bar
     const calculateListsClasses = (match: boolean) => {
-      return match ? 'lists matched' : 'lists';
+      return match ? 'lists-wrapper matched' : 'lists-wrapper';
     }
 
     return (
@@ -62,19 +63,21 @@ class Lists extends React.Component<Props, object> {
         {
           (props: { match: boolean }) =>
             <div className="lists-container"
-                style={{
-                  left: props.match ? 0 : width * -1,
-                  width
-                }}>
+              style={{
+                left: props.match ? 0 : width * -1,
+                width
+              }}>
               <div className={calculateListsClasses(props.match)}
                 style={{
                   left: calculateListsLeft(props.match),
                   width: listWidth
                 }}>
-                <div className="header">
-                  <input className="search" placeholder={t('Search')} />
+                <div className="lists">
+                  <div className="header">
+                    <input className="search" placeholder={t('Search')} />
+                  </div>
+                  <EditedList match={props.match} />
                 </div>
-                <EditedList match={props.match} />
               </div>
             </div>
         }

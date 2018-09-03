@@ -18,71 +18,78 @@ $min-width: 1298px;
     overflow-y: auto;
   }
 
-  .lists {
+  .lists-wrapper {
     position: relative;
     transition: $transition-ease-out;
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-    padding: 3rem 0;
     margin: 3rem 0;
-    box-shadow: none;
-    overflow-y: scroll;
+    background-color: white;
+    overflow: hidden;
 
     @media (max-height: 600px) and (min-width: $min-width) {
-      margin: 1rem;
+      margin: 1rem 0;
     }
 
     @media (max-height: 400px) and (min-width: $min-width) {
-      margin: .5rem;
+      margin: .5rem 0;
     }
 
     @media (max-width: 650px) {
       margin: 3rem 1rem;
     }
 
-    @media (max-width: $min-width) {
-      overflow-y: auto;
-    }
-
     &.matched {
       box-shadow: #2A689E 0 0 55px;
     }
 
-    .header {
-      line-height: 3rem;
-    }
-
-    .list-contents {
+    .lists {
+      height: 100%;
+      position: relative;
       display: flex;
       flex-direction: column;
-      flex-shrink: 0;
-      flex-grow: 1;
+      padding-right: 3rem;
+      right: -1.5rem;
+      box-shadow: none;
+      overflow-y: scroll;
 
-      .item {
-        text-transform: uppercase;
-        padding: 1rem 15px;
+      @media (max-width: $min-width) {
+        overflow-y: auto;
+      }
 
-        .date {
-          font-size: .8rem;
-          white-space: nowrap;
-          color: $light-color;
-        }
+      .header {
+        line-height: 3rem;
+      }
 
-        .tags {
-          font-size: .8rem;
+      .list-contents {
+        display: flex;
+        flex-direction: column;
+        flex-shrink: 0;
+        flex-grow: 1;
 
-          a:hover {
-            color: $hover-color;
+        .item {
+          text-transform: uppercase;
+          padding: 1rem 0;
+
+          .date {
+            font-size: .8rem;
+            white-space: nowrap;
+            color: $light-color;
           }
-        }
 
-        .item-title {
-          font-size: 1rem;
-          transition: color .3s ease;
+          .tags {
+            font-size: .8rem;
 
-          a:hover {
-            color: $hover-color;
+            a:hover {
+              color: $hover-color;
+            }
+          }
+
+          .item-title {
+            font-size: 1rem;
+            transition: color .3s ease;
+
+            a:hover {
+              color: $hover-color;
+            }
           }
         }
       }
