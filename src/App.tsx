@@ -4,6 +4,7 @@ import { connect, Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { createStore, Dispatch } from 'redux';
 import { fetchLists } from './api';
+import { size } from './constants';
 import Contents from './Contents';
 import i18n from './i18n';
 import Lists from './Lists';
@@ -31,6 +32,7 @@ class App extends React.Component<Props, AppState> {
   
   public componentDidMount() {
     window.addEventListener('resize', this.handleResize.bind(this));
+    // fetch lists when loading is completed
     fetchLists(this.props.dispatch);
   }
 
@@ -47,13 +49,13 @@ class App extends React.Component<Props, AppState> {
     let listsWidth: number;
     let contentWidth: number;
     // min width for two columns
-    if (windowWidth < 1298) {
+    if (windowWidth < size.MIN_WIDTH) {
       listsWidth = windowWidth;
       contentWidth = windowWidth;
     } else {
       listsWidth = windowWidth * 0.3819;
-      // ensure max width 600px
-      listsWidth = listsWidth > 600 ? 600 : listsWidth;
+      // ensure max width
+      listsWidth = listsWidth > size.LIST_MAX_WIDTH ? size.LIST_MAX_WIDTH : listsWidth;
       contentWidth = windowWidth - listsWidth;
     }
 

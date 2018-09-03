@@ -2,6 +2,7 @@ import * as React from 'react';
 import { translate } from 'react-i18next';
 import { Link, Route } from 'react-router-dom';
 import { Square } from './components';
+import { size } from './constants';
 import { Articles } from './type';
 import { formatDate } from './utils';
 
@@ -17,7 +18,7 @@ class Lists extends React.Component<Props, object> {
 
     const { lists, width, t } = this.props;
 
-    const listWidth = width > 600 ? 600 : width;
+    const listWidth = width > size.MIN_WIDTH ? size.MIN_WIDTH : width;
 
     // edit list
     const EditedList = (props: { match: boolean }) => (
@@ -44,6 +45,18 @@ class Lists extends React.Component<Props, object> {
       </div>
     )
 
+    const calculateListsLeft = (match: boolean) => {
+      return (
+        match
+          ? window.innerWidth > size.MIN_WIDTH ? '3rem' : 0
+          : (width * -1) - 200
+      )
+    };
+
+    const calculateListsClasses = (match: boolean) => {
+      return match ? 'lists matched' : 'lists';
+    }
+
     return (
       <Route path="/" exact={true}>
         {
@@ -53,9 +66,9 @@ class Lists extends React.Component<Props, object> {
                   left: props.match ? 0 : width * -1,
                   width
                 }}>
-              <div className="lists" 
+              <div className={calculateListsClasses(props.match)}
                 style={{
-                  left: props.match ? 30 : (width * -1) - 200,
+                  left: calculateListsLeft(props.match),
                   width: listWidth
                 }}>
                 <div className="header">
