@@ -2,15 +2,17 @@ $hover-color: #3E95E0;
 $light-color: #2A689E;
 $background-color: #4BB3FD;
 $transition-ease-out: all .5s cubic-bezier(0, 1, 0, 1);
+$min-width: 1298px;
 
 // top container
 .lists-container {
   height: 100%;
-  position: fixed;
+  position: relative;
   background-color: $background-color;
   display: flex;
   justify-content: center;
   transition: $transition-ease-out;
+  flex-shrink: 0;
 
   @media (max-width: 1298px) {
     overflow-y: auto;
@@ -23,15 +25,23 @@ $transition-ease-out: all .5s cubic-bezier(0, 1, 0, 1);
     flex-direction: column;
     background-color: white;
     padding: 3rem 0;
-    margin: 3rem 1rem;
+    margin: 3rem 0;
     box-shadow: none;
     overflow-y: scroll;
 
-    @media (max-height: 600px) and (min-width: 1298px) {
-      margin: 0;
+    @media (max-height: 600px) and (min-width: $min-width) {
+      margin: 1rem;
     }
 
-    @media (max-width: 1298px) {
+    @media (max-height: 400px) and (min-width: $min-width) {
+      margin: .5rem;
+    }
+
+    @media (max-width: 650px) {
+      margin: 3rem 1rem;
+    }
+
+    @media (max-width: $min-width) {
       overflow-y: auto;
     }
 
@@ -82,9 +92,10 @@ $transition-ease-out: all .5s cubic-bezier(0, 1, 0, 1);
 
 .contents {
   transition: all .5s cubic-bezier(0, 1, 0, 1);
-  position: fixed;
+  position: relative;
   height: 100%;
   flex-grow: 1;
+  flex-shrink: 0;
 
   .title {
     color: $background-color;
