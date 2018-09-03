@@ -18,7 +18,7 @@ class Lists extends React.Component<Props, object> {
 
     const { lists, width, t } = this.props;
 
-    const listWidth = width > size.MIN_WIDTH ? size.MIN_WIDTH : width;
+    const listWidth = width > size.LIST_MAX_WIDTH ? size.LIST_MAX_WIDTH : width;
 
     // edit list
     const EditedList = (props: { match: boolean }) => (
