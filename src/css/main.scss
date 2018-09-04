@@ -29,10 +29,6 @@ $min-width: 1298px;
       margin: 1rem 0;
     }
 
-    @media (max-height: 400px) and (min-width: $min-width) {
-      margin: .5rem 0;
-    }
-
     @media (max-width: 650px) {
       margin: 3rem 1rem;
     }
