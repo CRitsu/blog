@@ -52,7 +52,40 @@ $min-width: 1298px;
       }
 
       .header {
-        line-height: 3rem;
+        line-height: 2rem;
+
+        .sign {
+          height: 200px;
+          text-align: center;
+          line-height: 200px;
+        }
+
+        .sub-bar {
+          display: flex;
+          
+          .categories {
+            display: flex;
+            flex-shrink: 0;
+
+            .tabs {
+              margin-right: 1rem;
+              padding: 0 1rem 0 1rem;
+              cursor: pointer;
+
+              &.active {
+                color: red;
+                border: red solid 1px;
+                border-bottom: none;
+                border-radius: 5px 5px 0 0;
+              }
+            }
+          }
+
+          .search {
+            flex-grow: 1;
+            flex-shrink: 0;
+          }
+        }
       }
 
       .list-contents {
