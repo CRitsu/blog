@@ -69,14 +69,12 @@ $min-width: 1298px;
 
             .tabs {
               margin-right: 1rem;
-              padding: 0 1rem 0 1rem;
+              padding: 0 .5rem;
               cursor: pointer;
+              transition: color .3s ease;
 
               &.active {
-                color: red;
-                border: red solid 1px;
-                border-bottom: none;
-                border-radius: 5px 5px 0 0;
+                color: $background-color;
               }
             }
           }
