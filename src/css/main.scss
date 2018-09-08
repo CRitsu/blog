@@ -1,4 +1,4 @@
-$hover-color: #3E95E0;
+$focus-color: #3E95E0;
 $light-color: #2A689E;
 $background-color: #4BB3FD;
 $transition-ease-out: all .5s cubic-bezier(0, 1, 0, 1);
@@ -62,7 +62,7 @@ $min-width: 1298px;
 
         .sub-bar {
           display: flex;
-          
+
           .categories {
             display: flex;
             flex-shrink: 0;
@@ -71,10 +71,10 @@ $min-width: 1298px;
               margin-right: 1rem;
               padding: 0 .5rem;
               cursor: pointer;
-              transition: color .3s ease;
+              transition: color .2s ease;
 
               &.active {
-                color: $background-color;
+                color: $focus-color;
               }
             }
           }
@@ -82,6 +82,28 @@ $min-width: 1298px;
           .search {
             flex-grow: 1;
             flex-shrink: 0;
+
+            .input {
+              border: none;
+              padding: .3rem .5rem;
+              border-radius: 5px;
+              transition: all .3s ease;
+              box-shadow: $light-color 0 0 1px;
+              background-color: white;
+              color: black;
+              outline: none;
+
+              &:focus {
+                background-color: $background-color;
+                box-shadow: none;
+                width: 90%;
+                color: white;
+
+                &::placeholder {
+                  color: white;
+                }
+              }
+            }
           }
         }
       }
@@ -106,16 +128,19 @@ $min-width: 1298px;
             font-size: .8rem;
 
             a:hover {
-              color: $hover-color;
+              color: $focus-color;
             }
           }
 
           .item-title {
             font-size: 1rem;
-            transition: color .3s ease;
+
+            a {
+              transition: color .3s ease;
+            }
 
             a:hover {
-              color: $hover-color;
+              color: $focus-color;
             }
           }
         }
