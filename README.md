@@ -9,6 +9,14 @@ Implement the features is easy, there are many ways to do that, but design the U
 
 I'm in trouble about the UI design. I have to do lots of search for design ideas. :(
 
+**The true problem**
+
+It is not looks so good as imaged.
+
+I overthrown the design idea because it seems not so good from the result.
+
+I have to find a new design for my blog.
+
 ## I18n memo
 
 Language files are putting in the `\public\locales` folder.
