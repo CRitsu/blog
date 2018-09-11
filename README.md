@@ -3,19 +3,11 @@
 Clean up.
 
 
-## The problems
+## About UI style design
 
-Implement the features is easy, there are many ways to do that, but design the UI style is a hard work.
+This design idea was decided to discard.
 
-I'm in trouble about the UI design. I have to do lots of search for design ideas. :(
-
-**The true problem**
-
-It is not looks so good as imaged.
-
-I overthrown the design idea because it seems not so good from the result.
-
-I have to find a new design for my blog.
+The new one is works in progress.
 
 ## I18n memo
 
