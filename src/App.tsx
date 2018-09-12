@@ -5,9 +5,9 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { createStore, Dispatch } from 'redux';
 import { fetchLists } from './api';
 import { size } from './constants';
-import Contents from './Contents';
 import i18n from './i18n';
-import Lists from './Lists';
+import Contents from './layout/Contents';
+import Lists from './layout/Lists';
 import { rootReducer as reducers } from './reducers';
 import { Articles, State } from './type';
 

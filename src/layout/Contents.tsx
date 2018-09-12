@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { translate } from 'react-i18next';
 import { Link, Route } from 'react-router-dom';
-import { TitleWithoutLink } from './components';
-import { size } from './constants';
+import { TitleWithoutLink } from '../components';
+import { size } from '../constants';
 
 interface Props {
   width: number,

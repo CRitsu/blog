@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { translate } from 'react-i18next';
 import { Link, Route } from 'react-router-dom';
-import { Square } from './components';
-import { CATEGORIES, LATEST, size } from './constants';
-import { Articles } from './type';
-import { formatDate } from './utils';
+import { Square } from '../components';
+import { CATEGORIES, LATEST, size } from '../constants';
+import { Articles } from '../type';
+import { formatDate } from '../utils';
 
 
 interface Props {
