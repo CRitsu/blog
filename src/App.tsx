@@ -9,7 +9,7 @@ import i18n from './i18n';
 import Contents from './layout/Contents';
 import Lists from './layout/Lists';
 import { rootReducer as reducers } from './reducers';
-import { Articles, State } from './type';
+import { Articles, State } from './types';
 
 interface Props {
   lists: Articles[],

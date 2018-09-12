@@ -3,7 +3,7 @@ import { translate } from 'react-i18next';
 import { Link, Route } from 'react-router-dom';
 import { Square } from '../components';
 import { CATEGORIES, LATEST, size } from '../constants';
-import { Articles } from '../type';
+import { Articles } from '../types';
 import { formatDate } from '../utils';
 
 
