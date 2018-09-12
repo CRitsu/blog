@@ -6,8 +6,8 @@ import { createStore, Dispatch } from 'redux';
 import { fetchLists } from './api';
 import { size } from './constants';
 import i18n from './i18n';
-import Contents from './layout/Contents';
-import Lists from './layout/Lists';
+import Contents from './main/Contents';
+import Lists from './main/Lists';
 import { rootReducer as reducers } from './reducers';
 import { Articles, State } from './types';
 
