@@ -1,5 +1,5 @@
 import { actions } from '../actions';
-import { BaseAction } from '../type';
+import { BaseAction } from '../types';
 
 
 function getInitialState() {

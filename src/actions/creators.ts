@@ -1,4 +1,4 @@
-import { Articles, BaseAction } from '../type';
+import { Articles, BaseAction } from '../types';
 import { FETCH_LISTS } from './actions';
 
 
