@@ -1,5 +1,5 @@
 import { creators } from '../actions';
-import { BaseAction } from '../type';
+import { BaseAction } from '../types';
 import { checkStatus, ErrorWithResponse, parseJson } from './utils';
 
 
