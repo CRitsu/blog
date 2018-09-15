@@ -5,9 +5,7 @@ Clean up.
 
 ## About UI style design
 
-This design idea was decided to discard.
-
-The new one is works in progress.
+I'm looking for new idea, seems it needs more time.
 
 ## I18n memo
 
