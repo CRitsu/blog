@@ -1,6 +1,12 @@
 {
-  "Richard's Blog": "Richard 的博客",
-  "Search": "搜索...",
+  "RICHARD Z": "RICHARD Z",
+  "motto": [
+    "计划一个全新的目标，",
+    "筹划并构建一个全新的环境，",
+    "准备踏上全新的旅程"
+  ],
+  "search": "搜索...",
   "latest": "最新",
-  "categories": "分类"
+  "categories": "分类",
+  "tags": "标签"
 }

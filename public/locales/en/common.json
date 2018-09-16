@@ -1,6 +1,12 @@
 {
-  "Richard's Blog": "Richard's Blog",
-  "Search": "Search...",
+  "RICHARD Z": "RICHARD Z",
+  "motto": [
+    "plan for a new goal,",
+    "build a new environment,",
+    "start a new trip"
+  ],
+  "search": "Search...",
   "latest": "LATEST",
-  "categories": "CATEGORIES"
+  "categories": "CATEGORIES",
+  "tags": "TAGS"
 }
