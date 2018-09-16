@@ -13,13 +13,13 @@ const instance = i18n
       loadPath: '/locales/{{lng}}/{{ns}}.json'
     },
     debug: true,
-    defaultNS: 'ui',
+    defaultNS: 'common',
     detection: {
       lookupCookie: 'lng',
       lookupLocalStorage: 'lng',
     },
     fallbackLng: 'en',
-    ns: ['ui'],
+    ns: ['common'],
 
     // interpolation: {
     //   escapeValue: false, // not needed for react!!
