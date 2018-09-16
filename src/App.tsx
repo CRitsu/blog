@@ -3,7 +3,6 @@ import { I18nextProvider } from 'react-i18next';
 import { connect, Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { createStore, Dispatch } from 'redux';
-import { size } from './constants';
 import { fetchLists } from './fetch';
 import i18n from './i18n';
 import Contents from './main/Contents';
@@ -16,54 +15,20 @@ interface Props {
   dispatch: Dispatch
 }
 
-interface AppState {
-  windowWidth: number
-}
-
-class App extends React.Component<Props, AppState> {
-
-  public state = {
-    windowWidth: window.innerWidth
-  }
-
-  public handleResize() {
-    this.setState({ windowWidth: window.innerWidth });
-  }
+class App extends React.Component<Props> {
   
   public componentDidMount() {
-    window.addEventListener('resize', this.handleResize.bind(this));
     // fetch lists when loading is completed
     fetchLists(this.props.dispatch);
   }
 
-  public componentWillUnmount() {
-    window.removeEventListener('resize', this.handleResize.bind(this));
-  }
-
   public render() {
-
-    // store window width in state and handle resize
-    const { windowWidth } = this.state;
-    
-    // calculate width for lists and contents
-    let listsWidth: number;
-    let contentWidth: number;
-    // min width for two columns
-    if (windowWidth < size.MIN_WIDTH) {
-      listsWidth = windowWidth;
-      contentWidth = windowWidth;
-    } else {
-      listsWidth = windowWidth * 0.3819;
-      // ensure max width
-      listsWidth = listsWidth > size.LIST_MAX_WIDTH ? size.LIST_MAX_WIDTH : listsWidth;
-      contentWidth = windowWidth - listsWidth;
-    }
 
     return (
       <Router>
         <div className="app">
-          <Lists lists={this.props.lists} width={listsWidth} />
-          <Contents width={contentWidth} />
+          <Lists lists={this.props.lists} />
+          <Contents />
         </div>
       </Router>
     );
