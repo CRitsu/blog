@@ -23,7 +23,7 @@ class Lists extends React.Component<Props, State> {
 
   public render() {
 
-    const { lists, t } = this.props;
+    const { lists } = this.props;
 
 
     // edit list
@@ -47,20 +47,8 @@ class Lists extends React.Component<Props, State> {
       <Route path="/" exact={true}>
         {
           (props: { match: boolean }) =>
-            <div className="lists-container">
-                <div className="lists">
-                  <div className="header">
-                    <div className="sign">Time flies so fast.</div>
-                    <div className="sub-bar">
-                      <div className="categories">
-                      <div className="search">
-                        <input className="input" placeholder={t('Search')} />
-                      </div>
-                    </div>
-                  </div>
-                  <EditedList match={props.match} />
-                </div>
-              </div>
+            <div className="lists">
+              <EditedList match={props.match} />
             </div>
         }
       </Route>
