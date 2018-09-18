@@ -1,10 +1,8 @@
 {
   "RICHARD Z": "RICHARD Z",
-  "motto": [
-    "计划一个全新的目标，",
-    "筹划并构建一个全新的环境，",
-    "准备踏上全新的旅程"
-  ],
+  "mottoThe1stLine": "计划一个全新的目标，",
+  "mottoThe2ndLine": "筹划并构建一个全新的环境，",
+  "mottoThe3rdLine": "准备踏上全新的旅程",
   "search": "搜索...",
   "latest": "最新",
   "categories": "分类",

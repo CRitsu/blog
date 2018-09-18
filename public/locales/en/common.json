@@ -1,10 +1,8 @@
 {
   "RICHARD Z": "RICHARD Z",
-  "motto": [
-    "plan for a new goal,",
-    "build a new environment,",
-    "start a new trip"
-  ],
+  "mottoThe1stLine": "plan for a new goal,",
+  "mottoThe2ndLine": "build a new environment,",
+  "mottoThe3rdLine": "start a new trip",
   "search": "Search...",
   "latest": "LATEST",
   "categories": "CATEGORIES",
