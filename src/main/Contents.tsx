@@ -9,15 +9,15 @@ interface Props {
 class Contents extends React.Component<Props, object> {
   public render() {
 
-
-    return (
-      <Route path="/" exact={true}>
-      {() =>
+    const con = () => (
         <div className="contents">
           <Link to="/">TOP</Link>
         </div>
-      }
-      </Route>
+
+    )
+
+    return (
+      <Route path="/hide" exact={true} component={con} />
     )
   }
 }
