@@ -5,6 +5,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { createStore, Dispatch } from 'redux';
 import { fetchLists } from './fetch';
 import i18n from './i18n';
+import Banner from './main/Banner';
 import Contents from './main/Contents';
 import Lists from './main/Lists';
 import { rootReducer as reducers } from './reducers';
@@ -27,6 +28,7 @@ class App extends React.Component<Props> {
     return (
       <Router>
         <div className="app">
+          <Banner />
           <Lists lists={this.props.lists} />
           <Contents />
         </div>
