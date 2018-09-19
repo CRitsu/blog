@@ -1,3 +1,101 @@
+$nav-both-sides-button-width: 120px;
+$arrow-width: 60px;
+
+
+@mixin set-flex-grow($grow: 0) {
+  flex-shrink: 0;
+  flex-grow: $grow;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+}
+
+
 .banner {
   height: 100vh;
+
+  @include flex-column();
+
+  .nav {
+    display: flex;
+    align-items: center;
+    height: 45px;
+
+    @include set-flex-grow();
+
+    .index {
+      flex-basis: $nav-both-sides-button-width;
+
+      .block {
+        margin-left: 24px;
+      }
+    }
+
+    .blocks {
+      flex-basis: $nav-both-sides-button-width;
+      text-align: right;
+      display: flex;
+
+      .block {
+        margin-right: 24px;
+      }
+    }
+
+    .home {
+      margin: 0 auto;
+      cursor: pointer;
+      padding: 0 1rem;
+    }
+  }
+
+  .main-banner {
+    text-align: center;
+    justify-content: center;
+
+    @include set-flex-grow(1);
+    @include flex-column();
+
+    .logo {
+      font-size: 3rem;
+      font-weight: bold;
+    }
+
+    .motto {
+      text-transform: uppercase;
+      font-size: 2rem;
+      color: #999;
+
+      .motto-2nd-line {
+        color: #A67500;
+      }
+    }
+
+    .social {
+      @include flex-center();
+    }
+
+    .categories {
+      @include flex-center();
+    }
+  }
+
+  .arrow {
+    height: $arrow-width;
+    width: $arrow-width;
+    margin: 0 auto;
+    border-left: 2px solid #999;
+    border-bottom: 2px solid #999;
+    transform: rotate(-45deg);
+    margin-bottom: 40px;
+
+    @include set-flex-grow();
+
+  }
 }
