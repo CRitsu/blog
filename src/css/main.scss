@@ -1,7 +1,6 @@
 $nav-both-sides-button-width: 120px;
 $arrow-width: 60px;
 
-
 @mixin set-flex-grow($grow: 0) {
   flex-shrink: 0;
   flex-grow: $grow;
@@ -17,17 +16,14 @@ $arrow-width: 60px;
   justify-content: center;
 }
 
-
 .banner {
-  height: 100vh;
-
+  min-height: 100vh;
   @include flex-column();
 
   .nav {
     display: flex;
     align-items: center;
     height: 45px;
-
     @include set-flex-grow();
 
     .index {
@@ -58,31 +54,76 @@ $arrow-width: 60px;
   .main-banner {
     text-align: center;
     justify-content: center;
-
     @include set-flex-grow(1);
     @include flex-column();
 
     .logo {
       font-size: 3rem;
       font-weight: bold;
+      margin-top: 5rem;
+      margin-bottom: 1.5rem;
     }
 
     .motto {
+      line-height: 2.5rem;
       text-transform: uppercase;
       font-size: 2rem;
       color: #999;
-
-      .motto-2nd-line {
-        color: #A67500;
-      }
+      margin-bottom: 4rem;
     }
 
     .social {
+
+      margin-bottom: 6rem;
+
       @include flex-center();
+
+      .icon {
+        height: 25px;
+        width: 25px;
+
+        &:not(:last-child) {
+          margin-right: 50px;
+        }
+
+        &.github {
+          background-image: url(../resources/github.png);
+          background-size: cover;
+          height: 23px;
+          width: 23px;
+        }
+
+        &.weibo {
+          background-image: url(../resources/weibo.png);
+          background-size: cover;
+        }
+      }
     }
 
     .categories {
-      @include flex-center();
+      width: 500px;
+      margin: 0 auto;
+      margin-bottom: 2rem;
+      display: flex;
+      justify-content: space-between;
+
+      .item {
+
+        &:not(:last-child) {
+          margin-right: 50px;
+        }
+
+        .block {
+          height: 50px;
+          width: 50px;
+          margin-bottom: 3rem;
+        }
+
+        .category {
+          color: #999;
+          text-transform: uppercase;
+        }
+      }
     }
   }
 
@@ -93,9 +134,7 @@ $arrow-width: 60px;
     border-left: 2px solid #999;
     border-bottom: 2px solid #999;
     transform: rotate(-45deg);
-    margin-bottom: 40px;
-
+    margin-bottom: 100px;
     @include set-flex-grow();
-
   }
 }

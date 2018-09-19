@@ -11,7 +11,7 @@ class Banner extends React.Component<Translate, object> {
     // import t function for translate
     const { t } = this.props;
 
-    const bgLightBlue = 'bg-light-blue';
+    const blocksBackgroundColor = 'bg-blue-light2';
 
     const ban = () => (
       <div className="banner">
@@ -19,17 +19,17 @@ class Banner extends React.Component<Translate, object> {
         <div className="nav">
 
           <div className="index">
-            <Block className={bgLightBlue} />
+            <Block className={blocksBackgroundColor} />
           </div>
 
           <div className="home">
-            <Link to="/">...</Link>
+            <Link to="/">Richard zfanli</Link>
           </div>
 
           <div className="blocks">
-            <Block className={bgLightBlue} />
-            <Block className={bgLightBlue} />
-            <Block className={bgLightBlue} />
+            <Block className={blocksBackgroundColor} />
+            <Block className={blocksBackgroundColor} />
+            <Block className={blocksBackgroundColor} />
           </div>
 
         </div>
@@ -40,16 +40,33 @@ class Banner extends React.Component<Translate, object> {
 
           <div className="motto">
             <div className="motto-1st-line">{t('mottoThe1stLine')}</div>
-            <div className="motto-2nd-line">{t('mottoThe2ndLine')}</div>
+            <div className="motto-2nd-line yellow-dark2">{t('mottoThe2ndLine')}</div>
             <div className="motto-3rd-line">{t('mottoThe3rdLine')}</div>
           </div>
 
           <div className="social">
-            <div className="github">github</div>
-            <div className="weibo">weibo</div>
+            <a className="icon github" href="https://github.com/zfanli" target="blank" />
+            <a className="icon weibo" href="https://weibo.com/210100026" target="blank" />
           </div>
 
-          <div className="categories">categories</div>
+          <div className="categories">
+          <div className="item">
+              <Block className="bg-blue-dark3" />
+              <div className="category">{t('tech')}</div>
+            </div>
+            <div className="item">
+              <Block className="bg-yellow-light2" />
+              <div className="category">{t('memo')}</div>
+            </div>
+            <div className="item">
+              <Block className="bg-red-dark1" />
+              <div className="category">{t('life')}</div>
+            </div>
+            <div className="item">
+              <Block className="bg-red-light1" />
+              <div className="category">{t('talk')}</div>
+            </div>
+          </div>
 
         </div>
 
