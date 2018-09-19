@@ -21,3 +21,7 @@ export interface BaseAction {
   payload: object | any[],
   error?: boolean
 }
+
+export interface Translate {
+  t: (p: string) => string
+}
