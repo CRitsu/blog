@@ -16,52 +16,72 @@ $arrow-width: 60px;
   justify-content: center;
 }
 
-.banner {
-  min-height: 100vh;
-  @include flex-column();
+.nav {
+  position: fixed;
+  background-color: #fff;
+  top: 0;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  height: 45px;
+  z-index: 99;
 
-  .nav {
-    display: flex;
-    align-items: center;
-    height: 45px;
-    @include set-flex-grow();
+  @include set-flex-grow();
 
-    .index {
-      flex-basis: $nav-both-sides-button-width;
+  .index {
+    flex-basis: $nav-both-sides-button-width;
 
-      .block {
-        margin-left: 24px;
-      }
-    }
-
-    .blocks {
-      flex-basis: $nav-both-sides-button-width;
-      text-align: right;
-      display: flex;
-
-      .block {
-        margin-right: 24px;
-      }
-    }
-
-    .home {
-      margin: 0 auto;
-      cursor: pointer;
-      padding: 0 1rem;
+    .block {
+      margin-left: 1rem;
     }
   }
 
+  .blocks {
+    flex-basis: $nav-both-sides-button-width;
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .home {
+    margin: 0 auto;
+    cursor: pointer;
+    text-transform: uppercase;
+    color: #333;
+    text-align: center;
+
+    a {
+      transition: width .3s ease;
+      overflow: hidden;
+      width: 1rem;
+      display: inline-block;
+      white-space: nowrap;
+    }
+
+    &.w a {
+      width: 8rem;
+    }
+  }
+}
+
+.banner {
+
   .main-banner {
+    min-height: 100vh;
     text-align: center;
     justify-content: center;
+
     @include set-flex-grow(1);
     @include flex-column();
 
     .logo {
       font-size: 3rem;
       font-weight: bold;
-      margin-top: 5rem;
+      margin-top: 8rem;
       margin-bottom: 1.5rem;
+
+      @media (max-width: 500px) {
+        font-size: 2rem;
+      }
     }
 
     .motto {
@@ -70,6 +90,11 @@ $arrow-width: 60px;
       font-size: 2rem;
       color: #999;
       margin-bottom: 4rem;
+
+      @media (max-width: 500px) {
+        font-size: 1.5rem;
+        line-height: 2rem;
+      }
     }
 
     .social {
@@ -111,12 +136,13 @@ $arrow-width: 60px;
       margin-bottom: 2rem;
       display: flex;
       justify-content: space-between;
+      flex-wrap: wrap;
+
+      @media (max-width: 768px) {
+        width: 70vw;
+      }
 
       .item {
-
-        &:not(:last-child) {
-          margin-right: 50px;
-        }
 
         .block {
           height: 50px;
@@ -130,16 +156,18 @@ $arrow-width: 60px;
         }
       }
     }
+
+    .arrow {
+      height: $arrow-width;
+      width: $arrow-width;
+      margin: 0 auto;
+      border-left: 2px solid #999;
+      border-bottom: 2px solid #999;
+      transform: rotate(-45deg);
+      margin-bottom: 100px;
+
+      @include set-flex-grow();
+    }
   }
 
-  .arrow {
-    height: $arrow-width;
-    width: $arrow-width;
-    margin: 0 auto;
-    border-left: 2px solid #999;
-    border-bottom: 2px solid #999;
-    transform: rotate(-45deg);
-    margin-bottom: 100px;
-    @include set-flex-grow();
-  }
 }
