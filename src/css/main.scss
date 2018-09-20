@@ -84,7 +84,7 @@ $arrow-width: 60px;
         border-radius: 13px;
 
         &:hover {
-          animation: shadow-growth .3s;
+          animation: breath 1s infinite ease-out;
         }
 
         &:not(:last-child) {
