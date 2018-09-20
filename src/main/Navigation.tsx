@@ -51,6 +51,13 @@ class Navigation extends React.Component {
 
     const blocksBackgroundColor = 'bg-blue-light1';
 
+    // check if the user agent is windows platform
+    // scroll bar display in different way between mac and windows
+    // to let different platform display in same way
+    // add a 'margin-right' to fixes scroll bar's width
+    const isWindows = navigator.userAgent.indexOf('Windows') !== -1;
+    const blockClasses = isWindows ? 'blocks fix-right' : 'blocks'
+
     return (
       <div className="nav">
 
@@ -62,7 +69,7 @@ class Navigation extends React.Component {
           <Link to="/">{home}</Link>
         </div>
 
-        <div className="blocks">
+        <div className={blockClasses}>
           <Block className={blocksBackgroundColor} />
           <Block className={blocksBackgroundColor} />
           <Block className={blocksBackgroundColor} />
