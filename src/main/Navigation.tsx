@@ -53,7 +53,7 @@ class Navigation extends React.Component {
 
     // check if the user agent is windows platform
     // scroll bar display in different way between mac and windows
-    // to let different platform display in same way
+    // to make window platform display in the same way with mac
     // add a 'margin-right' to fixes scroll bar's width
     const isWindows = navigator.userAgent.indexOf('Windows') !== -1;
     const blockClasses = isWindows ? 'blocks fix-right' : 'blocks'
