@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { translate } from 'react-i18next';
 import { Route } from 'react-router-dom';
-import { Block } from '../components';
-import { Translate } from '../types';
+import { Block } from '../../components';
+import { Translate } from '../../types';
+import NaughtyArrow from '../accessories/NaughtyArrow';
 
 
 interface State {
@@ -54,7 +55,7 @@ class Banner extends React.Component<Translate, State> {
             </div>
           </div>
 
-          <div className="arrow" />
+          <NaughtyArrow />
 
         </div>
       </div>

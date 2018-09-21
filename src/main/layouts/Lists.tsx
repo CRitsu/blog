@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { translate } from 'react-i18next';
 import { Link, Route } from 'react-router-dom';
-import { LATEST } from '../constants';
-import { Articles } from '../types';
+import { LATEST } from '../../constants';
+import { Articles } from '../../types';
 
 
 interface Props {

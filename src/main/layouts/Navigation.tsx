@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { Block } from '../components';
-import { Translate } from '../types';
+import { Block } from '../../components';
+import { Translate } from '../../types';
 
 
 class Navigation extends React.Component {
