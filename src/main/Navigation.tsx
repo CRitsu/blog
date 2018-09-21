@@ -7,7 +7,7 @@ import { Translate } from '../types';
 class Navigation extends React.Component {
 
   public state = {
-    home: '...'
+    showLogo: false
   }
 
   public constructor(props: Translate) {
@@ -18,19 +18,16 @@ class Navigation extends React.Component {
 
   public handleScroll() {
 
-    const h = this.state.home;
-    const normal = '...';
-    const logo = 'Richard zfanli';
+    const s = this.state.showLogo;
 
     // check condition
     const checkScrollPosition = window.pageYOffset > window.innerHeight;
-    const isNormal = h === normal;
 
     // change home only when needed
-    if (checkScrollPosition && isNormal) {
-        this.setState({ home: logo });
-    } else if (!checkScrollPosition && !isNormal) {
-      this.setState({ home: normal });
+    if (checkScrollPosition && !s) {
+        this.setState({ showLogo: true });
+    } else if (!checkScrollPosition && s) {
+      this.setState({ showLogo: false });
     }
   }
 
@@ -46,8 +43,8 @@ class Navigation extends React.Component {
 
   public render() {
 
-    const { home } = this.state;
-    const homeClass = home === '...' ? 'home' : 'home w';
+    const { showLogo } = this.state;
+    const homeClass = showLogo ? 'home w' : 'home';
 
     const blocksBackgroundColor = 'bg-blue-light1';
 
@@ -66,7 +63,7 @@ class Navigation extends React.Component {
         </div>
 
         <div className={homeClass}>
-          <Link to="/">{home}</Link>
+          <Link to="/" className="logo-link" />
         </div>
 
         <div className={blockClasses}>
