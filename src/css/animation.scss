@@ -13,3 +13,31 @@
     transform: scale(1);
   }
 }
+
+@keyframes breath-arrow {
+  0% {
+    transform: translateY(-10%) rotate(-45deg);
+  }
+
+  30% {
+    transform: translateY(10%) rotate(-45deg);
+  }
+
+  100% {
+    transform: translateY(-10%) rotate(-45deg);
+  }
+}
+
+@keyframes breath-arrow-inner {
+  0% {
+    transform: translate(-10%, 10%);
+  }
+
+  30% {
+    transform: translate(10%, -10%);
+  }
+
+  100% {
+    transform: translate(-10%, 10%);
+  }
+}
