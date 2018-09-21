@@ -15,8 +15,16 @@ class Navigation extends React.Component {
     this.handleScroll = this.handleScroll.bind(this);
   }
 
+  public isHomePage() {
+    return window.location.pathname === '/';
+  }
 
   public handleScroll() {
+
+    // do nothing if current page is not the home page
+    if (!this.isHomePage()) {
+      return;
+    }
 
     const s = this.state.showLogo;
 
@@ -44,7 +52,7 @@ class Navigation extends React.Component {
   public render() {
 
     const { showLogo } = this.state;
-    const homeClass = showLogo ? 'home w' : 'home';
+    const homeClass = !this.isHomePage() || showLogo ? 'home w' : 'home';
 
     const blocksBackgroundColor = 'bg-blue-light1';
 
@@ -53,7 +61,9 @@ class Navigation extends React.Component {
     // to make window platform display in the same way with mac
     // add a 'margin-right' to fixes scroll bar's width
     const isWindows = navigator.userAgent.indexOf('Windows') !== -1;
-    const blockClasses = isWindows ? 'blocks fix-right' : 'blocks'
+    const blockClasses = isWindows ? 'blocks fix-right' : 'blocks';
+
+    const scrollToTop = () => window.scrollTo(0, 0);
 
     return (
       <div className="nav">
@@ -63,7 +73,7 @@ class Navigation extends React.Component {
         </div>
 
         <div className={homeClass}>
-          <Link to="/" className="logo-link" />
+          <Link to="/" className="logo-link" onClick={scrollToTop} />
         </div>
 
         <div className={blockClasses}>
