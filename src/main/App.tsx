@@ -3,14 +3,14 @@ import { I18nextProvider } from 'react-i18next';
 import { connect, Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { createStore, Dispatch } from 'redux';
-import { fetchLists } from './fetch';
-import i18n from './i18n';
-import Banner from './main/Banner';
-import Contents from './main/Contents';
-import Lists from './main/Lists';
-import Navigation from './main/Navigation';
-import { rootReducer as reducers } from './reducers';
-import { Articles, State } from './types';
+import { fetchLists } from '../fetch';
+import i18n from '../i18n';
+import Banner from '../main/Banner';
+import { rootReducer as reducers } from '../reducers';
+import { Articles, State } from '../types';
+import Contents from './Contents';
+import Lists from './Lists';
+import Navigation from './Navigation';
 
 interface Props {
   lists: Articles[],
