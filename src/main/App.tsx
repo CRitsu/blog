@@ -5,12 +5,12 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { createStore, Dispatch } from 'redux';
 import { fetchLists } from '../fetch';
 import i18n from '../i18n';
-import Banner from '../main/Banner';
 import { rootReducer as reducers } from '../reducers';
 import { Articles, State } from '../types';
-import Contents from './Contents';
-import Lists from './Lists';
-import Navigation from './Navigation';
+import Banner from './layouts/Banner';
+import Contents from './layouts/Contents';
+import Lists from './layouts/Lists';
+import Navigation from './layouts/Navigation';
 
 interface Props {
   lists: Articles[],
