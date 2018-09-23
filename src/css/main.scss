@@ -184,6 +184,8 @@ $arrow-width: 60px;
     }
 
     .dont-touch-me {
+      margin: auto;
+
       .arrow {
         height: $arrow-width;
         width: $arrow-width;
