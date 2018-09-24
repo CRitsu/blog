@@ -9,26 +9,33 @@ class NaughtyArrow extends React.Component<object, object> {
     super(props);
     this.handleMousemove = this.handleMousemove.bind(this);
 
-    this.position = React.createRef()
+    this.position = React.createRef();
   }
 
   public handleMousemove(e: MouseEvent) {
+    // get reference of this element
     const current = this.position.current;
     if (current !== null) {
+    // get coordinate of this element
       const rect = current.getBoundingClientRect();
-      console.log(this.calculateMidpoint(rect));
+      // type safe check
+      if (this.isDOMRect(rect)) {
+        
+        console.log(this.calculateMidpoint(rect));
+      }
     }
   }
 
-  public calculateMidpoint(rect: ClientRect | DOMRect) {
+  public isDOMRect(rect: ClientRect | DOMRect): rect is DOMRect {
+    return 'x' in rect && 'y' in rect
+      && 'width' in rect && 'height' in rect;
+  }
 
-    if ('x' in rect && 'y' in rect) {
-      return {
-        x: rect.x + rect.width / 2,
-        y: rect.y + rect.height / 2
-      }
+  public calculateMidpoint(rect: DOMRect) {
+    return {
+      x: rect.x + rect.width / 2,
+      y: rect.y + rect.height / 2
     }
-    return;
   }
 
   public componentDidMount() {
