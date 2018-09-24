@@ -5,7 +5,9 @@ Clean up.
 
 ## About UI style design
 
-I'm looking for new idea, seems it needs more time.
+The new style design is almost been finished.
+
+Let's work it out!
 
 ## I18n memo
 
