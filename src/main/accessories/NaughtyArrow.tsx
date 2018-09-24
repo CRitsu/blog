@@ -1,29 +1,28 @@
 import * as React from 'react';
 
 
-class NaughtyArrow extends React.Component<object, object> {
+interface State {
+  position: React.RefObject<HTMLDivElement>,
+  midpoint?: {
+    x: number,
+    y: number
+  }
+}
 
-  public position: React.RefObject<HTMLDivElement>;
+
+class NaughtyArrow extends React.Component<object, State> {
 
   public constructor(props: any) {
     super(props);
     this.handleMousemove = this.handleMousemove.bind(this);
 
-    this.position = React.createRef();
+    this.state = {
+      position: React.createRef(),
+    }
   }
 
   public handleMousemove(e: MouseEvent) {
-    // get reference of this element
-    const current = this.position.current;
-    if (current !== null) {
-    // get coordinate of this element
-      const rect = current.getBoundingClientRect();
-      // type safe check
-      if (this.isDOMRect(rect)) {
-        
-        console.log(this.calculateMidpoint(rect));
-      }
-    }
+    console.log(this.state.midpoint);
   }
 
   public isDOMRect(rect: ClientRect | DOMRect): rect is DOMRect {
@@ -40,11 +39,25 @@ class NaughtyArrow extends React.Component<object, object> {
 
   public componentDidMount() {
     window.addEventListener('mousemove', this.handleMousemove);
+
+    // set midpoint when component was mounted
+    // get reference of this element
+    const current = this.state.position.current;
+    if (current !== null) {
+      // get coordinate of this element
+      const rect = current.getBoundingClientRect();
+      // type safe check
+      if (this.isDOMRect(rect)) {
+        this.setState({
+          midpoint: this.calculateMidpoint(rect)
+        });
+      }
+    }
   }
 
   public render() {
 
-    const position = this.position;
+    const { position } = this.state;
 
     return (
       <div className="dont-touch-me" ref={position}>
