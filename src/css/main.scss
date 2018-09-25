@@ -75,6 +75,8 @@ $arrow-width: 60px;
 }
 
 .banner {
+  overflow: hidden;
+
   .main-banner {
     min-height: 100vh;
     text-align: center;
