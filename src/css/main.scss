@@ -79,6 +79,7 @@ $arrow-width: 60px;
     min-height: 100vh;
     text-align: center;
     justify-content: center;
+    animation: motion 5s infinite ease-in-out;
     @include set-flex-grow(1);
     @include flex-column();
 
