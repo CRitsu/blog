@@ -2,12 +2,11 @@ import * as React from 'react';
 import { translate } from 'react-i18next';
 import { Link, Route } from 'react-router-dom';
 import { LATEST } from '../../constants';
-import { Articles } from '../../types';
+import { Articles, Translate } from '../../types';
 
 
-interface Props {
-  lists: Articles[],
-  t: (p: string) => string
+interface Props extends Translate {
+  lists: Articles[]
 }
 
 interface State {
