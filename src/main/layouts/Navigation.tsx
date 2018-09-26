@@ -10,15 +10,25 @@ class Navigation extends React.Component {
     showLogo: false
   }
 
+  /**
+   * The constructor.
+   */
   public constructor(props: Translate) {
     super(props);
     this.handleScroll = this.handleScroll.bind(this);
   }
 
+  /**
+   * Checker for check if current path is the home page.
+   */
   public isHomePage() {
     return window.location.pathname === '/';
   }
 
+  /**
+   * Handler for check scroll position,
+   * and control the logo to show or hide on navigation.
+   */
   public handleScroll() {
 
     // do nothing if current page is not the home page
@@ -26,24 +36,33 @@ class Navigation extends React.Component {
       return;
     }
 
+    // the control flag of logo
     const s = this.state.showLogo;
 
     // check condition
+    // show logo when scroll over the first screen
     const checkScrollPosition = window.pageYOffset > window.innerHeight;
 
-    // change home only when needed
+    // display logo when first screen was passed and logo was not displayed
+    // and hide logo when not
     if (checkScrollPosition && !s) {
-        this.setState({ showLogo: true });
+      this.setState({ showLogo: true });
     } else if (!checkScrollPosition && s) {
       this.setState({ showLogo: false });
     }
   }
 
+  /**
+   * Load event listener.
+   */
   public componentDidMount() {
     // bind listener to scroll events
     window.addEventListener('scroll', this.handleScroll);
   }
 
+  /**
+   * Unload event listener.
+   */
   public componentWillUnmount() {
     // remove listener when unmount
     window.removeEventListener('scroll', this.handleScroll);
