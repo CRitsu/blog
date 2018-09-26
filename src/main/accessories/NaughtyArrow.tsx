@@ -4,6 +4,7 @@ import * as React from 'react';
 interface State {
   position: React.RefObject<HTMLDivElement>,
   shouldAction: boolean,
+  rect?: DOMRect,
   midpoint?: Coordinate
 }
 
@@ -23,12 +24,25 @@ class NaughtyArrow extends React.Component<object, State> {
   public constructor(props: any) {
     super(props);
     this.handleMousemove = this.handleMousemove.bind(this);
+    this.handleClick = this.handleClick.bind(this);
 
     this.state = {
       // ref of arrow component for get midpoint
       position: React.createRef(),
       // action flag, should not acts at small mobile screen
       shouldAction: window.innerWidth > 768
+    }
+  }
+
+  /**
+   * Handler for click,
+   * scroll to next screen.
+   */
+  public handleClick() {
+    const rect = this.state.rect;
+    if (rect !== undefined) {
+      const targetPoint = rect.y + rect.height;
+      window.scrollTo(0, targetPoint);
     }
   }
 
@@ -40,7 +54,7 @@ class NaughtyArrow extends React.Component<object, State> {
    * @param e instance of mouse event
    */
   public handleMousemove(e: MouseEvent) {
-    
+
     const current = this.state.position.current;
     const midpoint = this.state.midpoint;
 
@@ -88,7 +102,7 @@ class NaughtyArrow extends React.Component<object, State> {
         style.left = `${offsetX}px`;
         style.top = `${offsetY}px`;
 
-      // reset position when mouse move out of action area
+        // reset position when mouse move out of action area
       } else {
         style.left = '0px';
         style.top = '0px';
@@ -148,25 +162,36 @@ class NaughtyArrow extends React.Component<object, State> {
    * - calculate the midpoint for arrow component
    */
   public componentDidMount() {
+    // get reference of this element
+    const current = this.state.position.current;
+
+    if (current === null) {
+      return;
+    }
+
+    // get coordinate of this element
+    const rect = current.getBoundingClientRect();
+
+    // type safe check
+    if (!this.isDOMRect(rect)) {
+      return;
+    }
+
     //  check if it is not a small screen
     if (this.state.shouldAction) {
       // add event listener for mouse move
       window.addEventListener('mousemove', this.handleMousemove);
       // set midpoint when component was mounted
-      // get reference of this element
-      const current = this.state.position.current;
-      if (current !== null) {
-        // get coordinate of this element
-        const rect = current.getBoundingClientRect();
-        // type safe check
-        if (this.isDOMRect(rect)) {
-          this.setState({
-            midpoint: this.calculateMidpoint(rect)
-          });
-        }
-      }
+      this.setState({
+        midpoint: this.calculateMidpoint(rect),
+        rect
+      });
+      // set rect for handle click
+    } else {
+      this.setState({ rect });
     }
   }
+
 
   /**
    * Clean up event listener before component was unmounted.
@@ -187,7 +212,9 @@ class NaughtyArrow extends React.Component<object, State> {
 
     return (
       <div className="dont-touch-me" ref={position}>
-        <div className="arrow"><div className="inner-shadow" /></div>
+        <div className="arrow" onClick={this.handleClick}>
+          <div className="inner-shadow" />
+        </div>
       </div>
     )
   }
