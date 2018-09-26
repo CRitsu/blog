@@ -42,7 +42,14 @@ class NaughtyArrow extends React.Component<object, State> {
   public handleClick() {
     const rect = this.state.rect;
     if (rect !== undefined) {
-      const targetPoint = rect.y + rect.height;
+      // scroll to point
+      // y of arrow plus height of arrow
+      let targetPoint = rect.y + rect.height;
+      // check if target point is greater then screen height
+      // if not, set target point to screen height
+      targetPoint = window.innerHeight < targetPoint 
+        ? targetPoint : window.innerHeight;
+      // apply scroll action
       window.scrollTo(0, targetPoint);
     }
   }
