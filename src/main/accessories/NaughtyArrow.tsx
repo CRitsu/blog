@@ -25,6 +25,7 @@ class NaughtyArrow extends React.Component<object, State> {
     super(props);
     this.handleMousemove = this.handleMousemove.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.actionTrigger = this.actionTrigger.bind(this);
 
     this.state = {
       // ref of arrow component for get midpoint
@@ -57,6 +58,7 @@ class NaughtyArrow extends React.Component<object, State> {
 
     const current = this.state.position.current;
     const midpoint = this.state.midpoint;
+    const shouldAction = this.state.shouldAction;
 
     if (current !== null && midpoint) {
       // definition of some constants
@@ -75,8 +77,10 @@ class NaughtyArrow extends React.Component<object, State> {
       // calculate the distance between mouse cursor and midpoint
       const distance = this.calculateDistance(mouse, midpoint);
 
-      // only do the action when the distance is less than max distance
-      if (distance < maxDistance) {
+      // do the action when:
+      // - distance is less then the max distance
+      // - shouldAction flag is true
+      if (distance < maxDistance && shouldAction) {
         // calculate the offset distance
         // distance 0 to max is mapping to 60 to 0
         // it means less distance will get large offset
@@ -157,6 +161,21 @@ class NaughtyArrow extends React.Component<object, State> {
   }
 
   /**
+   * Trigger for shouldAction flag.
+   * 
+   * Switch flag when `esc` button was pressed.
+   * @param e keyboard event
+   */
+  public actionTrigger(e: KeyboardEvent) {
+    // 27: esc
+    if (e.which === 27) {
+      console.log(1)
+      const sa = this.state.shouldAction;
+      this.setState({ shouldAction: !sa });
+    }
+  }
+
+  /**
    * Do these thing when arrow component was mounted:
    * - add event listener for mouse move
    * - calculate the midpoint for arrow component
@@ -179,8 +198,9 @@ class NaughtyArrow extends React.Component<object, State> {
 
     //  check if it is not a small screen
     if (this.state.shouldAction) {
-      // add event listener for mouse move
+      // add event listener for mouse move and key board
       window.addEventListener('mousemove', this.handleMousemove);
+      window.addEventListener('keydown', this.actionTrigger);
       // set midpoint when component was mounted
       this.setState({
         midpoint: this.calculateMidpoint(rect),
@@ -198,8 +218,9 @@ class NaughtyArrow extends React.Component<object, State> {
    */
   public componentWillUnmount() {
     if (this.state.shouldAction) {
-      // remove mouse move event listener
+      // remove event listener
       window.removeEventListener('mousemove', this.handleMousemove);
+      window.removeEventListener('keydown', this.actionTrigger);
     }
   }
 
