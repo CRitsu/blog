@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { I18nextProvider } from 'react-i18next';
 import { connect, Provider } from 'react-redux';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { createStore, Dispatch } from 'redux';
 import { fetchLists } from '../fetch';
 import i18n from '../i18n';
@@ -26,12 +26,17 @@ class App extends React.Component<Props> {
 
   public render() {
 
+    // for pass props
+    const ListsWrapper = () => (
+      <Lists lists={this.props.lists} />
+    )
+
     return (
       <Router>
         <div className="app">
           <Navigation />
-          <Banner />
-          <Lists lists={this.props.lists} />
+          <Route path="/" exact={true} component={Banner} />
+          <Route path="/" exact={true} component={ListsWrapper} />
           <Contents />
         </div>
       </Router>

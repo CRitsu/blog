@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { translate } from 'react-i18next';
-import { Link, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { LATEST } from '../../constants';
 import { Articles, Translate } from '../../types';
 
@@ -26,8 +26,8 @@ class Lists extends React.Component<Props, State> {
 
 
     // edit list
-    const EditedList = (props: { match: boolean }) => (
-      <div className={'list-contents ' + (props.match ? '' : 'hide')}>
+    const EditedList = () => (
+      <div className={'list-contents'}>
         {
           lists.map(
             item => (
@@ -43,14 +43,9 @@ class Lists extends React.Component<Props, State> {
     )
 
     return (
-      <Route path="/" exact={true}>
-        {
-          (props: { match: boolean }) =>
-            <div className="lists">
-              <EditedList match={props.match} />
-            </div>
-        }
-      </Route>
+      <div className="lists">
+        <EditedList />
+      </div>
     )
   }
 }

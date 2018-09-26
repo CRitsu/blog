@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { translate } from 'react-i18next';
-import { Route } from 'react-router-dom';
 import { Block } from '../../components';
 import { Translate } from '../../types';
 import NaughtyArrow from '../accessories/NaughtyArrow';
@@ -18,7 +17,7 @@ class Banner extends React.Component<Translate, State> {
     // import t function for translate
     const { t } = this.props;
 
-    const MainBanner = () => (
+    return (
       <div className="banner">
 
         <div className="main-banner">
@@ -59,11 +58,7 @@ class Banner extends React.Component<Translate, State> {
 
         </div>
       </div>
-    );
-
-    return (
-      <Route path="/" exact={true} component={MainBanner} />
-    );
+    )
   }
 }
 
