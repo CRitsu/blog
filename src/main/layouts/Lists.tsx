@@ -44,9 +44,9 @@ function ControlBar(props: ActiveTab & Translate) {
   // edit active tab's class name
   const applyActive = (name: number) => {
     if (name === activeTab) {
-      return 'tabs active';
+      return 'tab active';
     } else {
-      return 'tabs';
+      return 'tab';
     }
   }
 
