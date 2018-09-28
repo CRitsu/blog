@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { translate } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { CATEGORIES, LATEST, TAGS } from '../../constants';
+import { LATEST } from '../../constants';
 import { Articles, Translate } from '../../types';
+import ControlBar from '../accessories/ControlBar';
 
 
 interface Props extends Translate {
@@ -18,7 +19,7 @@ interface ActiveTab {
  * Create articles list.
  * @param props array of articles
  */
-function EditedList(props: {lists: Articles[]}) {
+function EditedList(props: { lists: Articles[] }) {
   const lists = props.lists;
 
   return (
@@ -34,38 +35,11 @@ function EditedList(props: {lists: Articles[]}) {
   )
 }
 
-/**
- * Control bar for switch tabs and search.
- * @param props activeTab and t translate function
- */
-function ControlBar(props: ActiveTab & Translate) {
-
-  const { activeTab, t } = props;
-  // edit active tab's class name
-  const applyActive = (name: number) => {
-    if (name === activeTab) {
-      return 'tab active';
-    } else {
-      return 'tab';
-    }
-  }
-
-  return (
-    <div className="control-bar">
-      <div className="tabs">
-        <div className={applyActive(LATEST)}>{t('latest')}</div>
-        <div className={applyActive(CATEGORIES)}>{t('categories')}</div>
-        <div className={applyActive(TAGS)}>{t('tags')}</div>
-      </div>
-    </div>
-  )
-}
 
 
 class Lists extends React.Component<Props, ActiveTab> {
 
   public state = {
-    // 1: latest; 2: categories
     activeTab: LATEST
   }
 
