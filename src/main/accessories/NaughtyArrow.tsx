@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { isDOMRect } from '../../utils';
 
 
 interface State {
@@ -147,15 +148,6 @@ class NaughtyArrow extends React.Component<object, State> {
   }
 
   /**
-   * Check if the object is an instance of `DOMRect` or not.
-   * @param rect the result of `getBoundingClientRect` function
-   */
-  public isDOMRect(rect: ClientRect | DOMRect): rect is DOMRect {
-    return 'x' in rect && 'y' in rect
-      && 'width' in rect && 'height' in rect;
-  }
-
-  /**
    * Calculate the midpoint of the main component.
    * 
    * @param rect instance of `DOMRect` interface
@@ -199,7 +191,7 @@ class NaughtyArrow extends React.Component<object, State> {
     const rect = current.getBoundingClientRect();
 
     // type safe check
-    if (!this.isDOMRect(rect)) {
+    if (!isDOMRect(rect)) {
       return;
     }
 
