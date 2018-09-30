@@ -67,9 +67,13 @@ $arrow-width: 60px;
       left: .6rem;
     }
 
-    &.w .logo-link {
-      width: 10rem;
-      left: -1rem;
+    &.w {
+      left: 1rem;
+
+      .logo-link {
+        width: 11rem;
+        left: -1rem;
+      }
     }
   }
 }
@@ -226,7 +230,20 @@ $arrow-width: 60px;
   height: 150vh;
   margin-top: 45px;
 
-  .tabs {
-    @include flex-center();
+  .control-bar {
+    height: 45px;
+
+    .real-bar {
+      width: 100%;
+
+      &.hold {
+        position: fixed;
+        top: 45px;
+      }
+    }
+
+    .tabs {
+      @include flex-center();
+    }
   }
 }
