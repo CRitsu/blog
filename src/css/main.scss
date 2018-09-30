@@ -229,21 +229,58 @@ $arrow-width: 60px;
 .lists {
   height: 150vh;
   margin-top: 45px;
+  max-width: 900px;
+  width: 100%;
+  align-self: center;
 
   .control-bar {
-    height: 45px;
+    height: 30px;
 
     .real-bar {
       width: 100%;
+      max-width: 900px;
+      height: 35px;
+      align-items: center;
+      background-color: white;
+      @include flex-center();
 
       &.hold {
         position: fixed;
         top: 45px;
       }
-    }
 
-    .tabs {
-      @include flex-center();
+      .tabs {
+        @include flex-center();
+
+        .tab {
+          position: relative;
+          width: auto;
+          margin-right: 1rem;
+          cursor: pointer;
+
+          &::after {
+            transition: border .3s ease;
+            border: none;
+          }
+
+          &.active {
+
+            &::after {
+              content: ' ';
+              position: absolute;
+              width: 100%;
+              bottom: -3px;
+              left: 0;
+              border-bottom: #61B4CF 2px solid;
+            }
+          }
+
+        }
+      }
     }
+  }
+
+  .list-contents {
+    margin: 0 1rem;
   }
 }
