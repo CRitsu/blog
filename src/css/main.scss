@@ -55,24 +55,23 @@ $arrow-width: 60px;
     overflow: hidden;
 
     .logo-link {
-      transition: all .2s ease;
-      width: 1.5rem;
+      transition: all .2s linear;
+      width: 18pt;
       height: 12px;
       display: inline-block;
       white-space: nowrap;
-      background-image: url(../resources/logo.svg);
+      background-image: url(../resources/logo.point.svg);
       background-repeat: no-repeat;
       background-size: auto 100%;
+      background-position: center;
       position: relative;
-      left: .6rem;
     }
 
     &.w {
-      left: 1rem;
 
       .logo-link {
-        width: 11rem;
-        left: -1rem;
+        background-image: url(../resources/logo.svg);
+        width: 120pt;
       }
     }
   }
@@ -234,13 +233,14 @@ $arrow-width: 60px;
   align-self: center;
 
   .control-bar {
+    color: #333;
     height: 30px;
 
     .real-bar {
       width: 100%;
       max-width: 900px;
       height: 35px;
-      align-items: center;
+      align-items: flex-start;
       background-color: white;
       @include flex-center();
 
@@ -250,6 +250,7 @@ $arrow-width: 60px;
       }
 
       .tabs {
+        line-height: 1.5rem;
         @include flex-center();
 
         .tab {
@@ -264,17 +265,48 @@ $arrow-width: 60px;
           }
 
           &.active {
-
-            &::after {
-              content: ' ';
-              position: absolute;
-              width: 100%;
-              bottom: -3px;
-              left: 0;
-              border-bottom: #61B4CF 2px solid;
-            }
+            color: white;
+            background-color: #61B4CF;
+            padding: 0 .5rem;
           }
 
+        }
+      }
+
+      .search-area {
+        line-height: 1.5rem;
+
+        .magnifier {
+
+          .query-mark {
+            vertical-align: middle;
+            background-image: url(../resources/query-mark.svg);
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 1.5rem;
+            width: 1.5rem;
+            display: inline-block;
+          }
+
+          .search {
+            border: none;
+            outline: none;
+            padding: 0 .5rem;
+            line-height: 1.5rem;
+            font-size: .8rem;
+            width: 4rem;
+            transition: all .3s ease;
+            caret-color: #61B4CF;
+            background-color: white;
+
+            width: 10rem;
+            &.focus {
+
+              // &::placeholder {
+              //   color: white;
+              // }
+            }
+          }
         }
       }
     }
