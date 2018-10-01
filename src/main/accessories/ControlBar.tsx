@@ -10,6 +10,7 @@ interface Props extends Translate {
 interface State {
   bar: React.RefObject<HTMLDivElement>,
   cls: string
+  input: React.RefObject<HTMLInputElement>,
 }
 
 
@@ -24,10 +25,13 @@ class ControlBar extends React.Component<Props, State> {
 
     this.state = {
       bar: React.createRef<HTMLDivElement>(),
-      cls: ''
+      cls: '',
+      input: React.createRef<HTMLInputElement>(),
     };
 
     this.handleScroll = this.handleScroll.bind(this);
+    this.handleOnfocus = this.handleOnfocus.bind(this);
+    this.handleOnblur = this.handleOnblur.bind(this);
   }
 
   /**
@@ -66,6 +70,30 @@ class ControlBar extends React.Component<Props, State> {
     }
   }
 
+  public handleSwitchTabs(tab: number) {
+    // this.setState()
+  }
+
+  /**
+   * Add focus class name for input element.
+   */
+  public handleOnfocus() {
+    const current = this.state.input.current;
+    if (current !== null) {
+      current.className = 'search focus';
+    }
+  }
+
+  /**
+   * Remove focus class name for input element.
+   */
+  public handleOnblur() {
+    const current = this.state.input.current;
+    if (current !== null) {
+      current.className = 'search';
+    }
+  }
+
   /**
    * Load event listener.
    */
@@ -82,7 +110,7 @@ class ControlBar extends React.Component<Props, State> {
 
   public render() {
     const { activeTab, t } = this.props;
-    const { bar, cls } = this.state;
+    const { bar, cls, input } = this.state;
 
     // edit class name
     const className = 'real-bar ' + cls;
@@ -103,6 +131,13 @@ class ControlBar extends React.Component<Props, State> {
             <div className={applyActive(LATEST)}>{t('latest')}</div>
             <div className={applyActive(CATEGORIES)}>{t('categories')}</div>
             <div className={applyActive(TAGS)}>{t('tags')}</div>
+          </div>
+          <div className="search-area">
+            <label className="magnifier">
+              <span className="query-mark" />
+              <input className="search" placeholder={t('search')} ref={input}
+                onFocus={this.handleOnfocus} onBlur={this.handleOnblur} />
+            </label>
           </div>
         </div>
       </div>
