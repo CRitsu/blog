@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { translate } from 'react-i18next';
 import { Block } from '../../components';
+import { github, weibo } from '../../config';
 import { MEMO_COLOR, PHOTO_COLOR, TALK_COLOR, TECH_COLOR } from '../../constants/colors';
 import { Translate } from '../../types';
 import NaughtyArrow from '../accessories/NaughtyArrow';
@@ -32,8 +33,8 @@ class Banner extends React.Component<Translate, State> {
           </div>
 
           <div className="social">
-            <a className="icon github" href="https://github.com/zfanli" target="blank" />
-            <a className="icon weibo" href="https://weibo.com/210100026" target="blank" />
+            <a className="icon github" href={github} target="blank" />
+            <a className="icon weibo" href={weibo} target="blank" />
           </div>
 
           <div className="categories">
