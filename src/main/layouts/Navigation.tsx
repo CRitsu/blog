@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { Block } from '../../components';
+import { name } from '../../config';
 import { Translate } from '../../types';
 
 
@@ -73,7 +74,6 @@ class Navigation extends React.Component {
     const { showLogo } = this.state;
     const homeClass = !this.isHomePage() || showLogo ? 'home w' : 'home';
 
-    const blocksBackgroundColor = 'bg-blue-light1';
 
     // check if the user agent is windows platform
     // scroll bar display in different way between mac and windows
@@ -88,17 +88,17 @@ class Navigation extends React.Component {
       <div className="nav">
 
         <div className="index">
-          <Block className={blocksBackgroundColor} />
+          <Block className="" />
         </div>
 
         <div className={homeClass}>
-          <Link to="/" className="logo-link" onClick={scrollToTop} />
+          <Link to="/" className="logo-link" onClick={scrollToTop} title={name} />
         </div>
 
         <div className={blockClasses}>
-          <Block className={blocksBackgroundColor} />
-          <Block className={blocksBackgroundColor} />
-          <Block className={blocksBackgroundColor} />
+          <Block className="" />
+          <Block className="" />
+          <Block className="language" >L</Block>
         </div>
 
       </div>

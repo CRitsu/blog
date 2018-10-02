@@ -1,5 +1,8 @@
 // configuration
 
+export const name = 'Richard Zfanli';
+export const blogName = 'RICHARD Z';
+
 // Github homepage
 export const github = 'https://github.com/zfanli';
 

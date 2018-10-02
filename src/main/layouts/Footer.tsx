@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { translate } from 'react-i18next';
-import { github, mail, mailBody, mailSubject, weibo } from '../../config';
+import { github, mail, mailBody, mailSubject, name, weibo } from '../../config';
 import { Translate } from '../../types';
 
 
@@ -13,13 +13,13 @@ class Footer extends React.Component<Translate> {
 
     return (
       <div className="footer">
-        <div className="ele">{`©copyright ${year}, richard zfanli`}</div>
-        <a className="ele" href="https://github.com/zfanli/blog-ui">project on GitHub</a>
+        <div className="ele">{`©copyright ${year}, ${name}`}</div>
+        <a className="ele link" href="https://github.com/zfanli/blog-ui">project on GitHub</a>
         <div className="ele contact">
-          {t('contact me')}
-          <a className="way" href={`mailto:${mail}?subject=${mailSubject}&body=${mailBody}`}>MAIL</a>
-          <a className="way" href={github} target="blank">github</a>
-          <a className="way" href={weibo} target="blank">weibo</a>
+          {t('contact me')}<br />
+          <a className="way link" href={`mailto:${mail}?subject=${mailSubject}&body=${mailBody}`}>MAIL</a>
+          <a className="way link" href={github} target="blank">github</a>
+          <a className="way link" href={weibo} target="blank">weibo</a>
         </div>
       </div>
     )

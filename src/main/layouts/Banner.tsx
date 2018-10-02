@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { translate } from 'react-i18next';
 import { Block } from '../../components';
-import { github, weibo } from '../../config';
+import { blogName, github, weibo } from '../../config';
 import { MEMO_COLOR, PHOTO_COLOR, TALK_COLOR, TECH_COLOR } from '../../constants/colors';
 import { Translate } from '../../types';
 import NaughtyArrow from '../accessories/NaughtyArrow';
@@ -24,7 +24,7 @@ class Banner extends React.Component<Translate, State> {
 
         <div className="main-banner">
 
-          <div className="logo">{t('RICHARD Z')}</div>
+          <div className="logo">{blogName}</div>
 
           <div className="motto">
             <div className="motto-1st-line">{t('mottoThe1stLine')}</div>
