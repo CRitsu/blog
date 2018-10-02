@@ -275,6 +275,8 @@ $arrow-width: 60px;
 
       .search-area {
         line-height: 1.5rem;
+        width: 7rem;
+        white-space: nowrap;
 
         .magnifier {
 
@@ -291,20 +293,16 @@ $arrow-width: 60px;
           .search {
             border: none;
             outline: none;
-            padding: 0 .5rem;
-            line-height: 1.5rem;
+            padding: .25rem .5rem;
             font-size: .8rem;
             width: 4rem;
             transition: all .3s ease;
             caret-color: #61B4CF;
             background-color: white;
 
-            width: 10rem;
             &.focus {
-
-              // &::placeholder {
-              //   color: white;
-              // }
+              width: 10rem;
+              border-bottom: #61B4CF 1px solid;
             }
           }
         }
