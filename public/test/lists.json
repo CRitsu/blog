@@ -12,7 +12,8 @@
     ],
     "timestamp": 1531128386417.8281,
     "title": "The article title 6 The article title 6 The article title 6 ",
-    "views": 123222
+    "views": 123222,
+    "category": "tech"
   },
   {
     "_id": "5b432a42f047055655255291",
@@ -27,7 +28,8 @@
     ],
     "timestamp": 1531128385417.8281,
     "title": "The article title 5 The article title 5 The article title 5 The article title 5 ",
-    "views": 332
+    "views": 332,
+    "category": "memo"
   },
   {
     "_id": "5b432a42f047055655255295",
@@ -42,7 +44,8 @@
     ],
     "timestamp": 1531128382417.8281,
     "title": "The article title 4",
-    "views": 1
+    "views": 1,
+    "category": "photo"
   },
   {
     "_id": "5b432a42f047055655255294",
@@ -57,7 +60,8 @@
     ],
     "timestamp": 1531128356417.8281,
     "title": "The article title 3",
-    "views": 0
+    "views": 0,
+    "category": "talk"
   },
   {
     "_id": "5b432a42f047055655255293",
@@ -72,7 +76,8 @@
     ],
     "timestamp": 1531124386417.8281,
     "title": "The article title 2",
-    "views": 43
+    "views": 43,
+    "category": "tech"
   }, 
   {
     "_id": "5b432a42f047055655255292",
@@ -87,6 +92,7 @@
     ],
     "timestamp": 1531128286417.8281,
     "title": "The article title 1",
-    "views": 99899912
+    "views": 99899912,
+    "category": "memo"
   }
 ]
