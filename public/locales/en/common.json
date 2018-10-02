@@ -1,5 +1,4 @@
 {
-  "RICHARD Z": "RICHARD Z",
   "mottoThe1stLine": "plan for a new goal,",
   "mottoThe2ndLine": "build a new environment,",
   "mottoThe3rdLine": "start a new trip.",
@@ -11,5 +10,6 @@
   "latest": "LATEST",
   "categories": "CATEGORIES",
   "tags": "TAGS",
-  "contact me": "CONTACT ME:"
+  "load more": "LOAD MORE",
+  "contact me": "CONTACT ME"
 }

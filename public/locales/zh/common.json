@@ -1,5 +1,4 @@
 {
-  "RICHARD Z": "RICHARD Z",
   "mottoThe1stLine": "为自己计划一个新目标，",
   "mottoThe2ndLine": "然后潜心研究，创建一个新环境，",
   "mottoThe3rdLine": "接着，开始一个新旅程。",
@@ -11,5 +10,6 @@
   "latest": "最新",
   "categories": "分类",
   "tags": "标签",
-  "contact me": "联系我："
+  "load more": "加载更多",
+  "contact me": "联系我"
 }
