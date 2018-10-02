@@ -19,4 +19,11 @@ body,
   height: 100%;
 }
 
+button,
+input {
+  outline: none;
+  margin: 0;
+  padding: 0;
+}
+
 @import url('./App.css');
