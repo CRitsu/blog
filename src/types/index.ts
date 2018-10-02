@@ -9,7 +9,8 @@ export interface Articles {
   timestamp: number,
   title: string,
   views: number,
-  deleted: boolean
+  deleted: boolean,
+  category: string,
 }
 
 export interface State {
