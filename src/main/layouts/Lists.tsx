@@ -67,6 +67,7 @@ class Lists extends React.Component<Props, ActiveTab, { store: object }> {
       <div className="lists">
         <ControlBar t={t} activeTab={activeTab} />
         <EditedList lists={lists} />
+        <button className="more">{t('load more')}</button>
       </div>
     )
   }

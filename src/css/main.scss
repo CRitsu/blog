@@ -38,6 +38,7 @@ $arrow-width: 60px;
 
     .block {
       margin-left: 1rem;
+      background-color: $blue-light1;
     }
   }
 
@@ -45,6 +46,14 @@ $arrow-width: 60px;
     flex-basis: $nav-both-sides-button-width;
     display: flex;
     justify-content: space-evenly;
+
+    .block {
+      color: white;
+      font-weight: bold;
+      background-color: $blue-light1;
+      @include flex-center();
+      align-items: center;
+    }
   }
 
   .home {
@@ -230,11 +239,11 @@ $arrow-width: 60px;
 $lists-max-width: 700px;
 
 .lists {
-  height: 150vh;
-  margin-top: 45px;
+  margin: 45px 0;
   max-width: $lists-max-width;
   width: 100%;
   align-self: center;
+  @include flex-column();
 
   .control-bar {
     color: #333;
@@ -276,7 +285,7 @@ $lists-max-width: 700px;
 
           &.active {
             color: white;
-            background-color: #61B4CF;
+            background-color: $blue-light1;
             padding: 0 .5rem;
           }
 
@@ -306,13 +315,13 @@ $lists-max-width: 700px;
             font-size: .8rem;
             width: 4rem;
             transition: all .3s ease;
-            caret-color: #61B4CF;
+            caret-color: $blue-light1;
             background-color: white;
             border-bottom: transparent 1px solid;
 
             &.focus {
               width: 10rem;
-              border-bottom: #61B4CF 1px solid;
+              border-bottom: $blue-light1 1px solid;
             }
           }
         }
@@ -321,33 +330,36 @@ $lists-max-width: 700px;
   }
 
   .list-contents {
-    margin: 0 1rem;
+    margin-top: 45px;
 
     .item {
       display: flex;
       align-items: center;
-      margin: 1rem;
+      margin: 1.5rem 1rem;
       min-height: 3rem;
 
-      &.tech{
+      &.tech {
 
         .block {
           background-color: $tech;
         }
       }
-      &.memo{
+
+      &.memo {
 
         .block {
           background-color: $memo;
         }
       }
-      &.photo{
+
+      &.photo {
 
         .block {
           background-color: $photo;
         }
       }
-      &.talk{
+
+      &.talk {
 
         .block {
           background-color: $talk;
@@ -379,6 +391,20 @@ $lists-max-width: 700px;
       }
     }
   }
+
+  .more {
+    text-align: center;
+    font-size: .8rem;
+    margin: 0 auto;
+    border: none;
+    cursor: pointer;
+    color: $blue-dark3;
+    transition: color .3s ease;
+
+    &:hover {
+      color: $blue-light1;
+    }
+  }
 }
 
 
@@ -387,12 +413,13 @@ $lists-max-width: 700px;
   background-color: $blue-dark3;
   text-transform: uppercase;
   font-size: .8rem;
+  line-height: 1.2rem;
   padding: 0 1rem;
   @include flex-center();
+  align-items: center;
 
 
   @media (max-width: 768px) {
-    align-items: center;
     @include flex-column();
     padding: 1rem 0;
   }
@@ -406,14 +433,24 @@ $lists-max-width: 700px;
 
     &.contact {
       margin-left: auto;
+      text-align: center;
 
       @media (max-width: 768px) {
         margin: 0;
       }
 
       .way {
-        margin-left: .5rem;
+        margin: 0 .25rem;
       }
+    }
+  }
+
+  .link {
+    color: white;
+    transition: color .3s ease;
+
+    &:hover {
+      color: $blue-light1;
     }
   }
 }
