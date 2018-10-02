@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { translate } from 'react-i18next';
 import { Block } from '../../components';
+import { MEMO_COLOR, PHOTO_COLOR, TALK_COLOR, TECH_COLOR } from '../../constants/colors';
 import { Translate } from '../../types';
 import NaughtyArrow from '../accessories/NaughtyArrow';
 
@@ -37,19 +38,19 @@ class Banner extends React.Component<Translate, State> {
 
           <div className="categories">
             <div className="item">
-              <Block className="bg-blue-dark3" />
+              <Block className={TECH_COLOR} />
               <div className="category">{t('tech')}</div>
             </div>
             <div className="item">
-              <Block className="bg-yellow-light2" />
+              <Block className={MEMO_COLOR} />
               <div className="category">{t('memo')}</div>
             </div>
             <div className="item">
-              <Block className="bg-red-dark1" />
-              <div className="category">{t('life')}</div>
+              <Block className={PHOTO_COLOR} />
+              <div className="category">{t('photo')}</div>
             </div>
             <div className="item">
-              <Block className="bg-red-light1" />
+              <Block className={TALK_COLOR} />
               <div className="category">{t('talk')}</div>
             </div>
           </div>
