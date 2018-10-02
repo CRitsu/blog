@@ -19,7 +19,7 @@
   font-display: swap;
 }
 
-@import url('./main.css');
-@import url('./components.css');
-@import url('./colors.css');
-@import url('./animation.css');
+@import 'components.scss';
+@import 'colors.scss';
+@import 'animation.scss';
+@import 'main.scss';
