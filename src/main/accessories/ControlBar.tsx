@@ -128,9 +128,9 @@ class ControlBar extends React.Component<Props, State> {
       <div className="control-bar" ref={bar}>
         <div className={className}>
           <div className="tabs">
-            <div className={applyActive(LATEST)}>{t('latest')}</div>
-            <div className={applyActive(CATEGORIES)}>{t('categories')}</div>
-            <div className={applyActive(TAGS)}>{t('tags')}</div>
+            <button className={applyActive(LATEST)}>{t('latest')}</button>
+            <button className={applyActive(CATEGORIES)}>{t('categories')}</button>
+            <button className={applyActive(TAGS)}>{t('tags')}</button>
           </div>
           <div className="search-area">
             <label className="magnifier">
