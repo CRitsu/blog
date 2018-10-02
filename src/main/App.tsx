@@ -9,6 +9,7 @@ import { rootReducer as reducers } from '../reducers';
 import { Articles, State } from '../types';
 import Banner from './layouts/Banner';
 import Contents from './layouts/Contents';
+import Footer from './layouts/Footer';
 import Lists from './layouts/Lists';
 import Navigation from './layouts/Navigation';
 
@@ -38,6 +39,7 @@ class App extends React.Component<Props> {
           <Route path="/" exact={true} component={Banner} />
           <Route path="/" exact={true} component={ListsWrapper} />
           <Contents />
+          <Footer />
         </div>
       </Router>
     );
