@@ -16,17 +16,17 @@ function formatDate(time: number, format?: string) {
   const date = new Date(time);
   const year = date.getFullYear();
   const month = date.getMonth();
+  const day = date.getDate();
   // fill 0 if number less then 10
   const fillZero = (t: number) => String(t).length > 1 ? t : `0${t}`;
-  const day = fillZero(date.getDate());
-
+  
   if (format === 'MMM DD, YYYY') {
-    return `${MONTHS[month]} ${day}, ${year}`;
+    return `${MONTHS[month]} ${fillZero(day)}, ${year}`;
   }
 
   // default format
   // const shortYear = String(year).slice(2,4);
-  return `${fillZero(month)}/${day}\n${year}`;
+  return `${fillZero(month)}/${fillZero(day)}\n${year}`;
 
 }
 
