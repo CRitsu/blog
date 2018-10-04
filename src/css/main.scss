@@ -30,7 +30,7 @@ $arrow-width: 60px;
   display: flex;
   align-items: center;
   height: 45px;
-  z-index: 99;
+  z-index: 199;
   @include set-flex-grow();
 
   .index {
@@ -44,8 +44,12 @@ $arrow-width: 60px;
 
   .blocks {
     flex-basis: $nav-both-sides-button-width;
+    position: relative;
     display: flex;
+    align-items: center;
     justify-content: space-evenly;
+    height: 45px;
+    background-color: white;
 
     .block {
       color: white;
@@ -53,6 +57,59 @@ $arrow-width: 60px;
       background-color: $blue-dark3;
       @include flex-center();
       align-items: center;
+    }
+
+    &:hover {
+      .menu {
+        
+        .item {
+          line-height: 1.5rem;
+          margin: .5rem 1rem;
+        }
+      }
+    }
+
+
+    .menu {
+      position: fixed;
+      top: 45px;
+      left: 0;
+      width: 100vw;
+      background-color: $blue-dark3;
+      color: white;
+      align-items: flex-end;
+      overflow: hidden;
+      @include flex-column();
+      
+      .item {
+        line-height: 0rem;
+        transition: all .3s .5s ease;
+        margin: 0rem 1rem;
+        text-align: center;
+      }
+
+      .language {
+
+        .language-list {
+          font-size: .8rem;
+          font-weight: normal;
+          @include flex-center();
+
+          .l {
+            cursor: pointer;
+
+            &:hover {
+              color: $blue-light1;
+            }
+
+            &:not(:last-child)::after {
+              content: '|';
+              margin: 0 .5rem;
+              color: white;
+            }
+          }
+        }
+      }
     }
   }
 
@@ -89,6 +146,7 @@ $arrow-width: 60px;
 }
 
 .banner {
+  background-color: white;
   overflow: hidden;
 
   .main-banner {
@@ -239,9 +297,10 @@ $arrow-width: 60px;
 $lists-max-width: 700px;
 
 .lists {
-  margin: 45px 0;
+  padding: 45px 0;
   max-width: $lists-max-width;
   width: 100%;
+  background-color: white;
   align-self: center;
   @include flex-column();
 

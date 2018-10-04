@@ -1,11 +1,13 @@
+import { changeLanguage } from 'i18next';
 import * as React from 'react';
+import { translate } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { Block } from '../../components';
 import { name } from '../../config';
 import { Translate } from '../../types';
 
 
-class Navigation extends React.Component {
+class Navigation extends React.Component<Translate> {
 
   public state = {
     showLogo: false
@@ -17,6 +19,14 @@ class Navigation extends React.Component {
   public constructor(props: Translate) {
     super(props);
     this.handleScroll = this.handleScroll.bind(this);
+  }
+
+  public handleChangeLanguage(e: React.MouseEvent) {
+    const current = e.currentTarget;
+    const value = current.getAttribute('value');
+    if (value !== null) {
+      changeLanguage(value);
+    }
   }
 
   /**
@@ -71,6 +81,8 @@ class Navigation extends React.Component {
 
   public render() {
 
+    const { t } = this.props;
+
     const { showLogo } = this.state;
     const homeClass = !this.isHomePage() || showLogo ? 'home w' : 'home';
 
@@ -96,9 +108,18 @@ class Navigation extends React.Component {
         </div>
 
         <div className={blockClasses}>
-          <Block className="" />
-          <Block className="" />
-          <Block className="language" >L</Block>
+          <Block />
+          <Block />
+          <Block />
+          <div className="menu">
+            <div className="item language">
+              <div className="name">{t('language')}</div>
+              <ul className="language-list">
+                <li className="l" onClick={this.handleChangeLanguage} value="EN">ENGLISH</li>
+                <li className="l" onClick={this.handleChangeLanguage} value="ZH">中文</li>
+              </ul>
+            </div>
+          </div>
         </div>
 
       </div>
@@ -106,4 +127,4 @@ class Navigation extends React.Component {
   }
 }
 
-export default Navigation;
+export default translate()(Navigation);
