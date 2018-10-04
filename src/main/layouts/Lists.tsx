@@ -57,9 +57,6 @@ class Lists extends React.Component<Props, ActiveTab, { store: object }> {
 
   public render() {
 
-    const store = this.context;
-    console.log(store);
-
     const { lists, t } = this.props;
     const activeTab = this.state.activeTab;
 

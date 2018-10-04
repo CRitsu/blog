@@ -168,7 +168,6 @@ class NaughtyArrow extends React.Component<object, State> {
   public actionTrigger(e: KeyboardEvent) {
     // 27: esc
     if (e.which === 27) {
-      console.log(1)
       const sa = this.state.shouldAction;
       this.setState({ shouldAction: !sa });
     }
