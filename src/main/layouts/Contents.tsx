@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { translate } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { RouteComponentProps } from 'react-router';
+import { Route } from 'react-router-dom';
 
 interface Props {
   t: (s: string) => string
@@ -9,10 +10,14 @@ interface Props {
 class Contents extends React.Component<Props, object> {
   public render() {
 
+    const article = (props: RouteComponentProps<any>) => (
+      <div>{props.match.params.articleId}</div>
+    )
+
     return (
-        <div className="contents">
-          <Link to="/">TOP</Link>
-        </div>
+      <div className="contents">
+        <Route path="/articles/:articleId" component={article} />
+      </div>
     )
   }
 }
