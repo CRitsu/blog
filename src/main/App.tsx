@@ -1,25 +1,25 @@
 import * as React from 'react';
 import { I18nextProvider } from 'react-i18next';
 import { connect, Provider } from 'react-redux';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { createStore, Dispatch } from 'redux';
+import { BrowserRouter as Router, Route, RouteComponentProps } from 'react-router-dom';
+import { createStore } from 'redux';
 import { fetchLists } from '../fetch';
 import i18n from '../i18n';
 import { rootReducer as reducers } from '../reducers';
-import { Articles, State } from '../types';
+import { ReduxDispatch, State } from '../types';
 import Banner from './layouts/Banner';
 import Contents from './layouts/Contents';
 import Footer from './layouts/Footer';
 import Lists from './layouts/Lists';
 import Navigation from './layouts/Navigation';
 
-interface Props {
-  lists: Articles[],
-  dispatch: Dispatch
-}
+
+// combine interface
+interface Props extends ReduxDispatch, State {}
+
 
 class App extends React.Component<Props> {
-  
+
   public componentDidMount() {
     // fetch lists when loading is completed
     fetchLists(this.props.dispatch);
@@ -27,9 +27,14 @@ class App extends React.Component<Props> {
 
   public render() {
 
+    const { contents, lists } = this.props;
+
     // for pass props
     const ListsWrapper = () => (
-      <Lists lists={this.props.lists} />
+      <Lists {...lists} />
+    )
+    const ContentsWrapper = (props: RouteComponentProps<any>) => (
+      <Contents article={props.match.params.article} {...contents} />
     )
 
     return (
@@ -38,7 +43,7 @@ class App extends React.Component<Props> {
           <Navigation />
           <Route path="/" exact={true} component={Banner} />
           <Route path="/" exact={true} component={ListsWrapper} />
-          <Contents />
+          <Route path="/articles/:article" component={ContentsWrapper} />
           <Footer />
         </div>
       </Router>
@@ -49,6 +54,7 @@ class App extends React.Component<Props> {
 // map attribute from store
 const mapStateTpProps = (state: State) => {
   return {
+    contents: state.contents,
     lists: state.lists
   }
 };

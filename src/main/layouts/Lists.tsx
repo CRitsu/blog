@@ -9,7 +9,7 @@ import ControlBar from '../accessories/ControlBar';
 
 
 interface Props extends Translate {
-  lists: Articles[]
+  list: Articles[]
 }
 
 interface ActiveTab {
@@ -20,8 +20,8 @@ interface ActiveTab {
  * Create articles list.
  * @param props array of articles
  */
-function EditedList(props: { lists: Articles[] }) {
-  const lists = props.lists;
+function EditedList(props: { list: Articles[] }) {
+  const lists = props.list;
 
   const Timestamp = (p: {time: number}) => {
 
@@ -57,13 +57,13 @@ class Lists extends React.Component<Props, ActiveTab, { store: object }> {
 
   public render() {
 
-    const { lists, t } = this.props;
+    const { list, t } = this.props;
     const activeTab = this.state.activeTab;
 
     return (
       <div className="lists">
         <ControlBar t={t} activeTab={activeTab} />
-        <EditedList lists={lists} />
+        <EditedList list={list} />
         <button className="more">{t('load more')}</button>
       </div>
     )

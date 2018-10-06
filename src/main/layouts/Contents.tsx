@@ -2,9 +2,10 @@ import * as React from 'react';
 import { translate } from 'react-i18next';
 import { RouteComponentProps } from 'react-router';
 import { Route } from 'react-router-dom';
+import { ContentsType, Translate } from '../../types';
 
-interface Props {
-  t: (s: string) => string
+interface Props extends ContentsType, Translate {
+  article: string,
 }
 
 class Contents extends React.Component<Props, object> {

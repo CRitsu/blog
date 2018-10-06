@@ -1,3 +1,5 @@
+import { Dispatch } from "redux";
+
 // Type definitions for common use
 
 export interface Articles {
@@ -14,7 +16,16 @@ export interface Articles {
 }
 
 export interface State {
-  lists: Articles[]
+  contents: ContentsType,
+  lists: ListsType
+}
+
+export interface ContentsType {
+  title: string
+}
+
+export interface ListsType {
+  list: Articles[]
 }
 
 export interface BaseAction {
@@ -25,4 +36,8 @@ export interface BaseAction {
 
 export interface Translate {
   t: (p: string) => string
+}
+
+export interface ReduxDispatch {
+  dispatch: Dispatch
 }
