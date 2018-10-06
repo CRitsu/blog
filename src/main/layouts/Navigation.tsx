@@ -100,7 +100,7 @@ class Navigation extends React.Component<Translate> {
       <div className="nav">
 
         <div className="index">
-          <Block className="" />
+          <Block />
         </div>
 
         <div className={homeClass}>
@@ -115,8 +115,8 @@ class Navigation extends React.Component<Translate> {
             <div className="item language">
               <div className="name">{t('language')}</div>
               <ul className="language-list">
-                <li className="l" onClick={this.handleChangeLanguage} value="EN">ENGLISH</li>
-                <li className="l" onClick={this.handleChangeLanguage} value="ZH">中文</li>
+                <li className="l" onClick={this.handleChangeLanguage} value="en">ENGLISH</li>
+                <li className="l" onClick={this.handleChangeLanguage} value="zh">中文</li>
               </ul>
             </div>
           </div>
