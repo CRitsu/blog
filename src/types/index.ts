@@ -24,8 +24,9 @@ export interface ContentsType {
   title: string
 }
 
-export interface ListsType {
-  list: Articles[]
+export interface ListsType extends ReduxDispatch {
+  list: Articles[],
+  loading: boolean,
 }
 
 export interface BaseAction {
@@ -39,5 +40,5 @@ export interface Translate {
 }
 
 export interface ReduxDispatch {
-  dispatch: Dispatch
+  dispatch?: Dispatch
 }
