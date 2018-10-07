@@ -388,6 +388,43 @@ $lists-max-width: 700px;
     }
   }
 
+  .loading {
+    margin: 45px 0;
+    text-transform: uppercase;
+    flex-wrap: wrap;
+    @include flex-center();
+
+    span {
+      display: block;
+      width: 100%;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .block {
+      background-color: $blue-dark3;
+      height: .5rem;
+      width: .5rem;
+
+      &:nth-child(2) {
+        animation: loading 1.8s infinite linear;
+      }
+
+      &:nth-child(3) {
+        animation: loading 1.8s .6s infinite linear;
+      }
+
+      &:nth-child(4) {
+        animation: loading 1.8s 1.2s infinite linear;
+      }
+
+
+      &:not(:last-child) {
+        margin-right: .8rem;
+      }
+    }
+  }
+
   .list-contents {
     margin-top: 45px;
 
