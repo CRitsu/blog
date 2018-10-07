@@ -3,9 +3,8 @@ import { I18nextProvider } from 'react-i18next';
 import { connect, Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, RouteComponentProps } from 'react-router-dom';
 import { createStore } from 'redux';
-import { fetchLists } from '../fetch';
 import i18n from '../i18n';
-import { rootReducer as reducers } from '../reducers';
+import { reducers } from '../reducers';
 import { ReduxDispatch, State } from '../types';
 import Banner from './layouts/Banner';
 import Contents from './layouts/Contents';
@@ -22,16 +21,16 @@ class App extends React.Component<Props> {
 
   public componentDidMount() {
     // fetch lists when loading is completed
-    fetchLists(this.props.dispatch);
+    // fetchLists(this.props.dispatch);
   }
 
   public render() {
 
-    const { contents, lists } = this.props;
+    const { contents, lists, dispatch } = this.props;
 
     // for pass props
     const ListsWrapper = () => (
-      <Lists {...lists} />
+      <Lists {...lists} dispatch={dispatch} />
     )
     const ContentsWrapper = (props: RouteComponentProps<any>) => (
       <Contents article={props.match.params.article} {...contents} />
