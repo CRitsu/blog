@@ -1,4 +1,4 @@
-import { creators } from '../actions';
+import { actionCreators } from '../reducers';
 import { BaseAction } from '../types';
 import { checkStatus, ErrorWithResponse, parseJson } from './utils';
 
@@ -10,6 +10,6 @@ export function fetchLists(dispatch: (action: BaseAction) => void) {
   fetch('/test/lists.json')
     .then(checkStatus)
     .then(parseJson)
-    .then(data => dispatch(creators.listsFetched(data)))
+    .then(data => dispatch(actionCreators.listsFetched(data)))
     .catch(catchError);
 }
