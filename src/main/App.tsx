@@ -2,7 +2,8 @@ import * as React from 'react';
 import { I18nextProvider } from 'react-i18next';
 import { connect, Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, RouteComponentProps } from 'react-router-dom';
-import { createStore } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
+import thunk from 'redux-thunk';
 import i18n from '../i18n';
 import { reducers } from '../reducers';
 import { ReduxDispatch, State } from '../types';
@@ -65,7 +66,7 @@ const AppContainer = connect(
 
 // integrate with redux
 // create store
-const store = createStore(reducers);
+const store = createStore(reducers, applyMiddleware(thunk));
 // wrap redux context
 const AppProvider = () => (
   <Provider store={store}>
