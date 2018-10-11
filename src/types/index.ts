@@ -27,11 +27,12 @@ export interface ContentsType {
 export interface ListsType extends ReduxDispatch {
   list: Articles[],
   loading: boolean,
+  isError: boolean
 }
 
 export interface BaseAction {
   type: string,
-  payload: object | any[],
+  payload: any,
   error?: boolean
 }
 
