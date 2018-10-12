@@ -20,11 +20,6 @@ interface Props extends ReduxDispatch, State {}
 
 class App extends React.Component<Props> {
 
-  public componentDidMount() {
-    // fetch lists when loading is completed
-    // fetchLists(this.props.dispatch);
-  }
-
   public render() {
 
     const { contents, lists, dispatch } = this.props;

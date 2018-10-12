@@ -54,6 +54,14 @@ class Lists extends React.Component<Props, ActiveTab, { store: object }> {
     activeTab: LATEST
   }
 
+  public componentDidMount() {
+    // fetch list
+    const dispatch = this.props.dispatch;
+    if (dispatch !== undefined) {
+      // dispatch() 
+    }
+  }
+
   public render() {
 
     const { list, loading, t } = this.props;
