@@ -1,4 +1,4 @@
-import { Dispatch } from "redux";
+import { DispatchProp } from "react-redux";
 
 // Type definitions for common use
 
@@ -41,5 +41,5 @@ export interface Translate {
 }
 
 export interface ReduxDispatch {
-  dispatch?: Dispatch
+  dispatch?: (action: any) => DispatchProp
 }

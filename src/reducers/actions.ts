@@ -2,9 +2,6 @@
 export const TEST = 'TEST';
 export type TEST = typeof TEST;
 
-export const FETCH_LISTS = 'FETCH_LISTS';
-export type FETCH_LISTS = typeof FETCH_LISTS;
-
 
 // for start fetching
 export const LIST_FETCHING = 'LIST_FETCHING';
