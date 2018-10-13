@@ -27,7 +27,8 @@ export interface ContentsType {
 export interface ListsType extends ReduxDispatch {
   list: Articles[],
   loading: boolean,
-  isError: boolean
+  isError: boolean,
+  initialFlag: boolean,
 }
 
 export interface BaseAction {

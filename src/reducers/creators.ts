@@ -2,7 +2,7 @@ import { Dispatch } from "redux";
 import { LATEST } from "src/constants";
 import { Articles, BaseAction } from "src/types";
 import { checkStatus, parseJson } from "src/utils";
-import { LIST_FETCH_FAILED, LIST_FETCHED, LIST_FETCHING } from "./actions";
+import { LIST_FETCH_FAILED, LIST_FETCHED, LIST_FETCHING, LIST_INITIALIZED } from "./actions";
 
 
 export const listFetchStart = (): BaseAction => ({
@@ -18,6 +18,11 @@ export const listFetchEnd = (list: Articles[]) => ({
 export const listFetchFailed = () => ({
   payload: null,
   type: LIST_FETCH_FAILED,
+});
+
+export const listInitialized = () => ({
+  payload: null,
+  type: LIST_INITIALIZED,
 });
 
 export const fetchList = (fetchType: number) => {

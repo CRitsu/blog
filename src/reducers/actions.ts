@@ -2,6 +2,9 @@
 export const TEST = 'TEST';
 export type TEST = typeof TEST;
 
+// for list initialize
+export const LIST_INITIALIZED = 'LIST_INITIALIZED';
+export type LIST_INITIALIZED = typeof LIST_INITIALIZED;
 
 // for start fetching
 export const LIST_FETCHING = 'LIST_FETCHING';
