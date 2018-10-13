@@ -8,11 +8,11 @@ export class ErrorWithResponse extends Error {
 }
 
 export function checkStatus(response: Response) {
-  if (response.status >= 200 && response.status < 300) {
+  const status = response.status;
+  if ((status >= 200 && status < 300) || status === 304) {
     return response;
   }
-  const error: ErrorWithResponse = new ErrorWithResponse(response.statusText, response);
-  throw error;
+  throw new ErrorWithResponse(response.statusText, response);
 }
 
 export function parseJson(response: Response) {
