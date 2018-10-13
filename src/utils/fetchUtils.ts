@@ -18,3 +18,7 @@ export function checkStatus(response: Response) {
 export function parseJson(response: Response) {
   return response.json();
 }
+
+export function catchError(error: ErrorWithResponse) {
+  return error.response.status;
+}
