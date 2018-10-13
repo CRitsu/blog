@@ -49,8 +49,8 @@ class App extends React.Component<Props> {
 // map attribute from store
 const mapStateTpProps = (state: State) => {
   return {
-    contents: state.contents,
-    lists: state.lists
+    contents: {...state.contents},
+    lists: {...state.lists}
   }
 };
 
