@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { translate } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import { fetchList, listInitialized } from 'src/reducers/creators';
 import { Block } from '../../components';
 import { LATEST } from '../../constants';
 import { Articles, ListsType, Translate } from '../../types';
@@ -56,9 +57,13 @@ class Lists extends React.Component<Props, ActiveTab, { store: object }> {
 
   public componentDidMount() {
     // fetch list
+    const { initialFlag } = this.props;
     const dispatch = this.props.dispatch;
-    if (dispatch !== undefined) {
-      // dispatch() 
+    // condition of fetch action
+    // `dispatch` is available and is not initialized already
+    if (dispatch !== undefined && !initialFlag) {
+      dispatch(listInitialized());
+      dispatch(fetchList(this.state.activeTab));
     }
   }
 
