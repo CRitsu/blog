@@ -74,9 +74,13 @@ class Lists extends React.Component<Props> {
     return (
       <div className="lists">
         <ControlBar t={t} activeTab={activeTab} />
+        {list.length !== 0
+          ? <EditedList list={list} more={t('load more')} />
+          : null
+        }
         {loading
           ? <Loading />
-          : <EditedList list={list} more={t('load more')} />
+          : null
         }
       </div>
     )
