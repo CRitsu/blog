@@ -100,14 +100,14 @@ class Navigation extends React.Component<Translate> {
       <div className="nav">
 
         <div className="index">
-          <Block />
+          <Block title="Magic button" />
         </div>
 
         <div className={homeClass}>
           <Link to="/" className="logo-link" onClick={scrollToTop} title={name} />
         </div>
 
-        <div className={blockClasses}>
+        <div className={blockClasses} >
           <Block />
           <Block />
           <Block />
