@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { translate } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { fetchList, listInitialized } from 'src/reducers/creators';
+import { fetchList, listInitialized, switchActiveTab } from 'src/reducers/creators';
 import { Block } from '../../components';
 import { Articles, ListsType, Translate } from '../../types';
 import { formatDate } from '../../utils';
@@ -46,6 +46,11 @@ function EditedList(props: { list: Articles[], more: string }) {
 
 class Lists extends React.Component<Props> {
 
+  public constructor(props: Props) {
+    super(props);
+    this.handleSwitchActiveTab = this.handleSwitchActiveTab.bind(this);
+  }
+
   public componentDidMount() {
     // fetch list
     const { initialFlag, activeTab } = this.props;
@@ -55,6 +60,22 @@ class Lists extends React.Component<Props> {
     if (dispatch !== undefined && !initialFlag) {
       dispatch(listInitialized());
       dispatch(fetchList(activeTab));
+    }
+  }
+
+  /**
+   * Switch active tab.
+   * @param tab tab index
+   */
+  public handleSwitchActiveTab(tab: number) {
+    const { dispatch, activeTab } = this.props;
+    // nothing changed
+    if (tab === activeTab) {
+      return;
+    }
+    // changing active tab
+    if (dispatch !== undefined) {
+      dispatch(switchActiveTab(tab));
     }
   }
 
@@ -73,7 +94,7 @@ class Lists extends React.Component<Props> {
 
     return (
       <div className="lists">
-        <ControlBar t={t} activeTab={activeTab} />
+        <ControlBar t={t} activeTab={activeTab} onSwitchTab={this.handleSwitchActiveTab} />
         {list.length !== 0
           ? <EditedList list={list} more={t('load more')} />
           : null

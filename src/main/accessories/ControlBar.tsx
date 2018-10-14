@@ -4,7 +4,8 @@ import { Translate } from '../../types';
 
 
 interface Props extends Translate {
-  activeTab: number
+  activeTab: number,
+  onSwitchTab: (tab: number) => void,
 }
 
 interface State {
@@ -109,7 +110,7 @@ class ControlBar extends React.Component<Props, State> {
   }
 
   public render() {
-    const { activeTab, t } = this.props;
+    const { activeTab, t, onSwitchTab } = this.props;
     const { bar, cls, input } = this.state;
 
     // edit class name
@@ -124,13 +125,18 @@ class ControlBar extends React.Component<Props, State> {
       }
     }
 
+    const switch2latest = () => onSwitchTab(LATEST);
+    const switch2categories = () => onSwitchTab(CATEGORIES);
+    const switch2tags = () => onSwitchTab(TAGS);
+
+
     return (
       <div className="control-bar" ref={bar}>
         <div className={className}>
           <div className="tabs">
-            <button className={applyActive(LATEST)}>{t('latest')}</button>
-            <button className={applyActive(CATEGORIES)}>{t('categories')}</button>
-            <button className={applyActive(TAGS)}>{t('tags')}</button>
+            <button className={applyActive(LATEST)} onClick={switch2latest}>{t('latest')}</button>
+            <button className={applyActive(CATEGORIES)} onClick={switch2categories}>{t('categories')}</button>
+            <button className={applyActive(TAGS)} onClick={switch2tags}>{t('tags')}</button>
           </div>
           <div className="search-area">
             <label className="magnifier">
@@ -138,6 +144,9 @@ class ControlBar extends React.Component<Props, State> {
               <input className="search" placeholder={t('search')} ref={input}
                 onFocus={this.handleOnfocus} onBlur={this.handleOnblur} />
             </label>
+          </div>
+          <div className="categories-menu">
+            categories menu
           </div>
         </div>
       </div>
