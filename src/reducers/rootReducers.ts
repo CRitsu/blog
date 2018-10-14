@@ -1,9 +1,11 @@
+import { LATEST } from 'src/constants';
 import { BaseAction, ContentsType, ListsType } from '../types';
 import { LIST_FETCH_FAILED, LIST_FETCHED, LIST_FETCHING, LIST_INITIALIZED } from './actions';
 
 
 export const lists = (
   state: ListsType = {
+    activeTab: LATEST,
     initialFlag: false,
     isError: false,
     list: [],

@@ -3,17 +3,12 @@ import { translate } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { fetchList, listInitialized } from 'src/reducers/creators';
 import { Block } from '../../components';
-import { LATEST } from '../../constants';
 import { Articles, ListsType, Translate } from '../../types';
 import { formatDate } from '../../utils';
 import ControlBar from '../accessories/ControlBar';
 
 
 interface Props extends Translate, ListsType { }
-
-interface ActiveTab {
-  activeTab: number
-}
 
 /**
  * Create articles list.
@@ -49,28 +44,23 @@ function EditedList(props: { list: Articles[], more: string }) {
 
 
 
-class Lists extends React.Component<Props, ActiveTab, { store: object }> {
-
-  public state = {
-    activeTab: LATEST
-  }
+class Lists extends React.Component<Props> {
 
   public componentDidMount() {
     // fetch list
-    const { initialFlag } = this.props;
+    const { initialFlag, activeTab } = this.props;
     const dispatch = this.props.dispatch;
     // condition of fetch action
     // `dispatch` is available and is not initialized already
     if (dispatch !== undefined && !initialFlag) {
       dispatch(listInitialized());
-      dispatch(fetchList(this.state.activeTab));
+      dispatch(fetchList(activeTab));
     }
   }
 
   public render() {
 
-    const { list, loading, t } = this.props;
-    const activeTab = this.state.activeTab;
+    const { activeTab, list, loading, t } = this.props;
 
     const Loading = () => (
       <div className="loading">
