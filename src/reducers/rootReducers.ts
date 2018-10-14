@@ -1,6 +1,6 @@
 import { LATEST } from 'src/constants';
 import { BaseAction, ContentsType, ListsType } from '../types';
-import { LIST_FETCH_FAILED, LIST_FETCHED, LIST_FETCHING, LIST_INITIALIZED } from './actions';
+import { LIST_FETCH_FAILED, LIST_FETCHED, LIST_FETCHING, LIST_INITIALIZED, SWITCH_ACTIVE_TAB } from './actions';
 
 
 export const lists = (
@@ -29,6 +29,10 @@ export const lists = (
     // fetching failed action
     case LIST_FETCH_FAILED:
       return Object.assign({}, state, { loading: false, isError: true });
+
+    // switch active tab
+    case SWITCH_ACTIVE_TAB:
+      return Object.assign({}, state, { activeTab: action.payload.tab });
 
     default:
       return state;

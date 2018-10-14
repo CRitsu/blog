@@ -18,3 +18,6 @@ export type LIST_FETCHED = typeof LIST_FETCHED;
 export const LIST_FETCH_FAILED = 'LIST_FETCH_FAILED';
 export type LIST_FETCH_FAILED = typeof LIST_FETCH_FAILED;
 
+// switch active tab
+export const SWITCH_ACTIVE_TAB = 'SWITCH_ACTIVE_TAB';
+export type SWITCH_ACTIVE_TAB = typeof SWITCH_ACTIVE_TAB;

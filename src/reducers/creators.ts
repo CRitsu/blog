@@ -2,7 +2,7 @@ import { Dispatch } from "redux";
 import { LATEST } from "src/constants";
 import { Articles, BaseAction } from "src/types";
 import { checkStatus, parseJson } from "src/utils";
-import { LIST_FETCH_FAILED, LIST_FETCHED, LIST_FETCHING, LIST_INITIALIZED } from "./actions";
+import { LIST_FETCH_FAILED, LIST_FETCHED, LIST_FETCHING, LIST_INITIALIZED, SWITCH_ACTIVE_TAB } from "./actions";
 
 
 export const listFetchStart = (): BaseAction => ({
@@ -46,3 +46,7 @@ export const fetchList = (fetchType: number) => {
   }
 }
 
+export const switchActiveTab = (tab: number): BaseAction => ({
+  payload: { tab },
+  type: SWITCH_ACTIVE_TAB,
+});
