@@ -314,6 +314,7 @@ $lists-max-width: 700px;
       height: 35px;
       align-items: flex-start;
       background-color: white;
+      flex-wrap: wrap;
       @include flex-center();
 
       &.hold {
@@ -347,8 +348,7 @@ $lists-max-width: 700px;
           }
 
           &.active {
-            color: white;
-            background-color: $blue-dark3;
+            animation: active-tab .3s ease 1 forwards;
             padding: 0 .5rem;
           }
 
@@ -388,6 +388,11 @@ $lists-max-width: 700px;
             }
           }
         }
+      }
+
+      .categories-menu {
+        width: 100%;
+        @include flex-center();
       }
     }
   }
