@@ -1,6 +1,10 @@
 # blog-ui
 
-Clean up.
+**Fetch API**
+
+For test:
+list: /test/lists.json
+article: /test/article.json
 
 
 ## About UI style design
@@ -50,6 +54,8 @@ Okay, I have a locale file names `zh` for Chinese, and I have got user language 
 Nothing to worry about.
 
 ## Web Font memo
+
+**There was nothing about web font now but just left it as a memo and will delete when I get time to arrange it.**
 
 Loading a large size font should not let users to be waiting too much.
 
