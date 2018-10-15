@@ -37,8 +37,8 @@ class App extends React.Component<Props> {
         <div className="app">
           <Navigation />
           <Route path="/" exact={true} component={Banner} />
-          <Route path="/" exact={true} component={ListsWrapper} />
-          <Route path="/articles/:article" component={ContentsWrapper} />
+          <Route path="/" exact={true} render={ListsWrapper} />
+          <Route path="/articles/:article" render={ContentsWrapper} />
           <Footer />
         </div>
       </Router>

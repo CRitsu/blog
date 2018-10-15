@@ -28,6 +28,10 @@ function EditedList(props: { list: Articles[], more: string }) {
     )
   }
 
+  if (list.length === 0) {
+    return null;
+  }
+
   return (
     <div className={'list-contents'}>
       {list.map(item => (
@@ -95,10 +99,7 @@ class Lists extends React.Component<Props> {
     return (
       <div className="lists">
         <ControlBar t={t} activeTab={activeTab} onSwitchTab={this.handleSwitchActiveTab} />
-        {list.length !== 0
-          ? <EditedList list={list} more={t('load more')} />
-          : null
-        }
+        <EditedList list={list} more={t('load more')} />
         {loading
           ? <Loading />
           : null
