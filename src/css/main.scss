@@ -52,6 +52,7 @@ $arrow-width: 60px;
     background-color: white;
 
     .block {
+      cursor: pointer;
       color: white;
       font-weight: bold;
       background-color: $blue-dark3;
@@ -238,16 +239,19 @@ $arrow-width: 60px;
       .item {
         align-items: center;
         @include flex-column();
-
-        .block {
-          height: 50px;
-          width: 50px;
+        
+        a {
           margin-bottom: 3rem;
 
-          @media (max-width: 500px) {
-            margin-bottom: 2rem;
-            height: 40px;
-            width: 40px;
+          .block {
+            height: 50px;
+            width: 50px;
+  
+            @media (max-width: 500px) {
+              margin-bottom: 2rem;
+              height: 40px;
+              width: 40px;
+            }
           }
         }
 
@@ -391,49 +395,56 @@ $lists-max-width: 700px;
         }
       }
 
-      .categories-menu {
+      .categories-menu-wrapper {
         width: 100%;
-        line-height: 1rem;
-        padding-bottom: .5rem;
-        background-color: white;
-        transition: all .3s ease;
+        overflow: hidden;
         margin-right: 7rem;
-        // margin-top: 1rem;
-        justify-content: center;
-        display: flex;
-        opacity: 1;
-        transform: translateY(-100%);
+        transition: all .3s ease;
+        line-height: 1rem;
 
-        &.active {
+
+        .categories-menu {
+          background-color: white;
+          transition: all .3s ease;
+          justify-content: center;
           display: flex;
-          // opacity: 1;
-          transform: translateY(100%);
+          transform: translateY(-100%);
+
+
+          .cat {
+            border: none;
+            font-size: .8rem;
+            text-transform: uppercase;
+            transition: all .3s ease;
+            padding: .1rem .3rem;
+            cursor: pointer;
+
+            &:not(:last-child) {
+              margin-right: .5rem;
+            }
+
+            &:hover {
+              color: $blue-dark3;
+            }
+
+            &.active {
+              background-color: $blue-dark3;
+              color: white;
+            }
+
+          }
         }
 
-        .cat {
-          border: none;
-          font-size: .8rem;
-          text-transform: uppercase;
-          transition: all .3s ease;
-          padding: .1rem .3rem;
-          cursor: pointer;
+        &.active {
+          padding-bottom: 2rem;
 
-          &:not(:last-child) {
-            margin-right: .5rem;
+          .categories-menu {
+            transform: translateY(100%);
           }
-
-          &:hover {
-            color: $blue-dark3;
-          }
-
-          &.active {
-            background-color: $blue-dark3;
-            color: white;
-          }
-
         }
       }
     }
+
   }
 
   .loading {
@@ -473,7 +484,7 @@ $lists-max-width: 700px;
   }
 
   .list-contents {
-    margin-top: 45px;
+    margin-top: 30px;
 
     .item {
       display: flex;
