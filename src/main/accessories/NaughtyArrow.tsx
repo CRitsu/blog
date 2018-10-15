@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { storeListTopPoint } from 'src/reducers/creators';
+import { ReduxDispatch } from 'src/types';
 import { isDOMRect } from '../../utils';
 
 
@@ -15,7 +17,7 @@ interface Coordinate {
 }
 
 
-class NaughtyArrow extends React.Component<object, State> {
+class NaughtyArrow extends React.Component<ReduxDispatch, State> {
 
   /**
    * The constructor.
@@ -41,7 +43,17 @@ class NaughtyArrow extends React.Component<object, State> {
    * scroll to next screen.
    */
   public handleClick() {
-    const rect = this.state.rect;
+    const point = this.getScroll2ListPoint(this.state.rect);
+    if (point !== null) {
+      window.scrollTo(0, point);
+    }
+  }
+
+  /**
+   * Calculate top point of list area,
+   * for arrow to scroll to.
+   */
+  public getScroll2ListPoint(rect?: DOMRect) {
     if (rect !== undefined) {
       // scroll to point
       // y of arrow plus height of arrow
@@ -50,9 +62,10 @@ class NaughtyArrow extends React.Component<object, State> {
       // if not, set target point to screen height
       targetPoint = window.innerHeight < targetPoint 
         ? targetPoint : window.innerHeight;
-      // apply scroll action
-      window.scrollTo(0, targetPoint);
+      
+      return targetPoint;
     }
+    return null;
   }
 
   /**
@@ -208,6 +221,17 @@ class NaughtyArrow extends React.Component<object, State> {
     } else {
       this.setState({ rect });
     }
+
+    // save list top point to store for common use
+    const top = this.getScroll2ListPoint(rect);
+    if (top !== null) {
+      const dispatch = this.props.dispatch;
+
+      if (dispatch !== undefined) {
+        dispatch(storeListTopPoint(top));
+      }
+    }
+
   }
 
 
