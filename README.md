@@ -15,6 +15,26 @@ The new style design is almost been finished.
 
 Let's work it out!
 
+## React Router memo
+
+There was a problem.
+
+CSS transition was not working.
+
+It was always unmount and mount when I trigger the active class.
+
+I have spent too much time on attempt to fix it but got no effect until today.
+
+It will unmount just because I pass a arrow function to component attribute of Route.
+
+The arrow function will create new component instance every time the state has changed. It cause component unexpectedly unmount.
+
+The solution is just use `render` attribute instead `component` for pass props to target component. Just like pass a render method to replace its own one.
+
+Then, CSS transition is working correctly now!
+
+Powerful `render`!
+
 ## I18n memo
 
 Language files are putting in the `\public\locales` folder.
