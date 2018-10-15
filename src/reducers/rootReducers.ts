@@ -1,6 +1,6 @@
 import { LATEST } from 'src/constants';
-import { BaseAction, ContentsType, ListsType } from '../types';
-import { LIST_FETCH_FAILED, LIST_FETCHED, LIST_FETCHING, LIST_INITIALIZED, SWITCH_ACTIVE_TAB } from './actions';
+import { BaseAction, CommonType, ContentsType, ListsType } from '../types';
+import { LIST_FETCHED, LIST_FETCHING, LIST_FETCHING_FAILED, LIST_INITIALIZED, STORE_LIST_TOP_POINT, SWITCH_ACTIVE_TAB } from './actions';
 
 
 export const lists = (
@@ -27,7 +27,7 @@ export const lists = (
       return Object.assign({}, state, { list: action.payload.list, loading: false });
 
     // fetching failed action
-    case LIST_FETCH_FAILED:
+    case LIST_FETCHING_FAILED:
       return Object.assign({}, state, { loading: false, isError: true });
 
     // switch active tab
@@ -43,8 +43,21 @@ export const lists = (
 export const contents = (
   state: ContentsType = {
     title: '',
-  },
-  action: BaseAction
+  }, action: BaseAction
 ): ContentsType => {
   return state;
+}
+
+export const common = (
+  state: CommonType = {
+    listTopPoint: 0
+  }, action: BaseAction
+): CommonType => {
+
+  switch (action.type) {
+    case STORE_LIST_TOP_POINT:
+      return Object.assign({}, state, { listTopPoint: action.payload.p });
+    default:
+      return state;
+  }
 }

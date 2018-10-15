@@ -15,9 +15,13 @@ export const LIST_FETCHED = 'LIST_FETCHED';
 export type LIST_FETCHED = typeof LIST_FETCHED;
 
 // for fetch failed
-export const LIST_FETCH_FAILED = 'LIST_FETCH_FAILED';
-export type LIST_FETCH_FAILED = typeof LIST_FETCH_FAILED;
+export const LIST_FETCHING_FAILED = 'LIST_FETCHING_FAILED';
+export type LIST_FETCHING_FAILED = typeof LIST_FETCHING_FAILED;
 
 // switch active tab
 export const SWITCH_ACTIVE_TAB = 'SWITCH_ACTIVE_TAB';
 export type SWITCH_ACTIVE_TAB = typeof SWITCH_ACTIVE_TAB;
+
+// for store list area top point for common use
+export const STORE_LIST_TOP_POINT = 'STORE_LIST_TOP_POINT';
+export type STORE_LIST_TOP_POINT = typeof STORE_LIST_TOP_POINT;

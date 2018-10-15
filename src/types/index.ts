@@ -16,8 +16,13 @@ export interface Articles {
 }
 
 export interface State {
+  common: CommonType,
   contents: ContentsType,
   lists: ListsType
+}
+
+export interface CommonType {
+  listTopPoint: number,
 }
 
 export interface ContentsType {
