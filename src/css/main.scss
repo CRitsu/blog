@@ -239,16 +239,19 @@ $arrow-width: 60px;
       .item {
         align-items: center;
         @include flex-column();
-        
+
         a {
           margin-bottom: 3rem;
+
+          @media (max-width: 500px) {
+            margin-bottom: 2rem;
+          }
 
           .block {
             height: 50px;
             width: 50px;
   
             @media (max-width: 500px) {
-              margin-bottom: 2rem;
               height: 40px;
               width: 40px;
             }
