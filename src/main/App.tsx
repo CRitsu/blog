@@ -22,11 +22,16 @@ class App extends React.Component<Props> {
 
   public render() {
 
-    const { contents, lists, dispatch } = this.props;
+    const { common, contents, lists, dispatch } = this.props;
 
     // for pass props
+
+    const BannerWrapper = () => (
+      <Banner {...common} dispatch={dispatch} />
+    )
+
     const ListsWrapper = () => (
-      <Lists {...lists} dispatch={dispatch} />
+      <Lists {...lists} {...common} dispatch={dispatch} />
     )
     const ContentsWrapper = (props: RouteComponentProps<any>) => (
       <Contents article={props.match.params.article} {...contents} />
@@ -36,8 +41,8 @@ class App extends React.Component<Props> {
       <Router>
         <div className="app">
           <Navigation />
-          <Route path="/" exact={true} component={Banner} />
-          <Route path="/" exact={true} render={ListsWrapper} />
+          <Route path="/:path(|list/tech|list/memo|list/photo|list/talk|list/tags)" exact={true} render={BannerWrapper} />
+          <Route path="/:path(|list/tech|list/memo|list/photo|list/talk|list/tags)" exact={true} render={ListsWrapper} />
           <Route path="/articles/:article" render={ContentsWrapper} />
           <Footer />
         </div>
@@ -49,6 +54,7 @@ class App extends React.Component<Props> {
 // map attribute from store
 const mapStateTpProps = (state: State) => {
   return {
+    common: {...state.common},
     contents: {...state.contents},
     lists: {...state.lists}
   }
