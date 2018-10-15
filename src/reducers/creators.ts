@@ -2,7 +2,7 @@ import { Dispatch } from "redux";
 import { LATEST } from "src/constants";
 import { Articles, BaseAction } from "src/types";
 import { checkStatus, parseJson } from "src/utils";
-import { LIST_FETCHED, LIST_FETCHING, LIST_FETCHING_FAILED, LIST_INITIALIZED, STORE_LIST_TOP_POINT, SWITCH_ACTIVE_TAB } from "./actions";
+import { LIST_FETCHED, LIST_FETCHING, LIST_FETCHING_FAILED, LIST_INITIALIZED, STORE_LIST_TOP_POINT } from "./actions";
 
 
 export const listFetchStart = (): BaseAction => ({
@@ -45,11 +45,6 @@ export const fetchList = (fetchType: number) => {
       .catch(() => dispatch(listFetchFailed()));
   }
 }
-
-export const switchActiveTab = (tab: number): BaseAction => ({
-  payload: { tab },
-  type: SWITCH_ACTIVE_TAB,
-});
 
 export const storeListTopPoint = (p: number): BaseAction => ({
   payload: {p},

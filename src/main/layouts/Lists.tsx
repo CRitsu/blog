@@ -1,14 +1,15 @@
 import * as React from 'react';
 import { translate } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { fetchList, listInitialized, switchActiveTab } from 'src/reducers/creators';
+import { LATEST } from 'src/constants';
+import { fetchList, listInitialized } from 'src/reducers/creators';
 import { Block } from '../../components';
-import { Articles, ListsType, Translate } from '../../types';
+import { Articles, CommonType, ListsType, Translate } from '../../types';
 import { formatDate } from '../../utils';
 import ControlBar from '../accessories/ControlBar';
 
 
-interface Props extends Translate, ListsType { }
+interface Props extends Translate, ListsType, CommonType { }
 
 /**
  * Create articles list.
@@ -50,42 +51,21 @@ function EditedList(props: { list: Articles[], more: string }) {
 
 class Lists extends React.Component<Props> {
 
-  public constructor(props: Props) {
-    super(props);
-    this.handleSwitchActiveTab = this.handleSwitchActiveTab.bind(this);
-  }
-
   public componentDidMount() {
     // fetch list
-    const { initialFlag, activeTab } = this.props;
+    const { initialFlag } = this.props;
     const dispatch = this.props.dispatch;
     // condition of fetch action
     // `dispatch` is available and is not initialized already
     if (dispatch !== undefined && !initialFlag) {
       dispatch(listInitialized());
-      dispatch(fetchList(activeTab));
-    }
-  }
-
-  /**
-   * Switch active tab.
-   * @param tab tab index
-   */
-  public handleSwitchActiveTab(tab: number) {
-    const { dispatch, activeTab } = this.props;
-    // nothing changed
-    if (tab === activeTab) {
-      return;
-    }
-    // changing active tab
-    if (dispatch !== undefined) {
-      dispatch(switchActiveTab(tab));
+      dispatch(fetchList(LATEST));
     }
   }
 
   public render() {
 
-    const { activeTab, list, loading, t } = this.props;
+    const { list, listTopPoint, loading, t } = this.props;
 
     const Loading = () => (
       <div className="loading">
@@ -98,7 +78,7 @@ class Lists extends React.Component<Props> {
 
     return (
       <div className="lists">
-        <ControlBar t={t} activeTab={activeTab} onSwitchTab={this.handleSwitchActiveTab} />
+        <ControlBar t={t} top={listTopPoint} />
         <EditedList list={list} more={t('load more')} />
         {loading
           ? <Loading />

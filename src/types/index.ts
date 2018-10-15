@@ -34,7 +34,6 @@ export interface ListsType extends ReduxDispatch {
   loading: boolean,
   isError: boolean,
   initialFlag: boolean,
-  activeTab: number,
 }
 
 export interface BaseAction {
