@@ -1,5 +1,5 @@
 import { Dispatch } from "redux";
-import { LATEST } from "src/constants";
+import { LATEST, MEMO, PHOTO, TAGS, TALK, TECH } from "src/constants";
 import { Articles, BaseAction } from "src/types";
 import { checkStatus, parseJson } from "src/utils";
 import { LIST_FETCHED, LIST_FETCHING, LIST_FETCHING_FAILED, LIST_INITIALIZED, STORE_LIST_TOP_POINT } from "./actions";
@@ -28,14 +28,32 @@ export const listInitialized = () => ({
 export const fetchList = (fetchType: number) => {
 
   return (dispatch: Dispatch) => {
+
     dispatch(listFetchStart());
 
     let fetchURL;
 
-    if (fetchType === LATEST) {
-      fetchURL = '/test/lists.json';
-    } else {
-      return;
+    switch (fetchType) {
+      case LATEST:
+        fetchURL = '/test/lists.json';
+        break;
+      case TECH:
+        fetchURL = '/test/lists.json';
+        break;
+      case MEMO:
+        fetchURL = '/test/lists.json';
+        break;
+      case PHOTO:
+        fetchURL = '/test/lists.json';
+        break;
+      case TALK:
+        fetchURL = '/test/lists.json';
+        break;
+      case TAGS:
+        fetchURL = '/test/lists.json';
+        break;
+      default:
+        fetchURL = '/test/lists.json';
     }
 
     return fetch(fetchURL)
@@ -47,6 +65,6 @@ export const fetchList = (fetchType: number) => {
 }
 
 export const storeListTopPoint = (p: number): BaseAction => ({
-  payload: {p},
+  payload: { p },
   type: STORE_LIST_TOP_POINT,
 })

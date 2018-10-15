@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { translate } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { LATEST } from 'src/constants';
+import { LATEST, MEMO, PHOTO, TAGS, TALK, TECH } from 'src/constants';
 import { fetchList, listInitialized } from 'src/reducers/creators';
 import { Block } from '../../components';
 import { Articles, CommonType, ListsType, Translate } from '../../types';
@@ -58,8 +58,33 @@ class Lists extends React.Component<Props> {
     // condition of fetch action
     // `dispatch` is available and is not initialized already
     if (dispatch !== undefined && !initialFlag) {
-      dispatch(listInitialized());
-      dispatch(fetchList(LATEST));
+      const type = this.getListFetchType();
+      if (type !== null) {
+        console.log(type)
+        dispatch(listInitialized());
+        dispatch(fetchList(type));
+      }
+    }
+  }
+
+  // get list type by current path
+  public getListFetchType() {
+    const path = window.location.pathname;
+    switch (path) {
+      case '/':
+        return LATEST;
+      case '/list/tech':
+        return TECH;
+      case '/list/memo':
+        return MEMO;
+      case '/list/photo':
+        return PHOTO;
+      case '/list/talk':
+        return TALK;
+      case '/list/tags':
+        return TAGS;
+      default:
+        return null;
     }
   }
 
