@@ -1,11 +1,10 @@
 import * as React from 'react';
-import { CATEGORIES, LATEST, MEMO, PHOTO, TAGS, TALK, TECH } from '../../constants';
+import { NavLink } from 'react-router-dom';
 import { Translate } from '../../types';
 
 
 interface Props extends Translate {
-  activeTab: number,
-  onSwitchTab: (tab: number) => void,
+  top: number
 }
 
 interface State {
@@ -127,59 +126,32 @@ class ControlBar extends React.Component<Props, State> {
   }
 
   public render() {
-    const { activeTab, t, onSwitchTab } = this.props;
+    const { top, t } = this.props;
     const { bar, cls, input } = this.state;
 
     // edit class name
     const className = 'real-bar ' + cls;
 
-    // for latest/categories/tags
-    const O = 0;
-    // for tech/memo/photo/talk
-    const I = 1;
-
-    // edit active tab's class name
-    const applyActive = (name: number, mode = O) => {
-      if (mode === O) {
-        const at = activeTab > 9 ? Math.floor(activeTab / 10) : activeTab;
-        if (name === at) {
-          return 'active';
-        }
-      } else if (mode === I) {
-        const at = activeTab;
-        if (name === at) {
-          return 'cat active';
-        } else {
-          return 'cat';
-        }
-      }
-      return '';
-    };
-
     const getCategoryMenuClassName = () => {
-      const cn = 'categories-menu';
-      if (Math.floor(activeTab / 10) === CATEGORIES) {
-        return cn + ' active';
-      } else {
-        return cn;
+      const path = window.location.pathname;
+      const test = /\/list\/(tech|memo|photo|talk)/;
+      if (test.test(path)) {
+        return 'active'
       }
+      return ''
     }
 
-    const switch2latest = () => onSwitchTab(LATEST);
-    const switch2tech = () => onSwitchTab(TECH);
-    const switch2memo = () => onSwitchTab(MEMO);
-    const switch2photo = () => onSwitchTab(PHOTO);
-    const switch2talk = () => onSwitchTab(TALK);
-    const switch2tags = () => onSwitchTab(TAGS);
+    const categories = ['tech', 'memo', 'photo', 'talk'];
 
+    const scroll = () => window.scrollTo(0, top);
 
     return (
       <div className="control-bar" ref={bar}>
         <div className={className}>
           <div className="tabs">
-            <button className={`tab ${applyActive(LATEST)}`} onClick={switch2latest}>{t('latest')}</button>
-            <button className={`tab ${applyActive(CATEGORIES)}`} onClick={switch2tech}>{t('categories')}</button>
-            <button className={`tab ${applyActive(TAGS)}`} onClick={switch2tags}>{t('tags')}</button>
+            <NavLink to="/" exact={true} className="tab" activeClassName="active" onClick={scroll} >{t('latest')}</NavLink>
+            <NavLink to="/list/tech" className={`tab ${getCategoryMenuClassName()}`} onClick={scroll} >{t('categories')}</NavLink>
+            <NavLink to="/list/tags" className="tab" activeClassName="active" onClick={scroll} >{t('tags')}</NavLink>
           </div>
           <div className="search-area">
             <label className="magnifier">
@@ -188,11 +160,13 @@ class ControlBar extends React.Component<Props, State> {
                 onFocus={this.handleOnfocus} onBlur={this.handleOnblur} />
             </label>
           </div>
-          <div className={getCategoryMenuClassName()}>
-            <button className={applyActive(TECH, I)} onClick={switch2tech} >{t('tech')}</button>
-            <button className={applyActive(MEMO, I)} onClick={switch2memo} >{t('memo')}</button>
-            <button className={applyActive(PHOTO, I)} onClick={switch2photo} >{t('photo')}</button>
-            <button className={applyActive(TALK, I)} onClick={switch2talk} >{t('talk')}</button>
+          <div className={`categories-menu-wrapper ${getCategoryMenuClassName()}`}>
+            <div className="categories-menu">
+              {categories.map(cat => (
+                <NavLink to={`/list/${cat}`} className="cat" activeClassName="active" 
+                  onClick={scroll} key={cat}>{t(cat)}</NavLink>
+              ))}
+            </div>
           </div>
         </div>
       </div>
