@@ -77,27 +77,3 @@
     transform: scale(1);
   }
 }
-
-@keyframes active-tab {
-  0% {
-    color: inherit;
-    background-color: transparent;
-  }
-
-  100% {
-    color: white;
-    background-color: #024E68;
-  }
-}
-
-@keyframes slide-out {
-  0% {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-
-  100% {
-    transform: translateY(100%);
-    opacity: 1;
-  }
-}
