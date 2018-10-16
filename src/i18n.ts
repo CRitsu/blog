@@ -12,7 +12,7 @@ const instance = i18n
     backend: {
       loadPath: '/locales/{{lng}}/{{ns}}.json'
     },
-    debug: true,
+    debug: false,
     defaultNS: 'common',
     detection: {
       lookupCookie: 'lng',
