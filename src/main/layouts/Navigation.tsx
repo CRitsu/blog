@@ -23,7 +23,8 @@ class Navigation extends React.Component<Translate> {
 
   public handleChangeLanguage(e: React.MouseEvent) {
     const current = e.currentTarget;
-    const value = current.getAttribute('value');
+    const value = current.getAttribute('data-value');
+    console.log(value)
     if (value !== null) {
       changeLanguage(value);
     }
@@ -115,8 +116,12 @@ class Navigation extends React.Component<Translate> {
             <div className="item language">
               <div className="name">{t('language')}</div>
               <ul className="language-list">
-                <li className="l" onClick={this.handleChangeLanguage} value="en">ENGLISH</li>
-                <li className="l" onClick={this.handleChangeLanguage} value="zh">中文</li>
+                <li className="l">
+                  <span onClick={this.handleChangeLanguage} data-value="en">ENGLISH</span>
+                </li>
+                <li className="l">
+                  <span onClick={this.handleChangeLanguage} data-value="zh">中文</span>
+                </li>
               </ul>
             </div>
           </div>

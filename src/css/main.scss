@@ -97,11 +97,15 @@ $arrow-width: 60px;
           @include flex-center();
 
           .l {
-            cursor: pointer;
 
-            &:hover {
-              color: $blue-light1;
+            span {
+              cursor: pointer;
+
+              &:hover {
+                color: $blue-light1;
+              }
             }
+
 
             &:not(:last-child)::after {
               content: '|';
