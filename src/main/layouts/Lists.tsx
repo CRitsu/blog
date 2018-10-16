@@ -60,7 +60,6 @@ class Lists extends React.Component<Props> {
     if (dispatch !== undefined && !initialFlag) {
       const type = this.getListFetchType();
       if (type !== null) {
-        console.log(type)
         dispatch(listInitialized());
         dispatch(fetchList(type));
       }

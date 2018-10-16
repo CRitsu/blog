@@ -24,7 +24,6 @@ class Navigation extends React.Component<Translate> {
   public handleChangeLanguage(e: React.MouseEvent) {
     const current = e.currentTarget;
     const value = current.getAttribute('data-value');
-    console.log(value)
     if (value !== null) {
       changeLanguage(value);
     }
