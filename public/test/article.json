@@ -1,3 +1,15 @@
 {
-  
+  "title": "Title Of the Article",
+  "timestamp": 1531128386417.8281,
+  "views": 123222,
+  "category": "tech",
+  "reviews": 5,
+  "tags": [
+    "OK",
+    "red",
+    "blue"
+  ],
+  "_id": "5b432a42f04705565525529d",
+  "author": "Richard",
+  "content": "# H1 title\n## H2 title"
 }
