@@ -31,10 +31,10 @@ class Navigation extends React.Component<Translate> {
   }
 
   /**
-   * Checker for check if current path is the home page.
+   * Checker for check if banner showed in current page.
    */
-  public isHomePage() {
-    return window.location.pathname === '/';
+  public isBannerShowed() {
+    return /(^\/$)|(^\/list\/.+$)/.test(window.location.pathname);
   }
 
   /**
@@ -44,7 +44,7 @@ class Navigation extends React.Component<Translate> {
   public handleScroll() {
 
     // do nothing if current page is not the home page
-    if (!this.isHomePage()) {
+    if (!this.isBannerShowed()) {
       return;
     }
 
@@ -85,7 +85,7 @@ class Navigation extends React.Component<Translate> {
     const { t } = this.props;
 
     const { showLogo } = this.state;
-    const homeClass = !this.isHomePage() || showLogo ? 'home w' : 'home';
+    const homeClass = !this.isBannerShowed() || showLogo ? 'home w' : 'home';
 
 
     // check if the user agent is windows platform
