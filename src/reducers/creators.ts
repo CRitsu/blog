@@ -2,7 +2,7 @@ import { Dispatch } from "redux";
 import { LATEST, MEMO, PHOTO, TAGS, TALK, TECH } from "src/constants";
 import { Articles, BaseAction } from "src/types";
 import { checkStatus, parseJson } from "src/utils";
-import { LIST_FETCHED, LIST_FETCHING, LIST_FETCHING_FAILED, LIST_INITIALIZED, STORE_LIST_TOP_POINT } from "./actions";
+import { ARTICLE_FETCHED, LIST_FETCHED, LIST_FETCHING, LIST_FETCHING_FAILED, LIST_INITIALIZED, STORE_LIST_TOP_POINT } from "./actions";
 
 
 export const listFetchStart = (): BaseAction => ({
@@ -68,3 +68,21 @@ export const storeListTopPoint = (p: number): BaseAction => ({
   payload: { p },
   type: STORE_LIST_TOP_POINT,
 })
+
+export const articleFetched = (data: object): BaseAction => ({
+  payload: {data},
+  type: ARTICLE_FETCHED,
+})
+
+export const fetchArticle = (aid: string) => {
+
+  return (dispatch: Dispatch) => {
+
+    const fetchUrl = '';
+
+    return fetch(fetchUrl)
+      .then(checkStatus)
+      .then(parseJson)
+      .then(data => dispatch(articleFetched(data)));
+  }
+}
