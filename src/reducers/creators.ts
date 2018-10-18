@@ -2,7 +2,7 @@ import { Dispatch } from "redux";
 import { LATEST, MEMO, PHOTO, TAGS, TALK, TECH } from "src/constants";
 import { Articles, BaseAction } from "src/types";
 import { checkStatus, parseJson } from "src/utils";
-import { ARTICLE_FETCHED, LIST_FETCHED, LIST_FETCHING, LIST_FETCHING_FAILED, LIST_INITIALIZED, STORE_LIST_TOP_POINT } from "./actions";
+import { ARTICLE_FETCHED, ARTICLE_FETCHING_FAILED, LIST_FETCHED, LIST_FETCHING, LIST_FETCHING_FAILED, LIST_INITIALIZED, STORE_LIST_TOP_POINT } from "./actions";
 
 
 export const listFetchStart = (): BaseAction => ({
@@ -31,32 +31,32 @@ export const fetchList = (fetchType: number) => {
 
     dispatch(listFetchStart());
 
-    let fetchURL;
+    let fetchUrl;
 
     switch (fetchType) {
       case LATEST:
-        fetchURL = '/test/lists.json';
+        fetchUrl = '/test/lists.json';
         break;
       case TECH:
-        fetchURL = '/test/lists.json';
+        fetchUrl = '/test/lists.json';
         break;
       case MEMO:
-        fetchURL = '/test/lists.json';
+        fetchUrl = '/test/lists.json';
         break;
       case PHOTO:
-        fetchURL = '/test/lists.json';
+        fetchUrl = '/test/lists.json';
         break;
       case TALK:
-        fetchURL = '/test/lists.json';
+        fetchUrl = '/test/lists.json';
         break;
       case TAGS:
-        fetchURL = '/test/lists.json';
+        fetchUrl = '/test/lists.json';
         break;
       default:
-        fetchURL = '/test/lists.json';
+        fetchUrl = '/test/lists.json';
     }
 
-    return fetch(fetchURL)
+    return fetch(fetchUrl)
       .then(checkStatus)
       .then(parseJson)
       .then(data => dispatch(listFetchEnd(data)))
@@ -74,15 +74,21 @@ export const articleFetched = (data: object): BaseAction => ({
   type: ARTICLE_FETCHED,
 })
 
+export const articleFetchFailed = ():BaseAction => ({
+  payload: null,
+  type: ARTICLE_FETCHING_FAILED,
+})
+
 export const fetchArticle = (aid: string) => {
 
   return (dispatch: Dispatch) => {
 
-    const fetchUrl = '';
+    const fetchUrl = `/test/article.json?aid=${aid}`;
 
     return fetch(fetchUrl)
       .then(checkStatus)
       .then(parseJson)
-      .then(data => dispatch(articleFetched(data)));
+      .then(data => dispatch(articleFetched(data)))
+      .catch(() => dispatch(articleFetchFailed()));
   }
 }

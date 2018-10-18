@@ -25,3 +25,7 @@ export type STORE_LIST_TOP_POINT = typeof STORE_LIST_TOP_POINT;
 // for fetch article
 export const ARTICLE_FETCHED = 'ARTICLE_FETCHED';
 export type ARTICLE_FETCHED = typeof ARTICLE_FETCHED;
+
+// for fetch article failed
+export const ARTICLE_FETCHING_FAILED = 'ARTICLE_FETCHING_FAILED';
+export type ARTICLE_FETCHING_FAILED = typeof ARTICLE_FETCHING_FAILED;
