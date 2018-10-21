@@ -572,4 +572,21 @@ $lists-max-width: 700px;
 .contents {
   margin-top: 45px;
   flex-grow: 1;
+  align-self: center;
+  max-width: 700px;
+  width: 100%;
+  padding: 45px 0;
+
+  .article {
+    padding: 0 .5rem;
+
+    .title {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .article-info {
+      text-align: center;
+    }
+  }
 }
