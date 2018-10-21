@@ -11,7 +11,7 @@ const MONTHS = [
  * @param time time in millisecond
  * @param format optional, default is 'YY/MM/DD'
  */
-function formatDate(time: number, format?: string) {
+export function formatDate(time: number, format?: string) {
 
   const date = new Date(time);
   const year = date.getFullYear();
@@ -30,7 +30,3 @@ function formatDate(time: number, format?: string) {
 
 }
 
-
-export {
-  formatDate
-}
