@@ -13,6 +13,17 @@ export interface Articles {
   views: number,
   deleted: boolean,
   category: string,
+  content?: string,
+  comments?: Comments[],
+}
+
+export interface Comments {
+  "aid": string,
+  "body": string,
+  "cid": string,
+  "deleted": boolean,
+  "from": string,
+  "timestamp": number,
 }
 
 export interface State {
@@ -26,7 +37,9 @@ export interface CommonType {
 }
 
 export interface ContentsType {
-  title: string
+  article: Articles | null,
+  isError: boolean,
+  loading: boolean,
 }
 
 export interface ListsType extends ReduxDispatch {
