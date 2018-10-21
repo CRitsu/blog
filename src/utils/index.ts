@@ -33,20 +33,26 @@ export function formatNumberShorter(num: number) {
 
 
 /**
- * Make a empty article object.
+ * Check article exists and if do not exist then return empty article object.
  */
-export function getEmptyArticle(): Articles {
-  return {
-    _id: '',
-    author: '',
-    category: '',
-    deleted: false,
-    peek: '',
-    reviews: 0,
-    tags: [''],
-    timestamp: 0,
-    title: '',
-    views: 0,
+export function checkArticle(article: Articles | null): Articles {
+
+  if (article === null) {
+    return {
+      _id: '',
+      author: '',
+      category: '',
+      comments: [],
+      content: '',
+      deleted: false,
+      peek: '',
+      reviews: 0,
+      tags: [''],
+      timestamp: 0,
+      title: '',
+      views: 0,
+    }
   }
+  return article;
 }
 
