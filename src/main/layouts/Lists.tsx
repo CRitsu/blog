@@ -7,6 +7,7 @@ import { Articles, CommonType, ListsType, Translate } from '../../types';
 import { formatDate } from '../../utils';
 import Block from '../accessories/Block';
 import ControlBar from '../accessories/ControlBar';
+import Loading from '../accessories/Loading';
 
 
 interface Props extends Translate, ListsType, CommonType { }
@@ -91,21 +92,12 @@ class Lists extends React.Component<Props> {
 
     const { list, listTopPoint, loading, t } = this.props;
 
-    const Loading = () => (
-      <div className="loading">
-        <span>{t('loading')}</span>
-        <Block />
-        <Block />
-        <Block />
-      </div>
-    )
-
     return (
       <div className="lists">
         <ControlBar t={t} top={listTopPoint} />
         <EditedList list={list} more={t('load more')} />
         {loading
-          ? <Loading />
+          ? <Loading>{t('loading')}</Loading>
           : null
         }
       </div>
