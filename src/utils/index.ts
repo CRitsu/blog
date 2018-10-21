@@ -1,9 +1,9 @@
 import { Articles } from 'src/types';
 import { formatDate } from './date';
-import { catchError, checkStatus, ErrorWithResponse, parseJson } from './fetchUtils';
+import { checkStatus, ErrorWithResponse, parseJson } from './fetchUtils';
 
 
-export { formatDate, checkStatus, parseJson, ErrorWithResponse, catchError };
+export { formatDate, checkStatus, parseJson, ErrorWithResponse };
 
 
 /**
