@@ -1,8 +1,8 @@
 import { Dispatch } from "redux";
 import { LATEST, MEMO, PHOTO, TAGS, TALK, TECH } from "src/constants";
-import { Articles, BaseAction } from "src/types";
+import { Articles, BaseAction, State } from "src/types";
 import { checkStatus, parseJson } from "src/utils";
-import { ARTICLE_FETCHED, ARTICLE_FETCHING_FAILED, LIST_FETCHED, LIST_FETCHING, LIST_FETCHING_FAILED, LIST_INITIALIZED, STORE_LIST_TOP_POINT } from "./actions";
+import { ARTICLE_FETCHED, ARTICLE_FETCHING, ARTICLE_FETCHING_FAILED, LIST_FETCHED, LIST_FETCHING, LIST_FETCHING_FAILED, LIST_INITIALIZED, STORE_LIST_TOP_POINT } from "./actions";
 
 
 export const listFetchStart = (): BaseAction => ({
@@ -69,20 +69,44 @@ export const storeListTopPoint = (p: number): BaseAction => ({
   type: STORE_LIST_TOP_POINT,
 })
 
-export const articleFetched = (data: object): BaseAction => ({
-  payload: {data},
+export const articleFetched = (article: object): BaseAction => ({
+  payload: { article },
   type: ARTICLE_FETCHED,
 })
 
-export const articleFetchFailed = ():BaseAction => ({
+export const articleFetchFailed = (): BaseAction => ({
   payload: null,
   type: ARTICLE_FETCHING_FAILED,
 })
 
+export const articleFetching = (): BaseAction => ({
+  payload: null,
+  type: ARTICLE_FETCHING,
+})
+
 export const fetchArticle = (aid: string) => {
 
-  return (dispatch: Dispatch) => {
+  return (dispatch: Dispatch, getState: () => State) => {
 
+    // start fetching article
+    dispatch(articleFetching());
+
+    const state = getState();
+    const list = state.lists.list;
+
+    let article = null;
+    // find in list
+    for (const l of list) {
+      if (l._id === aid) {
+        article = l;
+      }
+    }
+    // check if article exists in list
+    if (article !== null) {
+      return dispatch(articleFetched(article));
+    }
+
+    
     const fetchUrl = `/test/article.json?aid=${aid}`;
 
     return fetch(fetchUrl)

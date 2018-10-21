@@ -22,6 +22,10 @@ export type LIST_FETCHING_FAILED = typeof LIST_FETCHING_FAILED;
 export const STORE_LIST_TOP_POINT = 'STORE_LIST_TOP_POINT';
 export type STORE_LIST_TOP_POINT = typeof STORE_LIST_TOP_POINT;
 
+// for start article fetching
+export const ARTICLE_FETCHING = 'ARTICLE_FETCHING';
+export type ARTICLE_FETCHING = typeof ARTICLE_FETCHING;
+
 // for fetch article
 export const ARTICLE_FETCHED = 'ARTICLE_FETCHED';
 export type ARTICLE_FETCHED = typeof ARTICLE_FETCHED;

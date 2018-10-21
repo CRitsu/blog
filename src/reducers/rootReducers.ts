@@ -1,5 +1,5 @@
 import { BaseAction, CommonType, ContentsType, ListsType } from '../types';
-import { LIST_FETCHED, LIST_FETCHING, LIST_FETCHING_FAILED, LIST_INITIALIZED, STORE_LIST_TOP_POINT } from './actions';
+import { ARTICLE_FETCHED, ARTICLE_FETCHING_FAILED, LIST_FETCHED, LIST_FETCHING, LIST_FETCHING_FAILED, LIST_INITIALIZED, STORE_LIST_TOP_POINT } from './actions';
 
 
 export const lists = (
@@ -36,10 +36,25 @@ export const lists = (
 
 export const contents = (
   state: ContentsType = {
-    title: '',
+    article: null,
+    isError: false,
+    loading: true,
   }, action: BaseAction
 ): ContentsType => {
-  return state;
+
+  switch (action.type) {
+
+    // for article fetching failed
+    case ARTICLE_FETCHING_FAILED:
+      return Object.assign({}, state, { isError: true, loading: false });
+
+    // for article fetched
+    case ARTICLE_FETCHED:
+      return Object.assign({}, state, { article: action.payload.article, loading: false });
+
+    default:
+      return state;
+  }
 }
 
 export const common = (
@@ -49,8 +64,11 @@ export const common = (
 ): CommonType => {
 
   switch (action.type) {
+
+    // for store list top point, for click to scroll to
     case STORE_LIST_TOP_POINT:
       return Object.assign({}, state, { listTopPoint: action.payload.p });
+
     default:
       return state;
   }
