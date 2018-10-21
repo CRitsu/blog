@@ -34,7 +34,7 @@ class App extends React.Component<Props> {
       <Lists {...lists} {...common} dispatch={dispatch} />
     )
     const ContentsWrapper = (props: RouteComponentProps<any>) => (
-      <Contents article={props.match.params.article} {...contents} />
+      <Contents aid={props.match.params.article} {...contents} dispatch={dispatch} />
     )
 
     return (
