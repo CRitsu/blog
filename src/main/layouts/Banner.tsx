@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { translate } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { Block } from '../../components';
 import { blogName, github, weibo } from '../../config';
 import { MEMO_COLOR, PHOTO_COLOR, TALK_COLOR, TECH_COLOR } from '../../constants/colors';
 import { CommonType, ReduxDispatch, Translate } from '../../types';
+import Block from '../accessories/Block';
 import NaughtyArrow from '../accessories/NaughtyArrow';
 
 

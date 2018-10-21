@@ -3,9 +3,9 @@ import { translate } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { LATEST, MEMO, PHOTO, TAGS, TALK, TECH } from 'src/constants';
 import { fetchList, listInitialized } from 'src/reducers/creators';
-import { Block } from '../../components';
 import { Articles, CommonType, ListsType, Translate } from '../../types';
 import { formatDate } from '../../utils';
+import Block from '../accessories/Block';
 import ControlBar from '../accessories/ControlBar';
 
 

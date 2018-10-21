@@ -2,9 +2,9 @@ import { changeLanguage } from 'i18next';
 import * as React from 'react';
 import { translate } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { Block } from '../../components';
 import { name } from '../../config';
 import { Translate } from '../../types';
+import Block from '../accessories/Block';
 
 
 class Navigation extends React.Component<Translate> {
