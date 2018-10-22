@@ -33,6 +33,9 @@ class Contents extends React.Component<Props> {
     if (article !== null) {
       this.setState({ loading: false });
     }
+
+    // scroll to top when displayed
+    window.scrollTo(0, 0);
   }
 
   public render() {
@@ -55,7 +58,7 @@ class Contents extends React.Component<Props> {
                 <span>{article.author}</span>
                 <span>{article.timestamp}</span>
               </div>
-              <div className="article-content" 
+              <div className="article-content"
                 dangerouslySetInnerHTML={{ __html: marked(article.content) }} />
               <div className="comments">
                 {article.comments.map((comment: Comments) => (
