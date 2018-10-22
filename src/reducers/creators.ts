@@ -1,6 +1,6 @@
 import { Dispatch } from "redux";
 import { LATEST, MEMO, PHOTO, TAGS, TALK, TECH } from "src/constants";
-import { Articles, BaseAction, State } from "src/types";
+import { Articles, BaseAction } from "src/types";
 import { checkStatus, parseJson } from "src/utils";
 import { ARTICLE_FETCHED, ARTICLE_FETCHING, ARTICLE_FETCHING_FAILED, LIST_FETCHED, LIST_FETCHING, LIST_FETCHING_FAILED, LIST_INITIALIZED, STORE_LIST_TOP_POINT } from "./actions";
 
@@ -86,25 +86,10 @@ export const articleFetching = (): BaseAction => ({
 
 export const fetchArticle = (aid: string) => {
 
-  return (dispatch: Dispatch, getState: () => State) => {
+  return (dispatch: Dispatch) => {
 
     // start fetching article
     dispatch(articleFetching());
-
-    const state = getState();
-    const list = state.lists.list;
-
-    let article = null;
-    // find in list
-    for (const l of list) {
-      if (l._id === aid) {
-        article = l;
-      }
-    }
-    // check if article exists in list
-    if (article !== null) {
-      return dispatch(articleFetched(article));
-    }
 
     
     const fetchUrl = `/test/article.json?aid=${aid}`;
