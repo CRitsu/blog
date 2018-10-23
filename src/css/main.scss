@@ -254,7 +254,7 @@ $arrow-width: 60px;
           .block {
             height: 50px;
             width: 50px;
-  
+
             @media (max-width: 500px) {
               height: 40px;
               width: 40px;
@@ -588,5 +588,32 @@ $lists-max-width: 700px;
     .article-info {
       text-align: center;
     }
+
+    .article-content {
+
+
+      li {
+
+        input,
+        p {
+          display: inline-block;
+        }
+      }
+    }
+
+    .comments {
+
+      .comment {
+
+        .head {
+          display: flex;
+        }
+
+        .body {
+          margin: 1rem 0;
+        }
+      }
+    }
+
   }
 }
