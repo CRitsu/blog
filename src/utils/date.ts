@@ -5,11 +5,19 @@ const MONTHS = [
 ];
 
 /**
- * transform given milliseconds to date format
+ * Transform given milliseconds to date format
  * 
- * e.g. 18/06/02
+ * Default format:
+ * 
+ * MM/DD  
+ * YYYY
+ * 
+ * Available format:
+ * - MMM DD, YYYY (eg. Jul 09, 2018)
+ * - YYYY/MM/DD HH:MM:SS (eg. 2018/09/28 12:22:12)
+ * - YYYY/MM/DD(eg. 2018/09/28)
  * @param time time in millisecond
- * @param format optional, default is 'YY/MM/DD'
+ * @param format optional
  */
 export function formatDate(time: number, format?: string) {
 
@@ -22,6 +30,17 @@ export function formatDate(time: number, format?: string) {
   
   if (format === 'MMM DD, YYYY') {
     return `${MONTHS[month]} ${fillZero(day)}, ${year}`;
+  }
+
+  if (format === 'YYYY/MM/DD HH:MM:SS') {
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    const seconds = date.getSeconds()
+    return `${year}/${fillZero(month)}/${fillZero(day)} ${hours}:${minutes}:${seconds}`;
+  }
+
+  if (format === 'YYYY/MM/DD') {
+    return `${year}/${fillZero(month)}/${fillZero(day)}`;
   }
 
   // default format

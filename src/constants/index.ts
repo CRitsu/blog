@@ -10,3 +10,6 @@ export const MEMO = 22;
 export const PHOTO = 23;
 export const TALK = 24;
 export const TAGS = 3;
+
+export const NORMAL_TIME_FORMAT = 'YYYY/MM/DD HH:MM:SS';
+export const SHORT_TIME_FORMAT = 'YYYY/MM/DD';
