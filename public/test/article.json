@@ -11,7 +11,7 @@
   ],
   "_id": "5b432a42f04705565525529d",
   "author": "Richard",
-  "content": "# H1 title\n## H2 title\n```html\n<h1>in quote</h1>```\n\nTEST WORDS\n\n**TEST**\n\n~~~TEST~~~",
+  "content": "# H1 title\n## H2 title\n```html\n<h1>in quote</h1>```\n\nTEST WORDS\n\n**TEST**\n\n~~~TEST~~~\n\n- [x] list 1\n\n- [ ] list 2",
   "comments": [{
     "timestamp": 1531128386417.8281,
     "aid": "5b432a42f04705565525529d",
