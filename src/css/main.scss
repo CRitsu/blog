@@ -578,7 +578,7 @@ $lists-max-width: 700px;
   padding: 45px 0;
 
   .article {
-    padding: 0 .5rem;
+    padding: 0 1rem;
 
     .title {
       text-align: center;
@@ -602,15 +602,43 @@ $lists-max-width: 700px;
     }
 
     .comments {
+      margin-top: 45px;
 
+      
       .comment {
+        margin-bottom: 1.5rem;
+        display: flex;
 
-        .head {
-          display: flex;
+        .avatar {
+          height: 50px;
+          width: 50px;
+          margin-right: 1rem;
+          background-color: $blue-dark3;
+          color: white;
+          flex-shrink: 0;
         }
 
-        .body {
-          margin: 1rem 0;
+        .main {
+        
+          .head {
+            display: flex;
+            align-items: center;
+            margin-bottom: .5rem;
+            
+            .from {
+              margin-right: .5rem;
+            }
+            
+            .time {
+              font-size: .8rem;
+              color: #333;
+            }
+          }
+          
+          .body {
+            word-break: break-all;
+            margin-bottom: .5rem;
+          }
         }
       }
     }
