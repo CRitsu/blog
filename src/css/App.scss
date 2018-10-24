@@ -6,19 +6,6 @@
   min-width: 360px;
 }
 
-// font defined below were not used now
-@font-face {
-  font-family: 'font-awesome';
-  src: url(../resources/fa-regular-400.woff2);
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'font-awesome-solid';
-  src: url(../resources/fa-solid-900.woff2);
-  font-display: swap;
-}
-
 @import 'animation.scss';
 @import 'main.scss';
 @import 'accessories.scss';
