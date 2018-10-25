@@ -17,5 +17,7 @@
   "project on GitHub": "project on GitHub",
   "language": "LANGUAGE",
   "loading": "Loading",
-  "reply": "REPLY"
+  "reply": "REPLY",
+  "like": "like this",
+  "dislike": "dislike this"
 }

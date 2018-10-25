@@ -78,10 +78,10 @@ class Contents extends React.Component<Props> {
                       </div>
                       <div className="body">{comment.body}</div>
                       <div className="buttons">
-                        <button className="like">
+                        <button className="like" title={t('like')}>
                           <ThumbUp className="active" />1234
                         </button>
-                        <button className="dislike">
+                        <button className="dislike" title={t('dislike')}>
                           <ThumbUp />1234
                         </button>
                         <button className="reply">{t('reply')}</button>
