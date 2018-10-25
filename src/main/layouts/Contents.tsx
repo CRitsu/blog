@@ -48,9 +48,9 @@ class Contents extends React.Component<Props> {
     article.content = article.content ? article.content : '';
     article.comments = article.comments ? article.comments : [];
 
-    const ThumbUp = () => (
-      <svg xmlns="http://www.w3.org/2000/svg" width="7" height="7" className="thumb-up">
-        <path d="M4.438 0c-.19.021-.34.149-.438.344-.13.26-1.101 2.185-1.281 2.375-.19.18-.439.281-.719.281v4.001h3.5c.21 0 .389-.133.469-.313 0 0 1.031-2.908 1.031-3.188 0-.28-.22-.5-.5-.5h-1.5c-.28 0-.5-.25-.5-.5s.389-1.574.469-1.844c.08-.27-.053-.545-.313-.625l-.219-.031zm-4.438 3v4h1v-4h-1z" id="thumb-up" />
+    const ThumbUp = (props: {className?: string}) => (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className={`thumb-up ${props.className}`}>
+        <path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-1.91l-.01-.01L23 10z" />
       </svg>
     )
 
@@ -77,10 +77,14 @@ class Contents extends React.Component<Props> {
                         <div className="time">{formatDate(comment.timestamp, NORMAL_TIME_FORMAT)}</div>
                       </div>
                       <div className="body">{comment.body}</div>
-                      <div className="button">
-                        <button><ThumbUp /></button>
-                        <button>dislike</button>
-                        <button>{t('reply')}</button>
+                      <div className="buttons">
+                        <button className="like">
+                          <ThumbUp className="active" />1234
+                        </button>
+                        <button className="dislike">
+                          <ThumbUp />1234
+                        </button>
+                        <button className="reply">{t('reply')}</button>
                       </div>
                     </div>
                   </div>

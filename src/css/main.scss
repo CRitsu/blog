@@ -604,7 +604,7 @@ $lists-max-width: 700px;
     .comments {
       margin-top: 45px;
 
-      
+
       .comment {
         margin-bottom: 1.5rem;
         display: flex;
@@ -619,25 +619,65 @@ $lists-max-width: 700px;
         }
 
         .main {
-        
+
           .head {
             display: flex;
             align-items: center;
             margin-bottom: .5rem;
-            
+
             .from {
               margin-right: .5rem;
             }
-            
+
             .time {
               font-size: .8rem;
               color: #333;
             }
           }
-          
+
           .body {
             word-break: break-all;
             margin-bottom: .5rem;
+          }
+
+          .buttons {
+            display: flex;
+            align-items: center;
+
+            .like,
+            .dislike {
+              height: 1.2rem;
+              min-width: 3rem;
+              color: #333;
+              border: none;
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              margin-right: 1rem;
+
+              .thumb-up {
+                width: 1.2rem;
+                height: 1.2rem;
+                margin-right: .5rem;
+                fill: #999;
+
+                &.active {
+                  fill: $blue-dark3;
+                }
+              }
+            }
+
+            .dislike {
+              .thumb-up {
+                transform: rotate(180deg);
+              }
+            }
+
+            .reply {
+              cursor: pointer;
+              border: none;
+            }
+
           }
         }
       }
