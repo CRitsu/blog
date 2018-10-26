@@ -86,6 +86,11 @@ class Contents extends React.Component<Props> {
                         </button>
                         <button className="reply">{t('reply')}</button>
                       </div>
+                      <div className="reply-body">
+                        <div className="your-avatar">avatar</div>
+                        <textarea name={comment.cid} className="reply-input" />
+                        <button className="reply-submit">{t('reply')}</button>
+                      </div>
                     </div>
                   </div>
                 ))}

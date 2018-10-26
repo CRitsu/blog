@@ -619,6 +619,7 @@ $lists-max-width: 700px;
         }
 
         .main {
+          flex-grow: 1;
 
           .head {
             display: flex;
@@ -679,6 +680,52 @@ $lists-max-width: 700px;
             }
 
           }
+
+          .reply-body {
+            display: flex;
+            align-items: center;
+            margin-top: .5rem;
+
+            .your-avatar {
+              color: white;
+              flex-shrink: 0;
+              height: 40px;
+              width: 40px;
+              background-color: $blue-dark3;
+              margin-right: 1rem;
+            }
+
+            .reply-input {
+              height: 3rem;
+              resize: none;
+              border: none;
+              outline: none;
+              border: 1px solid #eee;
+              background-color: #eee;
+              border-radius: 3px;
+              margin-right: .5rem;
+              flex-grow: 1;
+
+              &:focus {
+                border: 1px solid $blue-light1;
+                background-color: white;
+              }
+            }
+
+            .reply-submit {
+              padding: .5rem;
+              color: white;
+              background-color: $blue-dark3;
+              font-weight: bold;
+              cursor: pointer;
+
+              &:hover {
+                background-color: $blue-dark2;
+              }
+            }
+
+          }
+
         }
       }
     }
