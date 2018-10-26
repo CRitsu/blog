@@ -632,7 +632,7 @@ $lists-max-width: 700px;
 
             .time {
               font-size: .8rem;
-              color: #333;
+              color: #999;
             }
           }
 
@@ -662,10 +662,18 @@ $lists-max-width: 700px;
                 margin-right: .5rem;
                 fill: #999;
 
-                &.active {
+              }
+
+              &.active {
+
+                color: $blue-dark3;
+                font-weight: bold;
+
+                .thumb-up {
                   fill: $blue-dark3;
                 }
               }
+
             }
 
             .dislike {
@@ -677,6 +685,15 @@ $lists-max-width: 700px;
             .reply {
               cursor: pointer;
               border: none;
+            }
+
+            .like,
+            .dislike,
+            .reply {
+
+              &:hover {
+                color: $blue-dark3;
+              }
             }
 
           }
