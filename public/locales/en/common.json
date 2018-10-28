@@ -19,5 +19,8 @@
   "loading": "Loading",
   "reply": "REPLY",
   "like": "like this",
-  "dislike": "dislike this"
+  "dislike": "dislike this",
+  "comment": "COMMENT",
+  "add a comment": "Add a comment...",
+  "add a reply": "Add a reply..."
 }

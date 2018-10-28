@@ -19,5 +19,8 @@
   "loading": "加载中",
   "reply": "回复",
   "like": "喜欢",
-  "dislike": "不喜欢"
+  "dislike": "不喜欢",
+  "comment": "评论",
+  "add a comment": "添加一个评论...",
+  "add a reply": "添加一个回复..."
 }
