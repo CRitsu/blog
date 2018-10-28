@@ -117,6 +117,11 @@ class Contents extends React.Component<Props, State> {
               </div>
               <div className="article-content"
                 dangerouslySetInnerHTML={{ __html: marked(article.content) }} />
+              <div className="leave-comment">
+                <div className="avatar">avatar</div>
+                <textarea className="comment-input" placeholder={t('add a comment')} />
+                <button className="comment-submit">{t('comment')}</button>
+              </div>
               <div className="comments">
                 {article.comments.map((comment: Comments, i: number) => (
                   <div className="comment" key={comment.cid}>
@@ -138,7 +143,7 @@ class Contents extends React.Component<Props, State> {
                       </div>
                       <div className={`reply-body ${comment.replyFlg ? 'active' : ''}`}>
                         <div className="your-avatar">avatar</div>
-                        <textarea name={comment.cid} className="reply-input" ref={setRefObject(i)} />
+                        <textarea name={comment.cid} className="reply-input" ref={setRefObject(i)} placeholder={t('add a reply')}/>
                         <button className="reply-submit">{t('reply')}</button>
                       </div>
                     </div>
