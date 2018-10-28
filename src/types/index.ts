@@ -18,12 +18,13 @@ export interface Articles {
 }
 
 export interface Comments {
-  "aid": string,
-  "body": string,
-  "cid": string,
-  "deleted": boolean,
-  "from": string,
-  "timestamp": number,
+  aid: string,
+  body: string,
+  cid: string,
+  deleted: boolean,
+  from: string,
+  timestamp: number,
+  replyFlg?: boolean
 }
 
 export interface State {
