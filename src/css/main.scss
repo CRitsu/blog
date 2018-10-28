@@ -699,9 +699,13 @@ $lists-max-width: 700px;
           }
 
           .reply-body {
-            display: flex;
+            display: none;
             align-items: center;
             margin-top: .5rem;
+
+            &.active {
+              display: flex;
+            }
 
             .your-avatar {
               color: white;
