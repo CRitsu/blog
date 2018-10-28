@@ -604,19 +604,20 @@ $lists-max-width: 700px;
     .leave-comment {
       margin-top: 45px;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
 
       .avatar {
         flex-shrink: 0;
-        height: 50px;
-        width: 50px;
+        height: 2.5rem;
+        width: 2.5rem;
         background-color: $blue-dark3;
         margin-right: 1rem;
         color: white;
       }
 
       .comment-input {
-        height: 3rem;
+        padding: .5rem;
+        min-height: 1rem;
         resize: none;
         border: none;
         outline: none;
@@ -625,6 +626,7 @@ $lists-max-width: 700px;
         border-radius: 3px;
         margin-right: .5rem;
         flex-grow: 1;
+        transition: all .3s ease;
 
         &:focus {
           border: 1px solid $blue-light1;
@@ -655,14 +657,21 @@ $lists-max-width: 700px;
       .comment {
         margin-bottom: 1.5rem;
         display: flex;
+        position: relative;
 
         .avatar {
-          height: 50px;
-          width: 50px;
+          height: 2.5rem;
+          width: 2.5rem;
           margin-right: 1rem;
           background-color: $blue-dark3;
           color: white;
           flex-shrink: 0;
+
+          @media (max-width: 500px) {
+            position: absolute;
+            height: 1.5rem;
+            width: 1.5rem;
+          }
         }
 
         .main {
@@ -672,6 +681,10 @@ $lists-max-width: 700px;
             display: flex;
             align-items: center;
             margin-bottom: .5rem;
+
+            @media (max-width: 500px) {
+              margin-left: 40px;
+            }
 
             .from {
               margin-right: .5rem;
@@ -747,7 +760,7 @@ $lists-max-width: 700px;
 
           .reply-body {
             display: none;
-            align-items: center;
+            align-items: flex-start;
             margin-top: .5rem;
 
             &.active {
@@ -764,7 +777,7 @@ $lists-max-width: 700px;
             }
 
             .reply-input {
-              height: 3rem;
+              padding: .5rem;
               resize: none;
               border: none;
               outline: none;
@@ -773,9 +786,9 @@ $lists-max-width: 700px;
               border-radius: 3px;
               margin-right: .5rem;
               flex-grow: 1;
+              transition: all .3s ease;
 
-              &:focus,
-              &:hover {
+              &:focus {
                 border: 1px solid $blue-light1;
                 background-color: white;
               }
