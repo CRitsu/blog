@@ -225,7 +225,7 @@ class Contents extends React.Component<Props, State> {
                       </div>
 
                       {getReplyList(c.reply).map((r: ReplyType) => (
-                        <div className="reply-list">
+                        <div className="reply-list" key={r.rid}>
                           <div className="avatar">avatar</div>
                           <div className="main">
                             <div className="head">

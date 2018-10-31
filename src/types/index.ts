@@ -30,6 +30,7 @@ export interface Comments {
 }
 
 export interface ReplyType {
+  rid: string,
   timestamp: number,
   from: string,
   body: string,
