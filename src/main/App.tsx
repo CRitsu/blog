@@ -15,7 +15,7 @@ import Navigation from './layouts/Navigation';
 
 
 // combine interface
-interface Props extends ReduxDispatch, State {}
+interface Props extends ReduxDispatch, State { }
 
 
 class App extends React.Component<Props> {
@@ -54,9 +54,9 @@ class App extends React.Component<Props> {
 // map attribute from store
 const mapStateTpProps = (state: State) => {
   return {
-    common: {...state.common},
-    contents: {...state.contents},
-    lists: {...state.lists}
+    common: { ...state.common },
+    contents: { ...state.contents },
+    lists: { ...state.lists }
   }
 };
 
@@ -65,21 +65,13 @@ const AppContainer = connect(
   mapStateTpProps
 )(App);
 
-// integrate with redux
-// create store
-const store = createStore(reducers, applyMiddleware(thunk));
-// wrap redux context
-const AppProvider = () => (
-  <Provider store={store}>
-    <AppContainer />
-  </Provider>
-)
-
-// wrap i18n provider
-const I18nextAppProvider = () => (
+// wrapper
+const AppWrapper = () => (
   <I18nextProvider i18n={i18n}>
-    <AppProvider />
+    <Provider store={createStore(reducers, applyMiddleware(thunk))}>
+      <AppContainer />
+    </Provider>
   </I18nextProvider>
 )
 
-export default I18nextAppProvider;
+export default AppWrapper;
