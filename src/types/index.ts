@@ -24,7 +24,15 @@ export interface Comments {
   deleted: boolean,
   from: string,
   timestamp: number,
-  replyFlg?: boolean
+  // reply flag for trigger reply box display
+  replyFlg?: boolean,
+  reply?: ReplyType[],
+}
+
+export interface ReplyType {
+  timestamp: number,
+  from: string,
+  body: string,
 }
 
 export interface State {

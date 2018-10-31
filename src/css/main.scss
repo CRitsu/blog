@@ -723,7 +723,6 @@ $lists-max-width: 700px;
                 height: 1.2rem;
                 margin-right: .5rem;
                 fill: #999;
-
               }
 
               &.active {
@@ -755,6 +754,9 @@ $lists-max-width: 700px;
 
               &:hover {
                 color: $blue-dark3;
+                .thumb-up {
+                  fill: $blue-dark1;
+                }
               }
             }
 
@@ -767,15 +769,6 @@ $lists-max-width: 700px;
 
             &.active {
               display: flex;
-            }
-
-            .your-avatar {
-              color: white;
-              flex-shrink: 0;
-              height: 40px;
-              width: 40px;
-              background-color: $blue-dark3;
-              margin-right: 1rem;
             }
 
             .reply-input {
@@ -809,6 +802,11 @@ $lists-max-width: 700px;
               }
             }
 
+          }
+
+          .reply-list {
+            display: flex;
+            margin-top: 1rem;
           }
 
         }

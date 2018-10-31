@@ -6,7 +6,7 @@ import { translate } from 'react-i18next';
 import { NORMAL_TIME_FORMAT, SHORT_TIME_FORMAT } from 'src/constants';
 import { fetchArticle } from 'src/reducers/creators';
 import { checkArticle, formatDate } from 'src/utils';
-import { Comments, ContentsType, ReduxDispatch, Translate } from '../../types';
+import { Comments, ContentsType, ReduxDispatch, ReplyType, Translate } from '../../types';
 import Loading from '../accessories/Loading';
 import ThumbUp from '../accessories/ThumbUp';
 
@@ -124,6 +124,19 @@ class Contents extends React.Component<Props, State> {
   }
 
   /**
+   * Check if reply list is undefined then return new array,
+   * otherwise return reply list.
+   * @param reply reply list
+   */
+  public getReplyList(reply: ReplyType[] | undefined) {
+    if (reply !== undefined) {
+      return reply;
+    } else {
+      return [];
+    }
+  }
+
+  /**
    * Reference object setter for focus textarea element.
    * @param i index
    */
@@ -150,7 +163,8 @@ class Contents extends React.Component<Props, State> {
       handleCommentChange,
       handleReplyChange,
       getRowCount,
-      setRefObject
+      setRefObject,
+      getReplyList
     } = this;
 
     return (
@@ -180,13 +194,18 @@ class Contents extends React.Component<Props, State> {
               <div className="comments">
                 {article.comments.map((c: Comments, i: number) => (
                   <div className="comment" key={c.cid}>
+
                     <div className="avatar">avatar</div>
+
                     <div className="main">
+
                       <div className="head">
                         <div className="from">{c.from}</div>
                         <div className="time">{formatDate(c.timestamp, NORMAL_TIME_FORMAT)}</div>
                       </div>
+
                       <div className="body">{c.body}</div>
+
                       <div className="buttons">
                         <button className="like active" title={t('like')}>
                           <ThumbUp />123
@@ -196,13 +215,28 @@ class Contents extends React.Component<Props, State> {
                         </button>
                         <button className="reply" onClick={handleClickReplyButton(i)}>{t('reply')}</button>
                       </div>
+
                       <div className={`reply-body ${c.replyFlg ? 'active' : ''}`}>
-                        <div className="your-avatar">avatar</div>
+                        <div className="avatar">avatar</div>
                         <textarea name={c.cid} className="reply-input" value={reply[i] ? reply[i] : ''}
                           onChange={handleReplyChange(i)} ref={setRefObject(i)}
                           rows={getRowCount(reply[i])} placeholder={t('add a reply')} />
                         <button className="reply-submit">{t('reply')}</button>
                       </div>
+
+                      {getReplyList(c.reply).map((r: ReplyType) => (
+                        <div className="reply-list">
+                          <div className="avatar">avatar</div>
+                          <div className="main">
+                            <div className="head">
+                              <div className="from">{r.from}</div>
+                              <div className="time">{formatDate(r.timestamp, NORMAL_TIME_FORMAT)}</div>
+                            </div>
+                            <div className="body">{r.body}</div>
+                          </div>
+                        </div>
+                      ))}
+
                     </div>
                   </div>
                 ))}
