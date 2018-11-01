@@ -4,7 +4,8 @@ import { Translate } from '../../types';
 
 
 interface Props extends Translate {
-  top: number
+  top: number,
+  p: (p: string) => void,
 }
 
 interface State {
@@ -20,6 +21,8 @@ interface State {
  */
 class ControlBar extends React.Component<Props, State> {
 
+  public categories = ['tech', 'memo', 'photo', 'talk'];
+
   public constructor(props: Props) {
     super(props);
 
@@ -29,9 +32,10 @@ class ControlBar extends React.Component<Props, State> {
       input: React.createRef<HTMLInputElement>(),
     };
 
-    this.handleScroll = this.handleScroll.bind(this);
+    this.handleScrollChanged = this.handleScrollChanged.bind(this);
     this.handleOnfocus = this.handleOnfocus.bind(this);
     this.handleOnblur = this.handleOnblur.bind(this);
+    this.scroll2Top = this.scroll2Top.bind(this);
   }
 
   /**
@@ -75,15 +79,18 @@ class ControlBar extends React.Component<Props, State> {
    * 
    * Set position when scroll over the control bar.
    */
-  public handleScroll() {
+  public handleScrollChanged() {
     const cls = this.getClassNames();
     if (cls !== undefined) {
       this.setState({ cls });
     }
   }
 
-  public handleSwitchTabs(tab: number) {
-    // this.setState()
+  /**
+   * Scroll to top of list.
+   */
+  public scroll2Top() {
+    window.scrollTo(0, this.props.top);
   }
 
   /**
@@ -110,7 +117,7 @@ class ControlBar extends React.Component<Props, State> {
    * Load event listener.
    */
   public componentDidMount() {
-    window.addEventListener('scroll', this.handleScroll);
+    window.addEventListener('scroll', this.handleScrollChanged);
     // fix position when switch active tab
     const cls = this.getClassNames();
     if (cls !== undefined) {
@@ -122,11 +129,11 @@ class ControlBar extends React.Component<Props, State> {
    * Unload event listener.
    */
   public componentWillUnmount() {
-    window.removeEventListener('scroll', this.handleScroll);
+    window.removeEventListener('scroll', this.handleScrollChanged);
   }
 
   public render() {
-    const { top, t } = this.props;
+    const { t } = this.props;
     const { bar, cls, input } = this.state;
 
     // edit class name
@@ -141,9 +148,9 @@ class ControlBar extends React.Component<Props, State> {
       return ''
     }
 
-    const categories = ['tech', 'memo', 'photo', 'talk'];
+    const categories = this.categories;
 
-    const scroll = () => window.scrollTo(0, top);
+    const scroll = this.scroll2Top;
 
     return (
       <div className="control-bar" ref={bar}>
@@ -163,7 +170,7 @@ class ControlBar extends React.Component<Props, State> {
           <div className={`categories-menu-wrapper ${getCategoryMenuClassName()}`}>
             <div className="categories-menu">
               {categories.map(cat => (
-                <NavLink to={`/list/${cat}`} className="cat" activeClassName="active" 
+                <NavLink to={`/list/${cat}`} className="cat" activeClassName="active"
                   onClick={scroll} key={cat}>{t(cat)}</NavLink>
               ))}
             </div>

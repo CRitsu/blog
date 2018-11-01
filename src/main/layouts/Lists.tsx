@@ -52,49 +52,57 @@ function EditedList(props: { list: Articles[], more: string }) {
 
 class Lists extends React.Component<Props> {
 
+  /**
+   * For mapping categories to path.
+   */
+  public categories = {
+    '/': LATEST,
+    '/list/memo': MEMO,
+    '/list/photo': PHOTO,
+    '/list/tags': TAGS,
+    '/list/talk': TALK,
+    '/list/tech': TECH,
+  }
+
+  public constructor(props: Props) {
+    super(props);
+    this.performFetchingList = this.performFetchingList.bind(this);
+  }
+
   public componentDidMount() {
     // fetch list
     const { initialFlag } = this.props;
     const dispatch = this.props.dispatch;
-    // condition of fetch action
     // `dispatch` is available and is not initialized already
     if (dispatch !== undefined && !initialFlag) {
-      const type = this.getListFetchType();
-      if (type !== null) {
-        dispatch(listInitialized());
+      dispatch(listInitialized());
+      const path = window.location.pathname;
+      this.performFetchingList(path);
+    }
+  }
+  
+  public performFetchingList(p: string) {
+    
+    const dispatch = this.props.dispatch;
+    // condition of fetch action
+    if (dispatch !== undefined) {
+      const type = this.categories[p];
+      console.log(type)
+      if (type !== undefined) {
         dispatch(fetchList(type));
       }
     }
-  }
 
-  // get list type by current path
-  public getListFetchType() {
-    const path = window.location.pathname;
-    switch (path) {
-      case '/':
-        return LATEST;
-      case '/list/tech':
-        return TECH;
-      case '/list/memo':
-        return MEMO;
-      case '/list/photo':
-        return PHOTO;
-      case '/list/talk':
-        return TALK;
-      case '/list/tags':
-        return TAGS;
-      default:
-        return null;
-    }
   }
 
   public render() {
 
     const { list, listTopPoint, loading, t } = this.props;
+    const { performFetchingList } = this;
 
     return (
       <div className="lists">
-        <ControlBar t={t} top={listTopPoint} />
+        <ControlBar t={t} top={listTopPoint} p={performFetchingList} />
         <EditedList list={list} more={t('load more')} />
         {loading
           ? <Loading>{t('loading')}</Loading>
