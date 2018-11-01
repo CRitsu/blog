@@ -2,10 +2,10 @@
   "mottoThe1stLine": "plan for a new goal,",
   "mottoThe2ndLine": "build a new environment,",
   "mottoThe3rdLine": "start a new trip.",
-  "tech": "tech",
-  "memo": "memo",
-  "photo": "photo",
-  "talk": "talk",
+  "tech": "TECH",
+  "memo": "MEMO",
+  "photo": "PHOTO",
+  "talk": "TALK",
   "search": "SEARCH",
   "latest": "LATEST",
   "categories": "CATEGORIES",
@@ -22,5 +22,6 @@
   "dislike": "dislike this",
   "comment": "COMMENT",
   "add a comment": "Add a comment...",
-  "add a reply": "Add a reply..."
+  "add a reply": "Add a reply...",
+  "published": "Published"
 }

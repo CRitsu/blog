@@ -177,8 +177,7 @@ class Contents extends React.Component<Props, State> {
               <h1 className="title">{article.title}</h1>
 
               <div className="article-info">
-                <span>{formatDate(article.timestamp, SHORT_TIME_FORMAT)}</span>
-                <span>{t(article.category)}</span>
+                {`${t('published')} ${formatDate(article.timestamp, SHORT_TIME_FORMAT)}`}
               </div>
 
               <div className="article-content"
