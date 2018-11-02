@@ -57,6 +57,7 @@ export interface ListsType extends ReduxDispatch {
   loading: boolean,
   isError: boolean,
   initialFlag: boolean,
+  category: string,
 }
 
 export interface BaseAction {

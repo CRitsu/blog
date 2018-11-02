@@ -4,6 +4,7 @@ import { ARTICLE_FETCHED, ARTICLE_FETCHING_FAILED, LIST_FETCHED, LIST_FETCHING, 
 
 export const lists = (
   state: ListsType = {
+    category: '',
     initialFlag: false,
     isError: false,
     list: [],
@@ -18,7 +19,7 @@ export const lists = (
 
     // start fetching action
     case LIST_FETCHING:
-      return Object.assign({}, state, { loading: true, isError: false });
+      return Object.assign({}, state, { loading: true, isError: false, category: action.payload.category });
 
     // end fetching action
     case LIST_FETCHED:

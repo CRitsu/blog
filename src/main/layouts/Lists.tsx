@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { translate } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { LATEST, MEMO, PHOTO, TAGS, TALK, TECH } from 'src/constants';
+import { categories } from 'src/constants';
 import { fetchList, listInitialized } from 'src/reducers/creators';
 import { Articles, CommonType, ListsType, Translate } from '../../types';
 import { formatDate } from '../../utils';
@@ -11,6 +11,10 @@ import Loading from '../accessories/Loading';
 
 
 interface Props extends Translate, ListsType, CommonType { }
+
+interface State {
+  category: string,
+}
 
 /**
  * Create articles list.
@@ -50,23 +54,16 @@ function EditedList(props: { list: Articles[], more: string }) {
 
 
 
-class Lists extends React.Component<Props> {
+class Lists extends React.Component<Props, State> {
 
-  /**
-   * For mapping categories to path.
-   */
-  public categories = {
-    '/': LATEST,
-    '/list/memo': MEMO,
-    '/list/photo': PHOTO,
-    '/list/tags': TAGS,
-    '/list/talk': TALK,
-    '/list/tech': TECH,
+  public state = {
+    category: window.location.pathname,
   }
 
   public constructor(props: Props) {
     super(props);
     this.performFetchingList = this.performFetchingList.bind(this);
+    this.setCategory = this.setCategory.bind(this);
   }
 
   public componentDidMount() {
@@ -76,18 +73,16 @@ class Lists extends React.Component<Props> {
     // `dispatch` is available and is not initialized already
     if (dispatch !== undefined && !initialFlag) {
       dispatch(listInitialized());
-      const path = window.location.pathname;
-      this.performFetchingList(path);
+      this.performFetchingList(this.state.category);
     }
   }
-  
+
   public performFetchingList(p: string) {
-    
+
     const dispatch = this.props.dispatch;
     // condition of fetch action
     if (dispatch !== undefined) {
-      const type = this.categories[p];
-      console.log(type)
+      const type = categories[p];
       if (type !== undefined) {
         dispatch(fetchList(type));
       }
@@ -95,14 +90,25 @@ class Lists extends React.Component<Props> {
 
   }
 
+  public componentDidUpdate(p: Props) {
+    if (p.category !== this.state.category) {
+      this.performFetchingList(this.state.category);
+    }
+  }
+
+  public setCategory(c: string) {
+    this.setState({ category: c })
+  }
+
   public render() {
 
     const { list, listTopPoint, loading, t } = this.props;
-    const { performFetchingList } = this;
+    const { setCategory } = this;
+    const { category } = this.state;
 
     return (
       <div className="lists">
-        <ControlBar t={t} top={listTopPoint} p={performFetchingList} />
+        <ControlBar category={category} t={t} top={listTopPoint} p={setCategory} />
         <EditedList list={list} more={t('load more')} />
         {loading
           ? <Loading>{t('loading')}</Loading>

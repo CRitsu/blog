@@ -1,12 +1,12 @@
 import { Dispatch } from "redux";
 import { LATEST, MEMO, PHOTO, TAGS, TALK, TECH } from "src/constants";
-import { Articles, BaseAction } from "src/types";
+import { Articles, BaseAction, State } from "src/types";
 import { checkStatus, parseJson } from "src/utils";
 import { ARTICLE_FETCHED, ARTICLE_FETCHING, ARTICLE_FETCHING_FAILED, LIST_FETCHED, LIST_FETCHING, LIST_FETCHING_FAILED, LIST_INITIALIZED, STORE_LIST_TOP_POINT } from "./actions";
 
 
-export const listFetchStart = (): BaseAction => ({
-  payload: null,
+export const listFetchStart = (category: string): BaseAction => ({
+  payload: { category },
   type: LIST_FETCHING,
 });
 
@@ -25,15 +25,24 @@ export const listInitialized = () => ({
   type: LIST_INITIALIZED,
 });
 
-export const fetchList = (fetchType: number) => {
+export const fetchList = (category: string) => {
 
-  return (dispatch: Dispatch) => {
+  return (dispatch: Dispatch, getState: () => State) => {
 
-    dispatch(listFetchStart());
+    const state = getState();
+
+    if (state.lists.category === category) {
+      return;
+    }
+
+    // TODO
+    console.log(category)
+
+    dispatch(listFetchStart(category));
 
     let fetchUrl;
 
-    switch (fetchType) {
+    switch (category) {
       case LATEST:
         fetchUrl = '/test/lists.json';
         break;
@@ -91,7 +100,7 @@ export const fetchArticle = (aid: string) => {
     // start fetching article
     dispatch(articleFetching());
 
-    
+
     const fetchUrl = `/test/article.json?aid=${aid}`;
 
     return fetch(fetchUrl)
