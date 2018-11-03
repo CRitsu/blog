@@ -2,7 +2,7 @@ import { Dispatch } from "redux";
 import { LATEST, MEMO, PHOTO, TAGS, TALK, TECH } from "src/constants";
 import { Articles, BaseAction, State } from "src/types";
 import { checkStatus, parseJson } from "src/utils";
-import { ARTICLE_FETCHED, ARTICLE_FETCHING, ARTICLE_FETCHING_FAILED, LIST_FETCHED, LIST_FETCHING, LIST_FETCHING_FAILED, LIST_INITIALIZED, STORE_LIST_TOP_POINT } from "./actions";
+import { ARTICLE_FETCHED, ARTICLE_FETCHING, ARTICLE_FETCHING_FAILED, CATEGORY_CHANGE, LIST_FETCHED, LIST_FETCHING, LIST_FETCHING_FAILED, LIST_INITIALIZED, STORE_LIST_TOP_POINT } from "./actions";
 
 
 export const listFetchStart = (category: string): BaseAction => ({
@@ -110,3 +110,8 @@ export const fetchArticle = (aid: string) => {
       .catch(() => dispatch(articleFetchFailed()));
   }
 }
+
+export const categoryChange = (c: string) => ({
+  payload: { category: c },
+  type: CATEGORY_CHANGE,
+})

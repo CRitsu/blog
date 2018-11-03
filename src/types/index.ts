@@ -39,7 +39,15 @@ export interface ReplyType {
 export interface State {
   common: CommonType,
   contents: ContentsType,
-  lists: ListsType
+  lists: ListsType,
+}
+
+export interface HiddenState {
+  listCollection: ListCollection,
+}
+
+export interface ListCollection {
+  [name: string]: Articles[],
 }
 
 export interface CommonType {

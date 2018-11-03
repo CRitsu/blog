@@ -33,3 +33,7 @@ export type ARTICLE_FETCHED = typeof ARTICLE_FETCHED;
 // for fetch article failed
 export const ARTICLE_FETCHING_FAILED = 'ARTICLE_FETCHING_FAILED';
 export type ARTICLE_FETCHING_FAILED = typeof ARTICLE_FETCHING_FAILED;
+
+// for category change
+export const CATEGORY_CHANGE = 'CATEGORY_CHANGE';
+export type CATEGORY_CHANGE = typeof CATEGORY_CHANGE;

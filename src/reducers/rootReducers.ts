@@ -1,10 +1,10 @@
-import { BaseAction, CommonType, ContentsType, ListsType } from '../types';
-import { ARTICLE_FETCHED, ARTICLE_FETCHING_FAILED, LIST_FETCHED, LIST_FETCHING, LIST_FETCHING_FAILED, LIST_INITIALIZED, STORE_LIST_TOP_POINT } from './actions';
-
+import { LATEST } from 'src/constants';
+import { BaseAction, CommonType, ContentsType, ListCollection, ListsType } from '../types';
+import { ARTICLE_FETCHED, ARTICLE_FETCHING_FAILED, CATEGORY_CHANGE, LIST_FETCHED, LIST_FETCHING, LIST_FETCHING_FAILED, LIST_INITIALIZED, STORE_LIST_TOP_POINT } from './actions';
 
 export const lists = (
   state: ListsType = {
-    category: '',
+    category: LATEST,
     initialFlag: false,
     isError: false,
     list: [],
@@ -28,6 +28,9 @@ export const lists = (
     // fetching failed action
     case LIST_FETCHING_FAILED:
       return Object.assign({}, state, { loading: false, isError: true });
+
+    case CATEGORY_CHANGE:
+      return Object.assign({}, state, { category: action.payload.category });
 
     default:
       return state;
@@ -74,3 +77,7 @@ export const common = (
       return state;
   }
 }
+
+export const listCollection = (
+  state: ListCollection = {}
+): ListCollection => state
