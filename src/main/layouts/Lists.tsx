@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { translate } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { categories } from 'src/constants';
-import { fetchList, listInitialized } from 'src/reducers/creators';
+import { CATEGORIES_MAPPING } from 'src/constants';
+import { categoryChange, fetchList, listInitialized } from 'src/reducers/creators';
 import { Articles, CommonType, ListsType, Translate } from '../../types';
 import { formatDate } from '../../utils';
 import Block from '../accessories/Block';
@@ -11,10 +11,6 @@ import Loading from '../accessories/Loading';
 
 
 interface Props extends Translate, ListsType, CommonType { }
-
-interface State {
-  category: string,
-}
 
 /**
  * Create articles list.
@@ -54,11 +50,7 @@ function EditedList(props: { list: Articles[], more: string }) {
 
 
 
-class Lists extends React.Component<Props, State> {
-
-  public state = {
-    category: window.location.pathname,
-  }
+class Lists extends React.Component<Props> {
 
   public constructor(props: Props) {
     super(props);
@@ -66,23 +58,32 @@ class Lists extends React.Component<Props, State> {
     this.setCategory = this.setCategory.bind(this);
   }
 
+  /**
+   * @inheritdoc
+   * 
+   * Check initialFlag and fetch list when it is not initialed.
+   */
   public componentDidMount() {
     // fetch list
-    const { initialFlag } = this.props;
+    const { initialFlag, category } = this.props;
     const dispatch = this.props.dispatch;
     // `dispatch` is available and is not initialized already
     if (dispatch !== undefined && !initialFlag) {
       dispatch(listInitialized());
-      this.performFetchingList(this.state.category);
+      this.performFetchingList(category);
     }
   }
 
+  /**
+   * Perform the list fetching action.
+   * @param p path name
+   */
   public performFetchingList(p: string) {
 
     const dispatch = this.props.dispatch;
     // condition of fetch action
     if (dispatch !== undefined) {
-      const type = categories[p];
+      const type = CATEGORIES_MAPPING[p];
       if (type !== undefined) {
         dispatch(fetchList(type));
       }
@@ -90,21 +91,25 @@ class Lists extends React.Component<Props, State> {
 
   }
 
-  public componentDidUpdate(p: Props) {
-    if (p.category !== this.state.category) {
-      this.performFetchingList(this.state.category);
-    }
-  }
-
+  /**
+   * Update newest category to store.
+   * @param c category
+   */
   public setCategory(c: string) {
-    this.setState({ category: c })
+    const {category, dispatch} = this.props;
+    const cat = CATEGORIES_MAPPING[c];
+    if (category !== cat) {
+      if (dispatch !== undefined) {
+        console.log(cat)
+        dispatch(categoryChange(cat));
+      }
+    }
   }
 
   public render() {
 
-    const { list, listTopPoint, loading, t } = this.props;
+    const { list, listTopPoint, loading, t, category } = this.props;
     const { setCategory } = this;
-    const { category } = this.state;
 
     return (
       <div className="lists">
