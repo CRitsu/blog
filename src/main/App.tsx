@@ -6,7 +6,7 @@ import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
 import i18n from '../i18n';
 import { reducers } from '../reducers';
-import { ReduxDispatch, State } from '../types';
+import { HiddenState, ReduxDispatch, State } from '../types';
 import Banner from './layouts/Banner';
 import Contents from './layouts/Contents';
 import Footer from './layouts/Footer';
@@ -52,11 +52,17 @@ class App extends React.Component<Props> {
 }
 
 // map attribute from store
-const mapStateTpProps = (state: State) => {
+const mapStateTpProps = (state: State & HiddenState) => {
+
+  const l = state.listCollection[state.lists.category];
+
   return {
     common: { ...state.common },
     contents: { ...state.contents },
-    lists: { ...state.lists }
+    lists: {
+      ...state.lists,
+      list: l ? l : []
+    },
   }
 };
 

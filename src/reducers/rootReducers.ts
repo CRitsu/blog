@@ -23,7 +23,7 @@ export const lists = (
 
     // end fetching action
     case LIST_FETCHED:
-      return Object.assign({}, state, { list: action.payload.list, loading: false });
+      return Object.assign({}, state, { loading: false });
 
     // fetching failed action
     case LIST_FETCHING_FAILED:
@@ -79,5 +79,6 @@ export const common = (
 }
 
 export const listCollection = (
-  state: ListCollection = {}
-): ListCollection => state
+  state: ListCollection = {},
+  action: BaseAction
+): ListCollection => state;
