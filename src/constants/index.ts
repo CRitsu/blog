@@ -17,7 +17,7 @@ export const SHORT_TIME_FORMAT = 'YYYY/MM/DD';
 /**
  * For mapping categories to path.
  */
-export const categories = {
+export const CATEGORIES_MAPPING = {
   '/': LATEST,
   '/list/memo': MEMO,
   '/list/photo': PHOTO,
