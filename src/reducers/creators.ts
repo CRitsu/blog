@@ -1,9 +1,11 @@
 import { Dispatch } from "redux";
 import { LATEST, MEMO, PHOTO, TAGS, TALK, TECH } from "src/constants";
-import { Articles, BaseAction, State } from "src/types";
+import { Articles, BaseAction, HiddenState, State as BaseState } from "src/types";
 import { checkStatus, parseJson } from "src/utils";
-import { ARTICLE_FETCHED, ARTICLE_FETCHING, ARTICLE_FETCHING_FAILED, CATEGORY_CHANGE, LIST_FETCHED, LIST_FETCHING, LIST_FETCHING_FAILED, LIST_INITIALIZED, STORE_LIST_TOP_POINT } from "./actions";
+import { setTimeout } from "timers";
+import { ARTICLE_FETCHED, ARTICLE_FETCHING, ARTICLE_FETCHING_FAILED, CATEGORY_CHANGE, LIST_FETCHED, LIST_FETCHING, LIST_FETCHING_FAILED, STORE_LIST_TOP_POINT } from "./actions";
 
+interface State extends BaseState, HiddenState {}
 
 export const listFetchStart = (category: string): BaseAction => ({
   payload: { category },
@@ -20,20 +22,12 @@ export const listFetchFailed = () => ({
   type: LIST_FETCHING_FAILED,
 });
 
-export const listInitialized = () => ({
-  payload: null,
-  type: LIST_INITIALIZED,
-});
-
-export const fetchList = (category: string) => {
+export const fetchList = () => {
 
   return (dispatch: Dispatch, getState: () => State) => {
 
     const state = getState();
-
-    if (state.lists.category === category) {
-      return;
-    }
+    const category = state.lists.category;
 
     // TODO
     console.log(category)
@@ -111,7 +105,25 @@ export const fetchArticle = (aid: string) => {
   }
 }
 
-export const categoryChange = (c: string) => ({
+export const categoryChanging = (c: string) => ({
   payload: { category: c },
   type: CATEGORY_CHANGE,
 })
+
+export const categoryChange = (c: string) => {
+  return (dispatch: (a: any) => void, getState: () => State) => {
+
+    const state = getState();
+
+    if (c !== state.lists.category) {
+      dispatch(categoryChanging(c));
+    }
+
+    const listCollection = state.listCollection;
+    if (!listCollection[c]) {
+      // wait 300ms for nav animation
+      setTimeout(() => dispatch(fetchList()), 300);
+    }
+
+  }
+}

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { translate } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { CATEGORIES_MAPPING } from 'src/constants';
-import { categoryChange, fetchList, listInitialized } from 'src/reducers/creators';
+import { categoryChange, fetchList } from 'src/reducers/creators';
 import { Articles, CommonType, ListsType, Translate } from '../../types';
 import { formatDate } from '../../utils';
 import Block from '../accessories/Block';
@@ -65,27 +65,26 @@ class Lists extends React.Component<Props> {
    */
   public componentDidMount() {
     // fetch list
-    const { category, list } = this.props;
+    const { list } = this.props;
     const dispatch = this.props.dispatch;
     // `dispatch` is available and is not initialized already
     if (dispatch !== undefined && list.length === 0) {
-      dispatch(listInitialized());
-      this.performFetchingList(category);
+      this.performFetchingList();
     }
   }
 
   /**
    * Perform the list fetching action.
+   * 
+   * Only do when mounted.
    * @param cat category
    */
-  public performFetchingList(cat: string) {
+  public performFetchingList() {
 
     const dispatch = this.props.dispatch;
     // condition of fetch action
     if (dispatch !== undefined) {
-      if (cat !== undefined) {
-        dispatch(fetchList(cat));
-      }
+      dispatch(fetchList());
     }
 
   }
@@ -95,10 +94,11 @@ class Lists extends React.Component<Props> {
    * @param c category
    */
   public setCategory(c: string) {
-    const {category, dispatch} = this.props;
+    const { category, dispatch } = this.props;
     const cat = CATEGORIES_MAPPING[c];
     if (category !== cat) {
       if (dispatch !== undefined) {
+        // change category, fetch new list when nothing was cached
         dispatch(categoryChange(cat));
       }
     }
