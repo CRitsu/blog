@@ -14,7 +14,7 @@ export const lists = (
 
     // start fetching action
     case LIST_FETCHING:
-      return Object.assign({}, state, { sError: false, category: action.payload.category });
+      return Object.assign({}, state, { isError: false, category: action.payload.category });
 
     // fetching failed action
     case LIST_FETCHING_FAILED:

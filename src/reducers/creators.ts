@@ -3,14 +3,9 @@ import { LATEST, MEMO, PHOTO, TAGS, TALK, TECH } from "src/constants";
 import { Articles, BaseAction, HiddenState, State as BaseState } from "src/types";
 import { checkStatus, parseJson } from "src/utils";
 import { setTimeout } from "timers";
-import { ARTICLE_FETCHED, ARTICLE_FETCHING, ARTICLE_FETCHING_FAILED, CATEGORY_CHANGE, LIST_FETCHED, LIST_FETCHING, LIST_FETCHING_FAILED, STORE_LIST_TOP_POINT } from "./actions";
+import { ARTICLE_FETCHED, ARTICLE_FETCHING, ARTICLE_FETCHING_FAILED, CATEGORY_CHANGE, LIST_FETCHED, LIST_FETCHING_FAILED, STORE_LIST_TOP_POINT } from "./actions";
 
 interface State extends BaseState, HiddenState {}
-
-export const listFetchStart = (category: string): BaseAction => ({
-  payload: { category },
-  type: LIST_FETCHING,
-});
 
 export const listFetchEnd = (list: Articles[]) => ({
   payload: { list },
@@ -28,11 +23,6 @@ export const fetchList = () => {
 
     const state = getState();
     const category = state.lists.category;
-
-    // TODO
-    console.log(category)
-
-    dispatch(listFetchStart(category));
 
     let fetchUrl;
 
@@ -115,13 +105,16 @@ export const categoryChange = (c: string) => {
 
     const state = getState();
 
+    // check target category for safe
     if (c !== state.lists.category) {
       dispatch(categoryChanging(c));
     }
 
     const listCollection = state.listCollection;
+    // check if target list was fetched
     if (!listCollection[c]) {
       // wait 300ms for nav animation
+      // then fetch new list
       setTimeout(() => dispatch(fetchList()), 300);
     }
 
