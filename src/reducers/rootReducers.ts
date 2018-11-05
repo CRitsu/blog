@@ -1,34 +1,26 @@
 import { LATEST } from 'src/constants';
 import { BaseAction, CommonType, ContentsType, ListCollection, ListsType } from '../types';
-import { ARTICLE_FETCHED, ARTICLE_FETCHING_FAILED, CATEGORY_CHANGE, LIST_FETCHED, LIST_FETCHING, LIST_FETCHING_FAILED, LIST_INITIALIZED, STORE_LIST_TOP_POINT } from './actions';
+import { ARTICLE_FETCHED, ARTICLE_FETCHING_FAILED, CATEGORY_CHANGE, LIST_FETCHING, LIST_FETCHING_FAILED, STORE_LIST_TOP_POINT } from './actions';
 
 export const lists = (
   state: ListsType = {
     category: LATEST,
-    initialFlag: false,
     isError: false,
     list: [],
-    loading: false,
   }, action: BaseAction
 ): ListsType => {
 
   switch (action.type) {
-    // initialize
-    case LIST_INITIALIZED:
-      return Object.assign({}, state, { initialFlag: true });
 
     // start fetching action
     case LIST_FETCHING:
-      return Object.assign({}, state, { loading: true, isError: false, category: action.payload.category });
-
-    // end fetching action
-    case LIST_FETCHED:
-      return Object.assign({}, state, { loading: false });
+      return Object.assign({}, state, { sError: false, category: action.payload.category });
 
     // fetching failed action
     case LIST_FETCHING_FAILED:
-      return Object.assign({}, state, { loading: false, isError: true });
+      return Object.assign({}, state, { isError: true });
 
+    // for changing category
     case CATEGORY_CHANGE:
       return Object.assign({}, state, { category: action.payload.category });
 

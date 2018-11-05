@@ -65,10 +65,10 @@ class Lists extends React.Component<Props> {
    */
   public componentDidMount() {
     // fetch list
-    const { initialFlag, category } = this.props;
+    const { category, list } = this.props;
     const dispatch = this.props.dispatch;
     // `dispatch` is available and is not initialized already
-    if (dispatch !== undefined && !initialFlag) {
+    if (dispatch !== undefined && list.length === 0) {
       dispatch(listInitialized());
       this.performFetchingList(category);
     }
@@ -76,16 +76,15 @@ class Lists extends React.Component<Props> {
 
   /**
    * Perform the list fetching action.
-   * @param p path name
+   * @param cat category
    */
-  public performFetchingList(p: string) {
+  public performFetchingList(cat: string) {
 
     const dispatch = this.props.dispatch;
     // condition of fetch action
     if (dispatch !== undefined) {
-      const type = CATEGORIES_MAPPING[p];
-      if (type !== undefined) {
-        dispatch(fetchList(type));
+      if (cat !== undefined) {
+        dispatch(fetchList(cat));
       }
     }
 
@@ -100,7 +99,6 @@ class Lists extends React.Component<Props> {
     const cat = CATEGORIES_MAPPING[c];
     if (category !== cat) {
       if (dispatch !== undefined) {
-        console.log(cat)
         dispatch(categoryChange(cat));
       }
     }
@@ -108,14 +106,14 @@ class Lists extends React.Component<Props> {
 
   public render() {
 
-    const { list, listTopPoint, loading, t, category } = this.props;
+    const { list, listTopPoint, t, category } = this.props;
     const { setCategory } = this;
 
     return (
       <div className="lists">
         <ControlBar category={category} t={t} top={listTopPoint} p={setCategory} />
         <EditedList list={list} more={t('load more')} />
-        {loading
+        {list.length === 0
           ? <Loading>{t('loading')}</Loading>
           : null
         }
