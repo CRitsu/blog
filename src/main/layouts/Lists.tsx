@@ -16,8 +16,8 @@ interface Props extends Translate, ListsType, CommonType { }
  * Create articles list.
  * @param props array of articles
  */
-function EditedList(props: { list: Articles[], more: string }) {
-  const { list, more } = props;
+function EditedList(props: { list: Articles[] }) {
+  const { list } = props;
 
   const Timestamp = (p: { time: number }) => {
 
@@ -43,7 +43,6 @@ function EditedList(props: { list: Articles[], more: string }) {
           <Link className="item-title" to={'/articles/' + item._id}>{item.title}</Link>
         </div>
       ))}
-      <button className="more">{more}</button>
     </div>
   )
 }
@@ -112,7 +111,8 @@ class Lists extends React.Component<Props> {
     return (
       <div className="lists">
         <ControlBar category={category} t={t} top={listTopPoint} p={setCategory} />
-        <EditedList list={list} more={t('load more')} />
+        <EditedList list={list} />
+        <button className="more">{t('load more')}</button>
         {list.length === 0
           ? <Loading>{t('loading')}</Loading>
           : null
