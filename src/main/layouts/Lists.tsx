@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { translate } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { CATEGORIES_MAPPING } from 'src/constants';
 import { categoryChange, fetchList } from 'src/reducers/creators';
 import { Articles, CommonType, ListsType, Translate } from '../../types';
 import { formatDate } from '../../utils';
@@ -94,11 +93,10 @@ class Lists extends React.Component<Props> {
    */
   public setCategory(c: string) {
     const { category, dispatch } = this.props;
-    const cat = CATEGORIES_MAPPING[c];
-    if (category !== cat) {
+    if (category !== c) {
       if (dispatch !== undefined) {
         // change category, fetch new list when nothing was cached
-        dispatch(categoryChange(cat));
+        dispatch(categoryChange(c));
       }
     }
   }
@@ -112,10 +110,9 @@ class Lists extends React.Component<Props> {
       <div className="lists">
         <ControlBar category={category} t={t} top={listTopPoint} p={setCategory} />
         <EditedList list={list} />
-        <button className="more">{t('load more')}</button>
         {list.length === 0
           ? <Loading>{t('loading')}</Loading>
-          : null
+          : <button className="more">{t('load more')}</button>
         }
       </div>
     )

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { NavLink } from 'react-router-dom';
-import { MEMO, PHOTO, TALK, TECH } from 'src/constants';
+import { CATEGORIES_MAPPING, MEMO, PHOTO, TALK, TECH } from 'src/constants';
 import { Translate } from '../../types';
 
 
@@ -38,6 +38,7 @@ class ControlBar extends React.Component<Props, State> {
     this.handleOnfocus = this.handleOnfocus.bind(this);
     this.handleOnblur = this.handleOnblur.bind(this);
     this.getWrapperActiveClass = this.getWrapperActiveClass.bind(this);
+    this.clickToScroll = this.clickToScroll.bind(this);
   }
 
   /**
@@ -89,13 +90,6 @@ class ControlBar extends React.Component<Props, State> {
   }
 
   /**
-   * Scroll to top of list.
-   */
-  // public scroll2Top() {
-  //   window.scrollTo(0, this.props.top);
-  // }
-
-  /**
    * Add focus class name for input element.
    */
   public handleOnfocus() {
@@ -134,11 +128,24 @@ class ControlBar extends React.Component<Props, State> {
     window.removeEventListener('scroll', this.handleScrollChanged);
   }
 
+  /**
+   * @inheritdoc
+   * 
+   * Update category when path is changed and category is not correct.
+   */
   public componentDidUpdate() {
     const path = window.location.pathname;
-    if (this.props.category !== path) {
-      this.props.p(path);
+    const category = CATEGORIES_MAPPING[path];
+    if (this.props.category !== category) {
+      this.props.p(category);
     }
+  }
+
+  /**
+   * Click to scroll to list top.
+   */
+  public clickToScroll() {
+    window.scrollTo(0, this.props.top);
   }
 
   /**
@@ -164,15 +171,16 @@ class ControlBar extends React.Component<Props, State> {
     const {
       categoryNames,
       getWrapperActiveClass,
+      clickToScroll,
     } = this;
 
     return (
       <div className="control-bar" ref={bar}>
         <div className={className}>
           <div className="tabs">
-            <NavLink to="/" exact={true} className="tab" >{t('latest')}</NavLink>
-            <NavLink to="/list/tech" className={`tab ${getWrapperActiveClass()}`}>{t('categories')}</NavLink>
-            <NavLink to="/list/tags" className="tab">{t('tags')}</NavLink>
+            <NavLink to="/" exact={true} className="tab" onClick={clickToScroll}>{t('latest')}</NavLink>
+            <NavLink to="/list/tech" className={`tab ${getWrapperActiveClass()}`} onClick={clickToScroll}>{t('categories')}</NavLink>
+            <NavLink to="/list/tags" className="tab" onClick={clickToScroll}>{t('tags')}</NavLink>
           </div>
           <div className="search-area">
             <label className="magnifier">
@@ -184,7 +192,7 @@ class ControlBar extends React.Component<Props, State> {
           <div className={`categories-menu-wrapper ${getWrapperActiveClass()}`}>
             <div className="categories-menu">
               {categoryNames.map(cat => (
-                <NavLink to={`/list/${cat.toLowerCase()}`} className="cat" key={cat}>{t(cat)}</NavLink>
+                <NavLink to={`/list/${cat.toLowerCase()}`} className="cat" key={cat} onClick={clickToScroll}>{t(cat)}</NavLink>
               ))}
             </div>
           </div>
