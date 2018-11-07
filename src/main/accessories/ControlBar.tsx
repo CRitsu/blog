@@ -192,7 +192,7 @@ class ControlBar extends React.Component<Props, State> {
           <div className={`categories-menu-wrapper ${getWrapperActiveClass()}`}>
             <div className="categories-menu">
               {categoryNames.map(cat => (
-                <NavLink to={`/list/${cat.toLowerCase()}`} className="cat" key={cat} onClick={clickToScroll}>{t(cat)}</NavLink>
+                <NavLink to={`/list/${cat.toLowerCase()}`} className="cat" key={cat} onClick={clickToScroll}>{t(cat.toLowerCase())}</NavLink>
               ))}
             </div>
           </div>
