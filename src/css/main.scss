@@ -310,6 +310,7 @@ $lists-max-width: 700px;
 .lists {
   padding: 45px 0;
   max-width: $lists-max-width;
+  min-height: calc(100vh - 335px);
   width: 100%;
   background-color: white;
   align-self: center;
@@ -579,7 +580,7 @@ $lists-max-width: 700px;
 
   .article {
     padding: 0 1rem;
-    
+
     .title {
       text-align: center;
       margin-bottom: 2rem;
@@ -699,7 +700,7 @@ $lists-max-width: 700px;
           .body {
             word-break: break-all;
             margin-bottom: .5rem;
-            
+
             @media (max-width: 500px) {
               text-indent: 3rem;
             }
@@ -756,6 +757,7 @@ $lists-max-width: 700px;
 
               &:hover {
                 color: $blue-dark3;
+
                 .thumb-up {
                   fill: $blue-dark1;
                 }
