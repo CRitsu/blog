@@ -41,8 +41,8 @@ class App extends React.Component<Props> {
       <Router>
         <div className="app">
           <Navigation />
-          <Route path="/:path(|list/tech|list/memo|list/photo|list/talk|list/tags)" exact={true} render={BannerWrapper} />
-          <Route path="/:path(|list/tech|list/memo|list/photo|list/talk|list/tags)" exact={true} render={ListsWrapper} />
+          <Route path="/:path(|search|list/tech|list/memo|list/photo|list/talk|list/tags)" exact={true} render={BannerWrapper} />
+          <Route path="/:path(|search|list/tech|list/memo|list/photo|list/talk|list/tags)" exact={true} render={ListsWrapper} />
           <Route path="/articles/:article" render={ContentsWrapper} />
           <Footer />
         </div>

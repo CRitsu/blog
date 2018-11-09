@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, RouteComponentProps, withRouter } from 'react-router-dom';
 import { CATEGORIES_MAPPING, MEMO, PHOTO, TALK, TECH } from 'src/constants';
 import { Translate } from '../../types';
 
 
-interface Props extends Translate {
+interface Props extends Translate, RouteComponentProps {
   top: number,
   category: string,
   p: (p: string) => void,
@@ -39,6 +39,7 @@ class ControlBar extends React.Component<Props, State> {
     this.handleOnblur = this.handleOnblur.bind(this);
     this.getWrapperActiveClass = this.getWrapperActiveClass.bind(this);
     this.clickToScroll = this.clickToScroll.bind(this);
+    this.handleSearchButtonEnterKey = this.handleSearchButtonEnterKey.bind(this);
   }
 
   /**
@@ -161,6 +162,17 @@ class ControlBar extends React.Component<Props, State> {
     return '';
   }
 
+  /**
+   * Goto `/search` pages when enter key was pressed.
+   */
+  public handleSearchButtonEnterKey(e: React.KeyboardEvent<HTMLInputElement>) {
+    if (e.which !== 13) {
+      return;
+    }
+    const {history} = this.props;
+    history.push('/search');
+  }
+
   public render() {
     const { t } = this.props;
     const { bar, wrapperClassName, input } = this.state;
@@ -172,6 +184,7 @@ class ControlBar extends React.Component<Props, State> {
       categoryNames,
       getWrapperActiveClass,
       clickToScroll,
+      handleSearchButtonEnterKey,
     } = this;
 
     return (
@@ -185,7 +198,7 @@ class ControlBar extends React.Component<Props, State> {
           <div className="search-area">
             <label className="magnifier">
               <span className="query-mark" />
-              <input className="search" placeholder={t('search')} ref={input}
+              <input className="search" placeholder={t('search')} ref={input} onKeyPress={handleSearchButtonEnterKey}
                 onFocus={this.handleOnfocus} onBlur={this.handleOnblur} />
             </label>
           </div>
@@ -202,4 +215,4 @@ class ControlBar extends React.Component<Props, State> {
   }
 }
 
-export default ControlBar;
+export default withRouter(ControlBar);
