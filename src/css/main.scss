@@ -181,6 +181,10 @@ $arrow-width: 60px;
       background-clip: text;
       color: transparent;
 
+      p {
+        display: inline;
+      }
+
       @media (max-width: 500px) {
         font-size: 2rem;
         margin: 4rem auto;
