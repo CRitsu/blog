@@ -172,16 +172,20 @@ $arrow-width: 60px;
     @include flex-column();
 
     .logo {
-      font-size: 3rem;
+      font-size: 5rem;
       font-weight: bold;
-      margin-top: 8rem;
-      margin-bottom: 1.5rem;
+      width: fit-content;
+      margin: 8rem auto;
+      background-image: linear-gradient(141deg, #9fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
 
       @media (max-width: 500px) {
         font-size: 2rem;
-        margin-top: 6rem;
-        margin-bottom: 1rem;
+        margin: 4rem auto;
       }
+
     }
 
     .motto {
