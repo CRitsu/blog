@@ -36,7 +36,7 @@ class Banner extends React.Component<Props, State> {
 
           <div className="logo" style={{
             backgroundImage: `linear-gradient(141deg, ${colorBox[index % 4]} 0%, ${colorBox[(index + 1) % 4]} 51%, ${colorBox[(index + 2) % 4]} 75%)`
-          }}><p>{blogName}</p></div>
+          }}><p>@{blogName}</p></div>
 
           <div className="social">
             <a className="icon github" href={github} target="blank" />
