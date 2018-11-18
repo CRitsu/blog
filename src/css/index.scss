@@ -3,17 +3,18 @@
   padding: 0;
 }
 
-// @font-face {
-//   src: url(../resources/方正清刻本悦宋简体.ttf);
-//   font-family: zh;
-//   font-display: swap;
-// }
+@font-face {
+  src: url(../resources/杨任东竹石体-Extralight.ttf);
+  font-family: zh;
+  font-display: swap;
+}
 
 
 // html body
 body {
   box-sizing: border-box;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', STKaiti, KaiTi, sans-serif;
+  // font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', STKaiti, KaiTi, sans-serif;
+  font-family: zh;
   // font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', zh, sans-serif;
   font-weight: 400;
   font-size: 16px;
