@@ -1,5 +1,7 @@
 # blog-ui
 
+![capture](./capture.png)
+
 **Fetch API**
 
 For test:
